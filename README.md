@@ -10,5 +10,5 @@ A repo to store sources of all the 3rd-party dependencies used by Zynthbox
 
 ## Tarball Naming Rules : 
 - Tarball name is in the following format : `<project-name>-<projectversion>.{tar.bz2,tar.gz,tar.xz,zip}`
-- "<project-name>" should be lowercase and hyphenated
+- `<project-name>` should be lowercase and hyphenated
 - If project version is not found, use last commit date as project version in the format : `yyyymmdd`
