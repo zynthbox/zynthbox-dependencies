@@ -1,4 +1,4 @@
-# DISTRHO-Ports
+# distrho-plugin-ports-lv2
 
 ## Source
 URL : https://github.com/DISTRHO/DISTRHO-Ports

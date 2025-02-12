@@ -1,4 +1,4 @@
-# BShapr
+# bshapr
 
 ## Source
 URL : https://github.com/sjaehn/BShapr

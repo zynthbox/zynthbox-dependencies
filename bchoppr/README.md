@@ -1,4 +1,4 @@
-# BChoppr
+# bchoppr
 
 ## Source
 URL : https://github.com/sjaehn/BChoppr

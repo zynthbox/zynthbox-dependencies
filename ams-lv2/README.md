@@ -1,4 +1,4 @@
-# amslv2
+# ams-lv2
 
 ## Source
 URL : https://github.com/blablack/ams-lv2

@@ -1,4 +1,4 @@
-# BSlizr
+# bslizr
 
 ## Source
 URL : https://github.com/sjaehn/BSlizr

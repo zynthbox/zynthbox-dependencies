@@ -1,7 +1,7 @@
-# calf
+# calf-plugins
 
 ## Source
-URL :https://github.com/calf-studio-gear/calf/ 
+URL : https://github.com/calf-studio-gear/calf 
 
 ## Build Instructions
 ```sh

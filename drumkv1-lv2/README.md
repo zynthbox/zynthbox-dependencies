@@ -1,4 +1,4 @@
-# drumkv1
+# drumkv1-lv2
 
 ## Source
 URL : https://github.com/rncbc/drumkv1

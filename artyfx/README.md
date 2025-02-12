@@ -1,4 +1,4 @@
-# ArtyFX
+# artyfx
 
 ## Source
 URL : https://github.com/openAVproductions/openAV-ArtyFX

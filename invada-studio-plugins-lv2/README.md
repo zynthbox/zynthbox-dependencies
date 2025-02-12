@@ -1,4 +1,4 @@
-# invada-studio-plugins
+# invada-studio-plugins-lv2
 
 ## Source
 URL : https://github.com/falkTX/invada-studio-plugins-lv2
