@@ -1,4 +1,4 @@
-# surge
+# zynthbox-plugin-surge
 
 ## Source
 URL : https://github.com/surge-synthesizer/surge
@@ -11,3 +11,5 @@ cmake .. -DSURGE_BUILD_LV2=TRUE -DSURGE_BUILD_CLAP=FALSE -DSURGE_SKIP_STANDALONE
 make -j$(nproc)
 make install
 ```
+
+Build latest zynthbox-plugin-surge from source https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/surge-1.3.4.tar.gz

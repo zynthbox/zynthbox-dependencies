@@ -1,0 +1,17 @@
+Source: zynthbox-plugin-surge
+Section: misc
+Priority: optional
+Maintainer: Probal Basak <probal31@gmail.com>
+Build-Depends: 
+  debhelper (>= 11), 
+  cmake, 
+  g++,
+  libqt5svg5-dev,
+  lv2-dev
+Standards-Version: 4.1.3
+Homepage: https://github.com/surge-synthesizer/surge
+
+Package: zynthbox-plugin-surge
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Build zynthbox-plugin-surge deb
