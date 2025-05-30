@@ -7,6 +7,6 @@
 	dh $@
 
 override_dh_auto_install:
-	INSTALL_DIR_REALLY=$(shell pwd)/debian/tmp/zynthian/zynthian-plugins/ make install-really
+	INSTALL_DIR_REALLY=$(shell pwd)/debian/zynthbox-plugin-swh/zynthian/zynthian-plugins/ make install-really
 	
 override_dh_usrlocal:
