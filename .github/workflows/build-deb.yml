@@ -46,6 +46,7 @@ jobs:
           apt-get install -y git
 
           echo "Cloning only ${{ inputs.package_name }}"
+          git config --global --add safe.directory /__w/zynthbox-dependencies/zynthbox-dependencies
           git init
           git remote add origin https://github.com/${{ github.repository }}.git
           git config core.sparseCheckout true
