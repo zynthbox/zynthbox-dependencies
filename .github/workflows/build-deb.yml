@@ -9,7 +9,7 @@ on:
         type: choice
         options:
         - synthv1-lv2
-        - synthv1-1.3.2-lv2
+        - synthv1-lv2-1.3.2
 
 jobs:
   build:
