@@ -42,6 +42,9 @@ jobs:
 
       - name: Setup Git sparse checkout
         run: |
+          apt-get update
+          apt-get install -y git
+
           echo "Cloning only ${{ inputs.package_name }}"
           git init
           git remote add origin https://github.com/${{ github.repository }}.git
