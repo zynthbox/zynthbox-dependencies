@@ -156,8 +156,6 @@ jobs:
 
           dpkg-buildpackage -us -uc -b
 
-          tree
-
       - name: Upload deb to aptly repo
         run: |
           set -x
