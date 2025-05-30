@@ -10,6 +10,7 @@ on:
         options:
         - synthv1-lv2
         - synthv1-lv2-1.3.2
+        - tap-lv2
 
 jobs:
   build:
@@ -35,6 +36,9 @@ jobs:
           synthv1-lv2-1.3.2)
             echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/synthv1-lv2-1.3.2.tar.gz" >> $GITHUB_OUTPUT
             ;;
+          tap-lv2)
+            echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/tap-lv2-20180221.tar.gz" >> $GITHUB_OUTPUT
+            ;;
           *)
             echo "Unknown choice"
             exit 1
@@ -54,8 +58,9 @@ jobs:
           cd ..
           rm -rf repo
 
-      # - name: Set custom workflow title
-      #   run: echo "### Building zynthbox plugin: ${{ github.event.inputs.package_name }}" >> $GITHUB_STEP_SUMMARY
+      - name: Set custom workflow title
+        run: |
+          echo "### Building zynthbox plugin: ${{ github.event.inputs.package_name }}" >> $GITHUB_STEP_SUMMARY
 
       - name: Install build dependencies
         run: |
