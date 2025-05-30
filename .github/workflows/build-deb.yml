@@ -31,7 +31,7 @@ jobs:
           synthv1-lv2)
             echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/synthv1-lv2-1.3.0.tar.gz" >> $GITHUB_OUTPUT
             ;;
-          synthv1-1.3.2-lv2)
+          synthv1-lv2-1.3.2)
             echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/synthv1-lv2-1.3.2.tar.gz" >> $GITHUB_OUTPUT
             ;;
           *)
