@@ -1,0 +1,13 @@
+diff --git a/Makefile.mk.bkup b/Makefile.mk
+index a6b54c3..a5346c4 100644
+--- a/Makefile.mk.bkup
++++ b/Makefile.mk
+@@ -7,7 +7,7 @@ CFLAGS += -O3 -funroll-loops -ffast-math -fomit-frame-pointer -fstrength-reduce
+ LDFLAGS += -shared -Wl,-O1 -Wl,--as-needed -Wl,--no-undefined -Wl,--strip-all -lm -lrt
+ 
+ ifneq ($(NOOPT),true)
+-CFLAGS += -mtune=generic -msse -msse2 -mfpmath=sse
++CFLAGS += -mtune=generic
+ endif
+ 
+ # remove command
