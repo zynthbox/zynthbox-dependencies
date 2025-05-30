@@ -40,12 +40,16 @@ jobs:
             ;;
           esac
 
-      - uses: actions/checkout@v4
-        with:
-          sparse-checkout: |
-            ${{ inputs.package_name }}
-          sparse-checkout-cone-mode: false
-          fetch-depth: 0
+      - name: Setup Git sparse checkout
+        run: |
+          echo "Cloning only ${{ inputs.package_name }}"
+          git init
+          git remote add origin https://github.com/${{ github.repository }}.git
+          git config core.sparseCheckout true
+          git sparse-checkout init --no-cone
+          echo "${{ inputs.package_name }}" >> .git/info/sparse-checkout
+          git fetch --depth=1 origin ${{ github.ref_name }}
+          git checkout FETCH_HEAD
 
       - name: Install build dependencies
         if: false
