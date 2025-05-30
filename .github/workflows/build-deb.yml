@@ -53,6 +53,7 @@ jobs:
 
       - name: Download tar from github release and create orig.tar.gz
         run: |
+          apt-get install -y tree
           pwd
           tree
 
