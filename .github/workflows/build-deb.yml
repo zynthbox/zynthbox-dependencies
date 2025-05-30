@@ -55,6 +55,9 @@ jobs:
 
       - name: Download tar from github release and create orig.tar.gz
         run: |
+          pwd
+          tree
+          
           PACKAGE_NAME=$(dpkg-parsechangelog --show-field Source)
           PACKAGE_VERSION=$(dpkg-parsechangelog --show-field Version | sed 's/-[^-]*$//')
 
