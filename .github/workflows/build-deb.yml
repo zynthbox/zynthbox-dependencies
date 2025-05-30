@@ -40,20 +40,16 @@ jobs:
             ;;
           esac
 
-      - name: Setup Git sparse checkout
+      - name: Clone repo shallowly
         run: |
-          apt-get update
-          apt-get install -y git
-
-          echo "Cloning only ${{ inputs.package_name }}"
-          git config --global --add safe.directory /__w/zynthbox-dependencies/zynthbox-dependencies
-          git init
-          git remote add origin https://github.com/${{ github.repository }}.git
-          git config core.sparseCheckout true
-          git sparse-checkout init --no-cone
-          echo "${{ inputs.package_name }}" >> .git/info/sparse-checkout
-          git fetch --depth=1 origin ${{ github.ref_name }}
-          git checkout FETCH_HEAD
+          git clone --depth 1 https://github.com/${{ github.repository }}.git repo
+  
+      - name: Extract folder contents at root
+        run: |
+          cd repo
+          git archive HEAD:${{ github.event.inputs.package_name }} | tar -x -C ../
+          cd ..
+          rm -rf repo
 
       - name: Install build dependencies
         if: false
