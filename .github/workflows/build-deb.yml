@@ -44,6 +44,8 @@ jobs:
         with:
           sparse-checkout: |
             ${{ inputs.package_name }}
+          sparse-checkout-cone-mode: false
+          fetch-depth: 0
 
       - name: Install build dependencies
         if: false
