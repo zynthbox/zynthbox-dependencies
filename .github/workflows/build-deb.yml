@@ -154,7 +154,7 @@ jobs:
           # Install the build dependencies reading the Build-Depends in the debian/control file
           apt-get -y build-dep .
 
-          dpkg-buildpackage -us -uc
+          dpkg-buildpackage -us -uc -b
 
       - name: Upload deb to aptly repo
         run: |
