@@ -5,5 +5,8 @@
 
 %:
 	dh $@
+
+override_dh_auto_install:
+	make install-system
 	
 override_dh_usrlocal:
