@@ -12,7 +12,8 @@ on:
         - synthv1-lv2-1.3.2
 
 jobs:
-  build:
+  build-${{ inputs.package_name }}:
+    name: Build ${{ inputs.package_name }} plugin
     runs-on: ubuntu-22.04-arm
     container:
       image: debian:bookworm
@@ -52,6 +53,9 @@ jobs:
           git archive HEAD:${{ github.event.inputs.package_name }} | tar -x -C ../
           cd ..
           rm -rf repo
+
+      - name: Set custom workflow title
+        run: echo "### Building zynthbox plugin: ${{ github.event.inputs.package_name }}" >> $GITHUB_STEP_SUMMARY
 
       - name: Install build dependencies
         run: |
