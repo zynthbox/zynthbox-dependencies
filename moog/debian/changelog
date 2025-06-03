@@ -1,4 +1,4 @@
-zynthbox-plugin-moog (1.0.0-1-1) bullseye; urgency=medium
+zynthbox-plugin-moog (1.0.0-1-2) bullseye; urgency=medium
 
   * Build moog from git commit e2731c9 
 
