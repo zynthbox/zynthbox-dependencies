@@ -1,0 +1,5 @@
+zynthbox-plugin-moog (1.0.0-1-1) bullseye; urgency=medium
+
+  * Build moog from git commit e2731c9 
+
+ -- Probal Basak <probal31@gmail.com>  Mon, 19 May 2025 13:00:00 +0530

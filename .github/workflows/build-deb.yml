@@ -13,6 +13,7 @@ on:
         - tap-lv2
         - swh
         - surge
+        - moog
 
 jobs:
   build:
@@ -46,6 +47,9 @@ jobs:
             ;;
           surge)
             echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/surge-1.3.4.tar.gz" >> $GITHUB_OUTPUT
+            ;;
+          moog)
+            echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/moog-git+e2731c9.tar.gz" >> $GITHUB_OUTPUT
             ;;
           *)
             echo "Unknown choice"
