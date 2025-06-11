@@ -1,0 +1,68 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+new file mode 100644
+index 0000000..d79f5ee
+--- /dev/null
++++ b/CMakeLists.txt
+@@ -0,0 +1,62 @@
++# CMakeLists.txt for RaffoSynth
++
++cmake_minimum_required(VERSION 3.15)
++project(RaffoSynth LANGUAGES C CXX)
++
++set(CMAKE_CXX_STANDARD 11)
++set(CMAKE_CXX_FLAGS_RELEASE "-O3")
++set(CMAKE_C_FLAGS_RELEASE "-O3")
++set(CMAKE_POSITION_INDEPENDENT_CODE ON)
++
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(LV2 REQUIRED lv2-plugin)
++pkg_check_modules(LV2GUI REQUIRED lv2-gui)
++
++include_directories(${LV2_INCLUDE_DIRS})
++link_directories(${LV2_LIBRARY_DIRS})
++
++add_custom_command(
++	OUTPUT raffo.peg
++	COMMAND lv2peg ${CMAKE_SOURCE_DIR}/raffo.ttl raffo.peg
++	DEPENDS raffo.ttl
++	COMMENT "Generating raffo.peg from raffo.ttl"
++)
++add_custom_target(
++  raffo_peg
++  DEPENDS raffo.peg
++)
++
++set(SOURCES
++    equalizer.c
++    oscillators.c
++)
++
++add_library(raffo SHARED raffo.cpp ${SOURCES})
++target_compile_definitions(raffo PUBLIC PIC=1)
++target_include_directories(raffo PRIVATE ${LV2_INCLUDE_DIRS})
++target_link_libraries(raffo PRIVATE ${LV2_LIBRARIES})
++set_property(TARGET raffo PROPERTY PREFIX "")
++add_dependencies(raffo raffo_peg)
++target_include_directories(raffo PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
++set_target_properties(raffo PROPERTIES ADDITIONAL_CLEAN_FILES "raffo.lv2;raffo.so;raffo_gui.so;raffo.peg")
++
++add_library(raffo_gui SHARED raffo_gui.cpp)
++target_compile_options(raffo_gui PRIVATE -Wno-write-strings)
++target_include_directories(raffo_gui PRIVATE ${LV2GUI_INCLUDE_DIRS})
++target_link_libraries(raffo_gui PRIVATE ${LV2GUI_LIBRARIES})
++set_property(TARGET raffo_gui PROPERTY PREFIX "")
++add_dependencies(raffo_gui raffo_peg)
++target_include_directories(raffo_gui PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
++
++add_custom_target(bundle ALL
++	COMMAND ${CMAKE_COMMAND} -E remove_directory raffo.lv2
++	COMMAND ${CMAKE_COMMAND} -E make_directory raffo.lv2
++	COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/manifest.ttl raffo.lv2/
++	COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/raffo.ttl raffo.lv2/
++	COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:raffo> raffo.lv2/raffo.so
++	COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:raffo_gui> raffo.lv2/raffo_gui.so
++	DEPENDS raffo raffo_gui manifest.ttl raffo.ttl
++	COMMENT "Bundling LV2 plugin"
++)
++
++install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/raffo.lv2 DESTINATION lib/lv2)
