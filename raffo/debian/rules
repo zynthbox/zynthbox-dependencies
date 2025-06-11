@@ -6,4 +6,7 @@ export DH_VERBOSE = 1
 %:
 	dh $@ --buildsystem=cmake --with quilt
 
+override_dh_strip:
+	dh_strip --no-automatic-dbgsym
+
 override_dh_usrlocal:
