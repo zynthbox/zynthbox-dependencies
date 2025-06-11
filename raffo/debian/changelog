@@ -1,4 +1,4 @@
-zynthbox-plugin-moog (0.1-1-2) bullseye; urgency=medium
+zynthbox-plugin-raffo (0.1-1-2) bullseye; urgency=medium
 
   * Build raffo from git commit e2731c9 
 
