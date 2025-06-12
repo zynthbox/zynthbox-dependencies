@@ -1,0 +1,17 @@
+Source: zynthbox-plugin-moony-lv2
+Section: misc
+Priority: optional
+Maintainer: Probal Basak <probal31@gmail.com>
+Build-Depends: 
+  debhelper (>= 11), 
+  cmake, 
+  g++,
+  libglew-dev,
+  libvterm-dev
+Standards-Version: 4.1.3
+Homepage: https://git.open-music-kontrollers.ch/~hp/moony.lv2
+
+Package: zynthbox-plugin-moony-lv2
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Build zynthbox-plugin-moony-lv2 deb

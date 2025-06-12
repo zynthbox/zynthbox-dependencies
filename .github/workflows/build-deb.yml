@@ -14,6 +14,7 @@ on:
         - swh
         - surge
         - raffo
+        - moony-lv2
 
 jobs:
   build:
@@ -51,6 +52,8 @@ jobs:
           raffo)
             echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/raffo-git+e2731c9.tar.gz" >> $GITHUB_OUTPUT
             ;;
+          moony-lv2)
+            echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/moony-lv2-0.40.0.tar.gz" >> $GITHUB_OUTPUT
           *)
             echo "Unknown choice"
             exit 1

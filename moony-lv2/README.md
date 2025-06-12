@@ -11,3 +11,5 @@ cd build
 ninja -j$(nproc)
 ninja install
 ```
+
+Build latest zynthbox-plugin-moony-lv2 from source https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/moony-lv2-0.40.0.tar.gz

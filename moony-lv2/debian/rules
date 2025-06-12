@@ -1,0 +1,23 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
+
+%:
+	dh $@
+
+override_dh_strip:
+	dh_strip --no-automatic-dbgsym
+
+override_dh_auto_configure:
+	meson build
+
+override_dh_auto_build:
+	ninja -C build
+
+override_dh_auto_install:
+	DESTDIR=$(shell pwd)/debian/zynthbox-plugin-moony-lv2 ninja -C build install
+
+override_dh_auto_test:
+
+override_dh_usrlocal:
