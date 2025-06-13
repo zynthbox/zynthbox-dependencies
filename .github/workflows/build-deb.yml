@@ -15,6 +15,7 @@ on:
         - surge
         - raffo
         - moony-lv2
+        - njconnect
 
 jobs:
   build:
@@ -54,6 +55,9 @@ jobs:
             ;;
           moony-lv2)
             echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/moony-lv2-0.40.0.tar.gz" >> $GITHUB_OUTPUT
+            ;;
+          njconnect)
+            echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/njconnect-1.6.tar.gz" >> $GITHUB_OUTPUT
             ;;
           *)
             echo "Unknown choice"

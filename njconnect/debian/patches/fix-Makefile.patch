@@ -1,0 +1,12 @@
+diff --git a/Makefile b/Makefile
+index 81bfd2a..63160cb 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,6 @@
+ APP                 = njconnect
+ CFLAGS              = -O2 -Wall -g
+ PKG_CONFIG_MODULES := jack ncurses
+-DESTDIR =
+ 
+ CFLAGS             += $(shell pkg-config --cflags $(PKG_CONFIG_MODULES))
+ LDFLAGS             =
