@@ -16,6 +16,7 @@ on:
         - raffo
         - moony-lv2
         - njconnect
+        - sonobus
 
 jobs:
   build:
@@ -58,6 +59,9 @@ jobs:
             ;;
           njconnect)
             echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/njconnect-1.6.tar.gz" >> $GITHUB_OUTPUT
+            ;;
+          sonobus)
+            echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/sonobus-1.7.2.tar.gz" >> $GITHUB_OUTPUT
             ;;
           *)
             echo "Unknown choice"
