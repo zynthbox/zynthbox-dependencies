@@ -6,6 +6,12 @@
 %:
 	dh $@
 
+override_dh_auto_configure:
+	cmake -DCMAKE_BUILD_TYPE=Release -B build
+
+override_dh_auto_build:
+	cmake --build build --config Release
+
 override_dh_strip:
 	dh_strip --no-automatic-dbgsym
 
