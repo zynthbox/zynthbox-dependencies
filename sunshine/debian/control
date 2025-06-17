@@ -1,0 +1,46 @@
+Source: sunshine
+Section: misc
+Priority: optional
+Maintainer: Probal Basak <probal31@gmail.com>
+Build-Depends:
+    debhelper (>= 11),
+    cmake,
+    ninja-build,
+    pkg-config,
+    build-essential,
+    cmake,
+    desktop-file-utils,
+    graphviz,
+    libcap-dev,
+    libcurl4-openssl-dev,
+    libdrm-dev,
+    libevdev-dev,
+    libgbm-dev,
+    libminiupnpc-dev,
+    libnotify-dev,
+    libnuma-dev,
+    libopus-dev,
+    libpulse-dev,
+    libssl-dev,
+    libwayland-dev,
+    libx11-dev,
+    libxcb-shm0-dev,
+    libxcb-xfixes0-dev,
+    libxcb1-dev,
+    libxfixes-dev,
+    libxrandr-dev,
+    libxtst-dev,
+    ninja-build,
+    npm,
+    udev,
+    xvfb,
+    libva-dev,
+    libva-drm2,
+    libayatana-appindicator3-dev
+Standards-Version: 4.1.3
+Homepage: https://github.com/LizardByte/Sunshine.git
+
+Package: sunshine
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Build sunshine deb

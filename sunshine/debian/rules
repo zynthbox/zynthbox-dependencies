@@ -1,0 +1,18 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	cmake -B=build -G=Ninja -S=. -DBUILD_WERROR=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DSUNSHINE_ASSETS_DIR=share/sunshine -DSUNSHINE_EXECUTABLE_PATH=/usr/bin/sunshine -DSUNSHINE_ENABLE_WAYLAND=ON -DSUNSHINE_ENABLE_X11=ON -DSUNSHINE_ENABLE_DRM=ON -DSUNSHINE_PUBLISHER_NAME='Third Party Publisher' -DSUNSHINE_PUBLISHER_ISSUE_URL='https://app.lizardbyte.dev/support' -DBUILD_DOCS=OFF -DSUNSHINE_ENABLE_CUDA=OFF
+
+override_dh_auto_build:
+	ninja -C "build"
+
+override_dh_strip:
+	dh_strip --no-automatic-dbgsym
+
+override_dh_usrlocal:

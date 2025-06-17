@@ -17,6 +17,7 @@ on:
         - moony-lv2
         - njconnect
         - sonobus
+        - sunshine
 
 jobs:
   build:
@@ -62,6 +63,9 @@ jobs:
             ;;
           sonobus)
             echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/sonobus-1.7.2.tar.gz" >> $GITHUB_OUTPUT
+            ;;
+          sunshine)
+            echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/Sunshine-v2025.122.141614.tar.gz" >> $GITHUB_OUTPUT
             ;;
           *)
             echo "Unknown choice"
