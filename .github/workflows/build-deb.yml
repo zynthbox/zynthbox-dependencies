@@ -1,4 +1,4 @@
-name: "Build zynthbox plugins ${{ github.event.inputs.package_name || 'none' }} debs ${{ github.event_name }}"
+name: "Build zynthbox plugins ${{ github.event.inputs.package_name }} debs"
 
 on:
   workflow_dispatch:
