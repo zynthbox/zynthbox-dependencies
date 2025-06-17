@@ -1,4 +1,4 @@
-name: Build zynthbox plugins ${{ inputs.package_name }} deb
+name: Build zynthbox plugins debs
 
 on:
   workflow_dispatch:
