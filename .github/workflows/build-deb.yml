@@ -20,6 +20,7 @@ on:
         - sonobus
         - sunshine
         - distrho-plugin-ports-lv2
+        - airwin2rack
 
 jobs:
   build:
