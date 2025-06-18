@@ -16,8 +16,8 @@ override_dh_auto_build:
 	cd build && $(MAKE) -j$(shell nproc) awcons-products && find ./ -maxdepth 1 -not -name "awcons-products" -exec rm -rf {} \;
 
 override_dh_auto_install:
-	mkdir -p $(shell pwd)/debian/${CI_PROJECT_NAME}/usr/lib/vst3
-	cd build && cp -r awcons-products/Airwindows\ Consolidated.vst3/ $(shell pwd)/debian/${CI_PROJECT_NAME}/usr/lib/vst3
+	mkdir -p $(shell pwd)/debian/zynthbox-plugin-airwin2rack/usr/lib/vst3
+	cd build && cp -r awcons-products/Airwindows\ Consolidated.vst3/ $(shell pwd)/debian/zynthbox-plugin-airwin2rack/usr/lib/vst3
 
 override_dh_auto_test:
 

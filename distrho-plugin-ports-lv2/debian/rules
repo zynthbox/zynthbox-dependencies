@@ -13,7 +13,7 @@ override_dh_auto_build:
 	ninja -C build
 
 override_dh_auto_install:
-	DESTDIR=$(shell pwd)/debian/${CI_PROJECT_NAME} ninja -C build install
+	DESTDIR=$(shell pwd)/debian/zynthbox-plugin-distrho-plugin-ports-lv2 ninja -C build install
 	
 # override_dh_auto_clean:
 # 	./waf clean
