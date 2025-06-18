@@ -19,6 +19,7 @@ on:
         - njconnect
         - sonobus
         - sunshine
+        - distrho-plugin-ports-lv2
 
 jobs:
   build:
@@ -67,6 +68,9 @@ jobs:
             ;;
           sunshine)
             echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/Sunshine-v2025.122.141614.tar.gz" >> $GITHUB_OUTPUT
+            ;;
+          distrho-plugin-ports-lv2)
+            echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/distrho-plugin-ports-lv2-20210315.tar.gz" >> $GITHUB_OUTPUT
             ;;
           *)
             echo "Unknown choice"

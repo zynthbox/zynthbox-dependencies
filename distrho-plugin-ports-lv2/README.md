@@ -10,3 +10,5 @@ meson setup build --buildtype release
 ninja -C build
 ninja -C build install
 ```
+
+Build latest zynthbox-plugin-distrho-plugin-ports-lv2 from source https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/distrho-plugin-ports-lv2-20210315.tar.gz

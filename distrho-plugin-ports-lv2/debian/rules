@@ -1,0 +1,21 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	meson setup build --buildtype release
+
+override_dh_auto_build:
+	ninja -C build
+
+override_dh_auto_install:
+	DESTDIR=$(shell pwd)/debian/${CI_PROJECT_NAME} ninja -C build install
+	
+# override_dh_auto_clean:
+# 	./waf clean
+
+override_dh_usrlocal:
