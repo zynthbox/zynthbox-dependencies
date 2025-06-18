@@ -7,6 +7,7 @@ LABEL maintainer="Probal Basak <probal31@users.noreply.github.com>" \
 # Install full dependency list
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        wget \
         build-essential \
         devscripts \
         debhelper \
