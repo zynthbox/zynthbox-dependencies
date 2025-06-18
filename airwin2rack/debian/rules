@@ -1,0 +1,24 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
+
+%:
+	dh $@ --buildsystem=cmake
+
+override_dh_auto_clean:
+
+override_dh_auto_configure:
+	mkdir -p build && cd build && cmake .. -DBUILD_JUCE_PLUGIN=TRUE -DCMAKE_BUILD_TYPE=Release -DUSE_JUCE_PROGRAMS=TRUE
+
+override_dh_auto_build:
+	# Make target and cleanup after build completes to reduce artifact size
+	cd build && $(MAKE) -j$(shell nproc) awcons-products && find ./ -maxdepth 1 -not -name "awcons-products" -exec rm -rf {} \;
+
+override_dh_auto_install:
+	mkdir -p $(shell pwd)/debian/${CI_PROJECT_NAME}/usr/lib/vst3
+	cd build && cp -r awcons-products/Airwindows\ Consolidated.vst3/ $(shell pwd)/debian/${CI_PROJECT_NAME}/usr/lib/vst3
+
+override_dh_auto_test:
+
+override_dh_usrlocal:

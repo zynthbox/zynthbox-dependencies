@@ -1,0 +1,74 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 519e6b2..52f49ba 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,6 +17,7 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+ set(CMAKE_VISIBILITY_INLINES_HIDDEN ON)
+ 
+ option(BUILD_JUCE_PLUGIN "Build a JUCE plugin" OFF)
++option(USE_JUCE_PROGRAMS "Add effects as presets when building juce plugin" OFF)
+ option(BUILD_RACK_PLUGIN "Build a VCV Rack plugin" OFF)
+ option(COPY_PLUGIN_AFTER_BUILD "Copy plugin after build" OFF)
+ 
+diff --git a/src-juce/AWConsolidatedProcessor.cpp b/src-juce/AWConsolidatedProcessor.cpp
+index edcdbfa..3db773b 100644
+--- a/src-juce/AWConsolidatedProcessor.cpp
++++ b/src-juce/AWConsolidatedProcessor.cpp
+@@ -108,12 +108,15 @@ double AWConsolidatedAudioProcessor::getTailLengthSeconds() const { return 2.0;
+ 
+ int AWConsolidatedAudioProcessor::getNumPrograms()
+ {
++#if USE_JUCE_PROGRAMS
++    return AirwinRegistry::registry.size();
++#else
+     return 1;
+-} // AirwinRegistry::registry.size(); }
++#endif
++}
+ 
+ int AWConsolidatedAudioProcessor::getCurrentProgram()
+ {
+-    return 0;
+ #if USE_JUCE_PROGRAMS
+     // not super efficient obvs
+     int idx{0};
+@@ -126,6 +129,8 @@ int AWConsolidatedAudioProcessor::getCurrentProgram()
+         idx++;
+     }
+     return 0;
++#else
++    return 0;
+ #endif
+ }
+ 
+@@ -139,11 +144,12 @@ void AWConsolidatedAudioProcessor::setCurrentProgram(int index)
+ 
+ const juce::String AWConsolidatedAudioProcessor::getProgramName(int index)
+ {
+-    return "Airwindows Consolidated";
+ #if USE_JUCE_PROGRAMS
+     auto rs = AirwinRegistry::fxAlphaOrdering[index];
+     auto &rg = AirwinRegistry::registry[rs];
+     return rg.category + "/" + rg.name;
++#else
++    return "Airwindows Consolidated";
+ #endif
+ }
+ 
+diff --git a/src-juce/CMakeLists.txt b/src-juce/CMakeLists.txt
+index daf532d..56d86b4 100644
+--- a/src-juce/CMakeLists.txt
++++ b/src-juce/CMakeLists.txt
+@@ -75,6 +75,12 @@ endif ()
+ 
+ message(STATUS "Compiling with git hash ${BUILD_HASH}")
+ 
++if (${USE_JUCE_PROGRAMS})
++  add_compile_definitions(
++    USE_JUCE_PROGRAMS=1
++  )
++endif ()
++
+ target_compile_definitions(${PROJECT_NAME} PUBLIC
+         JUCE_ALLOW_STATIC_NULL_VARIABLES=0
+         JUCE_STRICT_REFCOUNTEDPOINTER=1

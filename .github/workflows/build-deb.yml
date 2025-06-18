@@ -72,6 +72,9 @@ jobs:
           distrho-plugin-ports-lv2)
             echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/distrho-plugin-ports-lv2-20210315.tar.gz" >> $GITHUB_OUTPUT
             ;;
+          airwin2rack)
+            echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/airwin2rack-2.12.0.tar.gz" >> $GITHUB_OUTPUT
+            ;;
           *)
             echo "Unknown choice"
             exit 1
