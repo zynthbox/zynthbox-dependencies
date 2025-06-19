@@ -8,6 +8,10 @@ LABEL maintainer="Probal Basak <probal31@users.noreply.github.com>" \
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         wget \
+        gnupg2 \
+        curl \
+        sudo \
+        openssh-client
         build-essential \
         devscripts \
         debhelper \
@@ -117,16 +121,6 @@ RUN apt-get update && \
         extra-cmake-modules \
         quilt \
         tree && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-RUN apt-get update && \ 
-        DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-        gnupg2 \
-        curl \
-        wget \
-        sudo \
-        openssh-client && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
