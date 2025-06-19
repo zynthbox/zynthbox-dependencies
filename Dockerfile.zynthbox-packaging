@@ -11,7 +11,7 @@ RUN apt-get update && \
         gnupg2 \
         curl \
         sudo \
-        openssh-client
+        openssh-client \
         build-essential \
         devscripts \
         debhelper \
