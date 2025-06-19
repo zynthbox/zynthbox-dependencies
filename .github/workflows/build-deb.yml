@@ -28,7 +28,7 @@ jobs:
     name: Build ${{ inputs.package_name }} plugin
     runs-on: ubuntu-22.04-arm
     container:
-      image: ghcr.io/probal31/zynthbox-packaging:latest
+      image: ghcr.io/probal31/zynthbox-packaging:arm64
       env:
         DEBIAN_FRONTEND: noninteractive
         APTLY_REPO: testing
