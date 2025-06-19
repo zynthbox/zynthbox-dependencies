@@ -164,6 +164,7 @@ jobs:
           set +x
 
           # Install the build dependencies reading the Build-Depends in the debian/control file
+          apt-get update
           apt-get -y build-dep .
 
           dpkg-buildpackage -us -uc -b
