@@ -28,5 +28,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
             context: .
+            file: Dockerfile.zynthbox-packaging
+            platforms: linux/arm64
             push: true
-            tags: ghcr.io/probal31/zynthbox-packaging:latest
+            tags: ghcr.io/probal31/zynthbox-packaging:arm64
