@@ -1,0 +1,416 @@
+diff --git a/instruments/bass_big0c.conf b/instruments/bass_big0c.conf
+index 1bc8781..7289def 100644
+--- a/instruments/bass_big0c.conf
++++ b/instruments/bass_big0c.conf
+@@ -4,6 +4,21 @@
+ # map MIDI channels to MIDI program numbers
+ [channels]
+ 1=1
++2=1
++3=1
++4=1
++5=1
++6=1
++7=1
++8=1
++9=1
++10=1
++11=1
++12=1
++13=1
++14=1
++15=1
++16=1
+ 
+ # map MIDI programs to instruments
+ # up to 128 programs may be specified
+diff --git a/instruments/blank.conf b/instruments/blank.conf
+index f702a97..b82923b 100644
+--- a/instruments/blank.conf
++++ b/instruments/blank.conf
+@@ -4,6 +4,21 @@
+ # map MIDI channels to MIDI program numbers
+ [channels]
+ 1=1
++2=1
++3=1
++4=1
++5=1
++6=1
++7=1
++8=1
++9=1
++10=1
++11=1
++12=1
++13=1
++14=1
++15=1
++16=1
+ 
+ # map MIDI programs to instruments
+ # up to 128 programs may be specified
+diff --git a/instruments/bubbley.conf b/instruments/bubbley.conf
+index d75a2c1..3740d23 100644
+--- a/instruments/bubbley.conf
++++ b/instruments/bubbley.conf
+@@ -4,6 +4,21 @@
+ # map MIDI channels to MIDI program numbers
+ [channels]
+ 1=1
++2=1
++3=1
++4=1
++5=1
++6=1
++7=1
++8=1
++9=1
++10=1
++11=1
++12=1
++13=1
++14=1
++15=1
++16=1
+ 
+ # map MIDI programs to instruments
+ # up to 128 programs may be specified
+diff --git a/instruments/digital_spill.conf b/instruments/digital_spill.conf
+index d2922d2..a05b742 100644
+--- a/instruments/digital_spill.conf
++++ b/instruments/digital_spill.conf
+@@ -4,6 +4,21 @@
+ # map MIDI channels to MIDI program numbers
+ [channels]
+ 1=1
++2=1
++3=1
++4=1
++5=1
++6=1
++7=1
++8=1
++9=1
++10=1
++11=1
++12=1
++13=1
++14=1
++15=1
++16=1
+ 
+ # map MIDI programs to instruments
+ # up to 128 programs may be specified
+diff --git a/instruments/drumkit.conf b/instruments/drumkit.conf
+index 5a9f857..bc8dea9 100644
+--- a/instruments/drumkit.conf
++++ b/instruments/drumkit.conf
+@@ -4,6 +4,21 @@
+ # map MIDI channels to MIDI program numbers
+ [channels]
+ 1=1
++2=1
++3=1
++4=1
++5=1
++6=1
++7=1
++8=1
++9=1
++10=1
++11=1
++12=1
++13=1
++14=1
++15=1
++16=1
+ 10=1
+ 
+ # map MIDI programs to instruments
+diff --git a/instruments/fallingAngel.conf b/instruments/fallingAngel.conf
+index 2d95508..b900696 100644
+--- a/instruments/fallingAngel.conf
++++ b/instruments/fallingAngel.conf
+@@ -3,6 +3,21 @@
+ # map MIDI channels to MIDI program numbers
+ [channels]
+ 1=1
++2=1
++3=1
++4=1
++5=1
++6=1
++7=1
++8=1
++9=1
++10=1
++11=1
++12=1
++13=1
++14=1
++15=1
++16=1
+ 
+ # map MIDI programs to instruments
+ # up to 128 programs may be specified
+diff --git a/instruments/octave_siren.conf b/instruments/octave_siren.conf
+index 4780445..43bedc3 100644
+--- a/instruments/octave_siren.conf
++++ b/instruments/octave_siren.conf
+@@ -4,6 +4,21 @@
+ # map MIDI channels to MIDI program numbers
+ [channels]
+ 1=1
++2=1
++3=1
++4=1
++5=1
++6=1
++7=1
++8=1
++9=1
++10=1
++11=1
++12=1
++13=1
++14=1
++15=1
++16=1
+ 
+ # map MIDI programs to instruments
+ # up to 128 programs may be specified
+diff --git a/instruments/organ.conf b/instruments/organ.conf
+index 8fcb9ab..8659320 100644
+--- a/instruments/organ.conf
++++ b/instruments/organ.conf
+@@ -4,6 +4,21 @@
+ # map MIDI channels to MIDI program numbers
+ [channels]
+ 1=1
++2=1
++3=1
++4=1
++5=1
++6=1
++7=1
++8=1
++9=1
++10=1
++11=1
++12=1
++13=1
++14=1
++15=1
++16=1
+ 
+ # map MIDI programs to instruments
+ # up to 128 programs may be specified
+diff --git a/instruments/paddy.conf b/instruments/paddy.conf
+index 264020e..8557810 100644
+--- a/instruments/paddy.conf
++++ b/instruments/paddy.conf
+@@ -4,6 +4,21 @@
+ # map MIDI channels to MIDI program numbers
+ [channels]
+ 1=1
++2=1
++3=1
++4=1
++5=1
++6=1
++7=1
++8=1
++9=1
++10=1
++11=1
++12=1
++13=1
++14=1
++15=1
++16=1
+ 
+ # map MIDI programs to instruments
+ # up to 128 programs may be specified
+diff --git a/instruments/piano.conf b/instruments/piano.conf
+index 35553ae..5573546 100644
+--- a/instruments/piano.conf
++++ b/instruments/piano.conf
+@@ -4,6 +4,21 @@
+ # map MIDI channels to MIDI program numbers
+ [channels]
+ 1=1
++2=1
++3=1
++4=1
++5=1
++6=1
++7=1
++8=1
++9=1
++10=1
++11=1
++12=1
++13=1
++14=1
++15=1
++16=1
+ 
+ # map MIDI programs to instruments
+ # up to 128 programs may be specified
+diff --git a/instruments/pulsething.conf b/instruments/pulsething.conf
+index 81c6b2f..ff717a4 100644
+--- a/instruments/pulsething.conf
++++ b/instruments/pulsething.conf
+@@ -4,6 +4,21 @@
+ # map MIDI channels to MIDI program numbers
+ [channels]
+ 1=1
++2=1
++3=1
++4=1
++5=1
++6=1
++7=1
++8=1
++9=1
++10=1
++11=1
++12=1
++13=1
++14=1
++15=1
++16=1
+ 
+ # map MIDI programs to instruments
+ # up to 128 programs may be specified
+diff --git a/instruments/riser.conf b/instruments/riser.conf
+index 49f42ad..5203d82 100644
+--- a/instruments/riser.conf
++++ b/instruments/riser.conf
+@@ -4,6 +4,21 @@
+ # map MIDI channels to MIDI program numbers
+ [channels]
+ 1=1
++2=1
++3=1
++4=1
++5=1
++6=1
++7=1
++8=1
++9=1
++10=1
++11=1
++12=1
++13=1
++14=1
++15=1
++16=1
+ 
+ # map MIDI programs to instruments
+ # up to 128 programs may be specified
+diff --git a/instruments/saw2sqr.conf b/instruments/saw2sqr.conf
+index d37cd1c..536450d 100644
+--- a/instruments/saw2sqr.conf
++++ b/instruments/saw2sqr.conf
+@@ -4,6 +4,21 @@
+ # map MIDI channels to MIDI program numbers
+ [channels]
+ 1=1
++2=1
++3=1
++4=1
++5=1
++6=1
++7=1
++8=1
++9=1
++10=1
++11=1
++12=1
++13=1
++14=1
++15=1
++16=1
+ 
+ # map MIDI programs to instruments
+ # up to 128 programs may be specified
+diff --git a/instruments/saws.conf b/instruments/saws.conf
+index a9cb16f..03a475b 100644
+--- a/instruments/saws.conf
++++ b/instruments/saws.conf
+@@ -4,6 +4,21 @@
+ # map MIDI channels to MIDI program numbers
+ [channels]
+ 1=1
++2=1
++3=1
++4=1
++5=1
++6=1
++7=1
++8=1
++9=1
++10=1
++11=1
++12=1
++13=1
++14=1
++15=1
++16=1
+ 
+ # map MIDI programs to instruments
+ # up to 128 programs may be specified
+diff --git a/instruments/sqr2saw.conf b/instruments/sqr2saw.conf
+index e42cc56..3d31429 100644
+--- a/instruments/sqr2saw.conf
++++ b/instruments/sqr2saw.conf
+@@ -4,6 +4,21 @@
+ # map MIDI channels to MIDI program numbers
+ [channels]
+ 1=1
++2=1
++3=1
++4=1
++5=1
++6=1
++7=1
++8=1
++9=1
++10=1
++11=1
++12=1
++13=1
++14=1
++15=1
++16=1
+ 
+ # map MIDI programs to instruments
+ # up to 128 programs may be specified
+diff --git a/instruments/subsynth.conf b/instruments/subsynth.conf
+index 3f67795..4a5ff14 100644
+--- a/instruments/subsynth.conf
++++ b/instruments/subsynth.conf
+@@ -4,6 +4,21 @@
+ # map MIDI channels to MIDI program numbers
+ [channels]
+ 1=1
++2=1
++3=1
++4=1
++5=1
++6=1
++7=1
++8=1
++9=1
++10=1
++11=1
++12=1
++13=1
++14=1
++15=1
++16=1
+ 
+ # map MIDI programs to instruments
+ # up to 128 programs may be specified

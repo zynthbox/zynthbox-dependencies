@@ -23,6 +23,7 @@ on:
         - distrho-plugin-ports-lv2
         - airwin2rack
         - regrader
+        - remid
 
 jobs:
   build:
@@ -80,6 +81,9 @@ jobs:
             ;;
           regrader)
             echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/regrader-1.0.0.tar.gz" >> $GITHUB_OUTPUT
+            ;;
+          remid)
+            echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/remid-git+7427f1b.tar.gz" >> $GITHUB_OUTPUT
             ;;
           *)
             echo "Unknown choice"

@@ -10,3 +10,5 @@ mkdir build && cd build
 make -j$(nproc)
 make install
 ```
+
+Build latest regrader from source https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/regrader-1.0.0.tar.gz
