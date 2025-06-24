@@ -26,6 +26,7 @@ on:
         - remid
         - punk-console
         - preset2lv2
+        - padthv1-lv2
 
 jobs:
   build:
@@ -92,6 +93,9 @@ jobs:
             ;;
           preset2lv2)
             echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/preset2lv2-git+0dc5ef07.tar.gz" >> $GITHUB_OUTPUT
+            ;;
+          padthv1-lv2)
+            echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/padthv1-lv2-1.3.0.tar.gz" >> $GITHUB_OUTPUT
             ;;
           *)
             echo "Unknown choice"
