@@ -22,6 +22,7 @@ on:
         - sunshine
         - distrho-plugin-ports-lv2
         - airwin2rack
+        - regrader
 
 jobs:
   build:
@@ -76,6 +77,9 @@ jobs:
             ;;
           airwin2rack)
             echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/airwin2rack-2.12.0.tar.gz" >> $GITHUB_OUTPUT
+            ;;
+          regrader)
+            echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/regrader-1.0.0.tar.gz" >> $GITHUB_OUTPUT
             ;;
           *)
             echo "Unknown choice"
