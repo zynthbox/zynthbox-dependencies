@@ -25,6 +25,7 @@ on:
         - regrader
         - remid
         - punk-console
+        - preset2lv2
 
 jobs:
   build:
@@ -88,6 +89,9 @@ jobs:
             ;;
           punk-console)
             echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/punk-console-git+4836cd1.tar.gz" >> $GITHUB_OUTPUT
+            ;;
+          preset2lv2)
+            echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/preset2lv2-git+0dc5ef07.tar.gz" >> $GITHUB_OUTPUT
             ;;
           *)
             echo "Unknown choice"
