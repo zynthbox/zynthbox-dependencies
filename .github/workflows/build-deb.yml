@@ -24,6 +24,7 @@ on:
         - airwin2rack
         - regrader
         - remid
+        - punk-console
 
 jobs:
   build:
@@ -84,6 +85,9 @@ jobs:
             ;;
           remid)
             echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/remid-git+7427f1b.tar.gz" >> $GITHUB_OUTPUT
+            ;;
+          punk-console)
+            echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/punk-console-git+4836cd1.tar.gz" >> $GITHUB_OUTPUT
             ;;
           *)
             echo "Unknown choice"

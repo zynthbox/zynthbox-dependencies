@@ -1,0 +1,18 @@
+diff --git a/Makefile b/Makefile
+index 7ef4329..1683c08 100644
+--- a/Makefile
++++ b/Makefile
+@@ -15,9 +15,9 @@ clean:
+ 	rm -rf $(BUNDLE) *.so
+ 
+ install: $(BUNDLE)
+-	mkdir -p $(INSTALL_DIR)
+-	rm -rf $(INSTALL_DIR)/$(BUNDLE)
+-	cp -R $(BUNDLE) $(INSTALL_DIR)
++	mkdir -p $(DESTDIR)$(INSTALL_DIR)
++	rm -rf $(DESTDIR)$(INSTALL_DIR)/$(BUNDLE)
++	cp -R $(BUNDLE) $(DESTDIR)$(INSTALL_DIR)
+ 
+ uninstall:
+-	rm -rf $(INSTALL_DIR)/$(BUNDLE)
++	rm -rf $(DESTDIR)$(INSTALL_DIR)/$(BUNDLE)
