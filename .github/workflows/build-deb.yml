@@ -43,7 +43,7 @@ jobs:
         SKIP_ZYNTHBOX_DEPENDENCIES_INSTALLATION: 0
 
     steps:
-      - name: Set sourcelink based on choice
+      - name: Set sourcelink or repolink based on choice
         id: setup
         run: |
           case "${{ inputs.package_name }}" in
