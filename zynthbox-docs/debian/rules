@@ -6,7 +6,7 @@
 %:
 	dh $@
 
-override_dh_auto_build:
+override_dh_auto_configure:
 	pip3 install --break-system-packages mkdocs-material
 
 override_dh_auto_build:
