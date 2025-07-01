@@ -131,6 +131,8 @@ jobs:
           mv debian debian.bkup
 
           if [ -n "${{ steps.setup.outputs.repolink }}" ]; then
+            git config --global url.https://${GH_ACCESS_TOKEN}@github.com/.insteadOf https://github.com/
+
             git clone --depth 1 "${{ steps.setup.outputs.repolink }}" source-tmp
             tar -czf ../${PACKAGE_NAME}_${PACKAGE_VERSION}.orig.tar.gz -C source-tmp .
             rm -rf source-tmp
