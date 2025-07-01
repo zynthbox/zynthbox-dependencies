@@ -28,6 +28,7 @@ on:
         - preset2lv2
         - padthv1-lv2
         - zynthbox-docs
+        - shiro-plugins
 
 jobs:
   build:
@@ -100,6 +101,9 @@ jobs:
             ;;
           zynthbox-docs)
             echo "repolink=https://github.com/zynthbox/zynthbox-docs.git" >> $GITHUB_OUTPUT
+            ;;
+          shiro-plugins)
+            echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/shiro-plugins-20201110.tar.gz" >> $GITHUB_OUTPUT
             ;;
           *)
             echo "Unknown choice"

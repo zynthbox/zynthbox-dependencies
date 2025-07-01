@@ -1,0 +1,13 @@
+Source: zynthbox-plugins-shiro-plugins
+Section: misc
+Priority: optional
+Maintainer: Probal Basak <probal31@gmail.com>
+Build-Depends:
+    debhelper (>= 11)
+Standards-Version: 4.1.3
+Homepage: https://github.com/ninodewit/SHIRO-Plugins
+
+Package: zynthbox-plugins-shiro-plugins
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Build zynthbox-plugins-shiro-plugins deb
