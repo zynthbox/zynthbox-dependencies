@@ -2,10 +2,10 @@ zynthbox-docs (0.5-1-2) bookworm; urgency=medium
 
   * Migrate to github actions
 
- -- Probal Basak <probal31@gmail.com>  Tue 01 Jul 2025 13:00:00 +0530
+ -- Probal Basak <probal31@gmail.com>  Tue, 01 Jul 2025 13:00:00 +0530
 
 zynthbox-docs (0.5-1-1) bookworm; urgency=medium
 
   * Initial release
 
- -- Anupam Basak <anupam.basak27@gmail.com>  Thu 17 Jun 2025 15:20:00 +0530
+ -- Anupam Basak <anupam.basak27@gmail.com>  Thu, 17 Jun 2025 15:20:00 +0530
