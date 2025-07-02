@@ -94,7 +94,7 @@ jobs:
       - name: Build DEB using Debhelper
         run: |
           set -x
-
+          
           # Ensuring key security
           mkdir -p ~/.ssh
           echo "${{ secrets.APTLY_SSH_KEY }}" > ~/.ssh/id_rsa
@@ -141,6 +141,8 @@ jobs:
           echo "unsigned-changes" >> /etc/dpkg/buildpackage.conf
           set +x
 
+          cd ${{ github.event.inputs.package_name }}
+
           # Install the build dependencies reading the Build-Depends in the debian/control file
           apt-get update
           apt-get -y build-dep .
@@ -169,6 +171,8 @@ jobs:
           scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ../*.deb aptly@repo.zynthbox.io:/mnt/pub_zynthbox_io_volume/temp/
           echo "Adding package(s) to repository"
 
+          cd ${{ github.event.inputs.package_name }}
+          
           if [ "$RELEASE" = "bookworm" ]; then
             for pkg in $(ls -1 ../*.deb)
               do
