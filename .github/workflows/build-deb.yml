@@ -45,6 +45,11 @@ jobs:
         SKIP_ZYNTHBOX_DEPENDENCIES_INSTALLATION: 0
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
       - name: Set sourcelink or repolink based on choice
         id: setup
         run: |
@@ -52,23 +57,14 @@ jobs:
           LINK=$(.github/scripts/get_link.sh "${{ inputs.package_name }}")
           echo "$LINK" >> $GITHUB_OUTPUT
 
-      - name: Clone repo shallowly
-        run: |
-          git clone --depth 1 https://github.com/${{ github.repository }}.git repo
-  
-      - name: Extract folder contents at root
-        run: |
-          cd repo
-          git archive HEAD:${{ github.event.inputs.package_name }} | tar -x -C ../
-          cd ..
-          rm -rf repo
-
       - name: Set custom workflow title
         run: |
           echo "### Building zynthbox plugin: ${{ github.event.inputs.package_name }}" >> $GITHUB_STEP_SUMMARY
 
       - name: Download/generate tar from github release/repo and create orig.tar.gz
         run: |
+          pushd ${{ github.event.inputs.package_name }}
+          
           PACKAGE_NAME=$(dpkg-parsechangelog --show-field Source)
           PACKAGE_VERSION=$(dpkg-parsechangelog --show-field Version | sed 's/-[^-]*$//')
 
