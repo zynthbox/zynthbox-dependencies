@@ -167,12 +167,12 @@ jobs:
           echo "Creating lock file /tmp/publish-aptly-zynthbox.lock"
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'touch /tmp/publish-aptly-zynthbox.lock'
 
+          cd ${{ github.event.inputs.package_name }}
+          
           echo "Uploading debs"
           scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ../*.deb aptly@repo.zynthbox.io:/mnt/pub_zynthbox_io_volume/temp/
           echo "Adding package(s) to repository"
 
-          cd ${{ github.event.inputs.package_name }}
-          
           if [ "$RELEASE" = "bookworm" ]; then
             for pkg in $(ls -1 ../*.deb)
               do
