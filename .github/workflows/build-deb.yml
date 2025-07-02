@@ -49,7 +49,7 @@ jobs:
         id: setup
         run: |
           set -e  # Ensures GitHub Action fails if script fails
-          LINK=$(.github/scripts/get_sourcelink.sh "${{ inputs.package_name }}")
+          LINK=$(.github/scripts/get_link.sh "${{ inputs.package_name }}")
           echo "$LINK" >> $GITHUB_OUTPUT
 
       - name: Clone repo shallowly
