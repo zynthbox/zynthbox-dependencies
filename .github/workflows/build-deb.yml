@@ -63,7 +63,7 @@ jobs:
 
       - name: Download/generate tar from github release/repo and create orig.tar.gz
         run: |
-          pushd ${{ github.event.inputs.package_name }}
+          cd ${{ github.event.inputs.package_name }}
           
           PACKAGE_NAME=$(dpkg-parsechangelog --show-field Source)
           PACKAGE_VERSION=$(dpkg-parsechangelog --show-field Version | sed 's/-[^-]*$//')
