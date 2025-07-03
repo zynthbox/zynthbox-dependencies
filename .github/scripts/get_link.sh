@@ -65,7 +65,7 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/sorcer-1.1.3.tar.gz" >> $GITHUB_OUTPUT
         ;;
     zynthbox-virtualkeyboard-theme)
-        echo "repolink=https://github.com/zynthbox/zynthbox-virtualkeyboard-theme" >> $GITHUB_OUTPUT
+        echo "repolink=https://github.com/zynthbox/zynthbox-virtualkeyboard-theme.git" >> $GITHUB_OUTPUT
         ;;
     *)
         echo "Unknown choice"
