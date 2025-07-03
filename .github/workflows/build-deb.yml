@@ -30,6 +30,7 @@ on:
         - zynthbox-docs
         - shiro-plugins
         - sorcer
+        - zynthbox-virtualkeyboard-theme
 
 jobs:
   build:

@@ -1,0 +1,15 @@
+Source: zynthbox-virtualkeyboard-theme
+Section: misc
+Priority: optional
+Maintainer: Probal Basak <probal31@gmail.com>
+Build-Depends: 
+  debhelper (>= 11), 
+  cmake, 
+  g++
+Standards-Version: 4.1.3
+Homepage: https://github.com/zynthbox/zynthbox-virtualkeyboard-theme/
+
+Package: zynthbox-virtualkeyboard-theme
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Build zynthbox-virtualkeyboard-theme deb
