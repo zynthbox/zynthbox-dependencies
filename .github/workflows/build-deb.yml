@@ -145,11 +145,10 @@ jobs:
 
           cd ${{ github.event.inputs.package_name }}
 
-          // Bump package version 
+          # Bump package version 
           clbak="/tmp/debian.changelog"
-          run_number=$(echo "${{ github.run_number }}"
           cp debian/changelog "${clbak}"
-          sed -i -e "1 s/)/+${run_number})/" "${clbak}"
+          sed -i -e "1 s/)/+${{ github.run_number }})/" "${clbak}"
           cat "${clbak}" >debian/changelog;
           rm -rf "${clbak}"
 
