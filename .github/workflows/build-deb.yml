@@ -145,6 +145,9 @@ jobs:
 
           cd ${{ github.event.inputs.package_name }}
 
+          // Bump package version 
+          sed -i -e "1 s/)/+${{ github.run_number }})/" debian/changelog
+
           # Install the build dependencies reading the Build-Depends in the debian/control file
           apt-get update
           apt-get -y build-dep .
