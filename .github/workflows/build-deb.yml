@@ -178,6 +178,8 @@ jobs:
           if [ "$RELEASE" = "bookworm" ]; then
             for pkg in $(ls -1 ../*.deb)
               do
+                echo "Removing existing file for ${pkg} if present"
+                ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'rm -f /home/aptly/.aptly/public/'"${APTLY_REPO}-bookworm"'/pool/main/'"$(basename "${pkg}" | cut -d'_' -f1 | tr '[:upper:]' '[:lower:]')"'/$(basename "${pkg}")'
                 echo "Adding ${pkg}"
                 ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly repo add -remove-files -force-replace '"${APTLY_REPO}-bookworm"' /mnt/pub_zynthbox_io_volume/temp/${pkg}'
             done

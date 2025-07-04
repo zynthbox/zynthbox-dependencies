@@ -9,4 +9,4 @@ Homepage: https://www.opencode.net/zynthbox/plugins/zynthbox-plugin-sosynth.git
 Package: zynthbox-plugin-sosynth
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, lv2-dev
-Description: Build zynthbox-plugin-sosynth deb
+Description: Build zynthbox-plugin-sosynth deb from source
