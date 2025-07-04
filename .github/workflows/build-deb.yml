@@ -153,7 +153,8 @@ jobs:
 
       - name: Upload deb to aptly repo
         run: |
-          set -xe
+          set -x
+          set +e
           echo "Updating repository info"
           apt update
 
