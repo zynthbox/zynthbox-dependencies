@@ -179,7 +179,7 @@ jobs:
             for pkg in $(ls -1 ../*.deb)
               do
                 echo "Adding ${pkg}"
-                ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly repo add -remove-files '"${APTLY_REPO}-bookworm"' /mnt/pub_zynthbox_io_volume/temp/${pkg}'
+                ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly repo add -remove-files -force-replace '"${APTLY_REPO}-bookworm"' /mnt/pub_zynthbox_io_volume/temp/${pkg}'
             done
             echo "Publishing repository"
             ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly publish update bookworm '"${APTLY_REPO}-bookworm"
