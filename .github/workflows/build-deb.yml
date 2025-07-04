@@ -146,7 +146,11 @@ jobs:
           cd ${{ github.event.inputs.package_name }}
 
           // Bump package version 
-          sed -i -e "1 s/)/+${{ github.run_number }})/" debian/changelog
+          clbak="/tmp/debian.changelog"
+          cp debian/changelog "${clbak}"
+          sed -i -e "1 s/)/+${{ github.run_number }})/" "${clbak}"
+          cat "${clbak}" >debian/changelog;
+          rm -rf "${clbak}"
 
           # Install the build dependencies reading the Build-Depends in the debian/control file
           apt-get update
