@@ -67,6 +67,9 @@ case "$PACKAGE_NAME" in
     zynthbox-virtualkeyboard-theme)
         echo "repolink=https://github.com/zynthbox/zynthbox-virtualkeyboard-theme.git" >> $GITHUB_OUTPUT
         ;;
+    sosynth)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/sosynth-1.5.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1
