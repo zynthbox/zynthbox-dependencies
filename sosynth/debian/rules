@@ -3,11 +3,13 @@
 # output every command that modifies files on the build system.
 #export DH_VERBOSE = 1
 
+export CFLAGS += -Wno-unused-variable
+
 %:
 	dh $@
 
 override_dh_auto_install:
 	dh_auto_install
-	sed -i -- '0,/lv2\:default 0\;/{s/lv2\:default 0\;/lv2\:default 1\;/}' $(shell pwd)/debian/${CI_PROJECT_NAME}/zynthian/zynthian-plugins/lv2/so-synth.lv2/so-*.ttl
+	sed -i -- '0,/lv2\:default 0\;/{s/lv2\:default 0\;/lv2\:default 1\;/}' $(shell pwd)/debian/zynthbox-plugin-sosynth/zynthian/zynthian-plugins/lv2/so-synth.lv2/so-*.ttl
 
 override_dh_usrlocal:
