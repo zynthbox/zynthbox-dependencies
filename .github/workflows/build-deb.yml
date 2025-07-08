@@ -39,6 +39,7 @@ on:
         - stereo-mixer
         - string-machine
         - triceratops
+        - vl1
 
 jobs:
   build:

@@ -91,6 +91,9 @@ case "$PACKAGE_NAME" in
     triceratops)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/triceratops-git+fed9daf.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    vl1)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/vl1-git+892545c.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1

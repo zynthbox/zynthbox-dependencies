@@ -1,0 +1,12 @@
+zynthbox-plugin-vl1 (1.2.0-1-1) bookworm; urgency=medium
+
+  * Build migrated
+
+ -- Probal Basak <probal31@gmail.com>  Tue, 08 Jul 2025 19:00:00 +0530
+
+zynthbox-plugin-vl1 (1.1.0.0-1-1) bullseye; urgency=medium
+
+  * Build
+
+ -- Anupam Basak <anupam.basak27@gmail.com>  Mon, 06 Mar 2023 19:09:23 +0530
+
