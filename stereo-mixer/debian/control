@@ -1,0 +1,12 @@
+Source: zynthbox-plugin-stereo-mixer
+Section: misc
+Priority: optional
+Maintainer: Probal Basak <probal31@gmail.com>
+Build-Depends: debhelper (>= 11), lv2-dev
+Standards-Version: 4.1.3
+Homepage: https://github.com/unclechu/lv2-stereo-mixer.git
+
+Package: zynthbox-plugin-stereo-mixer
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, lv2-dev
+Description: Build zynthbox-plugin-stereo-mixer deb

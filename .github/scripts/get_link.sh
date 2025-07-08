@@ -82,6 +82,9 @@ case "$PACKAGE_NAME" in
     zynthbox-update-script)
         echo "repolink=https://github.com/zynthbox/zynthbox-update-script.git" >> $GITHUB_OUTPUT
         ;;
+    stereo-mixer)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/stereo-mixer-git+9b85e1a.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1

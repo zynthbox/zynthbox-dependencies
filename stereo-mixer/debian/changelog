@@ -1,0 +1,12 @@
+zynthbox-plugin-stereo-mixer (0.2-1-1) bookworm; urgency=medium
+
+  * Build migrated
+
+ -- Probal Basak <probal31@gmail.com>  Tue, 08 Jul 2025 16:00:00 +0530
+
+zynthbox-plugin-stereo-mixer (0.1-1-1) bullseye; urgency=medium
+
+  * Build
+
+ -- Anupam Basak <anupam.basak27@gmail.com>  Mon, 06 Mar 2023 13:44:10 +0530
+

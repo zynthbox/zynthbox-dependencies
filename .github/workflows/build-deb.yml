@@ -36,6 +36,7 @@ on:
         - zynthbox-qml
         - libzynthbox
         - zynthbox-update-script
+        - stereo-mixer
 
 jobs:
   build:
