@@ -1,0 +1,80 @@
+diff --git a/Makefile b/Makefile
+index 51aec65..2d57846 100755
+--- a/Makefile
++++ b/Makefile
+@@ -49,41 +49,46 @@ clean:
+ install:
+ 	mkdir ~/.config/thunderox/triceratops -p
+ 	chmod 777 ~/.config/thunderox/triceratops -R
+-	cp $(CURDIR)/bin/triceratops.lv2 /usr/lib/lv2 -r
+-	cp $(CURDIR)/plugins/triceratops/presets/triceratops_presets_bass.lv2 /usr/lib/lv2 -r
+-	cp $(CURDIR)/plugins/triceratops/presets/triceratops_presets_brass.lv2 /usr/lib/lv2 -r
+-	cp $(CURDIR)/plugins/triceratops/presets/triceratops_presets_electric_piano.lv2 /usr/lib/lv2 -r
+-	cp $(CURDIR)/plugins/triceratops/presets/triceratops_presets_experimental.lv2 /usr/lib/lv2 -r
+-	cp $(CURDIR)/plugins/triceratops/presets/triceratops_presets_house_and_rave /usr/lib/lv2 -r
+-	cp $(CURDIR)/plugins/triceratops/presets/triceratops_presets_lead.lv2 /usr/lib/lv2 -r
+-	cp $(CURDIR)/plugins/triceratops/presets/triceratops_presets_pads.lv2 /usr/lib/lv2 -r
+-	cp $(CURDIR)/plugins/triceratops/presets/triceratops_presets_synth.lv2 /usr/lib/lv2 -r
+-	cp $(CURDIR)/plugins/triceratops/presets/triceratops_presets_vocal.lv2 /usr/lib/lv2 -r
+-	cp $(CURDIR)/plugins/triceratops/logo.png /usr/lib/lv2/triceratops.lv2
+-	cp $(CURDIR)/plugins/triceratops/manifest.ttl /usr/lib/lv2/triceratops.lv2
+-	cp $(CURDIR)/bin/triceratops-dssi /usr/lib/dssi -r
+-	cp $(CURDIR)/bin/triceratops-dssi.so /usr/lib/dssi
+-	cp $(CURDIR)/bin/triceratops-vst.so /usr/lib/vst
++
++	mkdir -p $(DESTDIR)/usr/lib/lv2
++	mkdir -p $(DESTDIR)/usr/lib/dssi
++	mkdir -p $(DESTDIR)/usr/lib/vst
++
++	cp $(CURDIR)/bin/triceratops.lv2 $(DESTDIR)/usr/lib/lv2 -r
++	cp $(CURDIR)/plugins/triceratops/presets/triceratops_presets_bass.lv2 $(DESTDIR)/usr/lib/lv2 -r
++	cp $(CURDIR)/plugins/triceratops/presets/triceratops_presets_brass.lv2 $(DESTDIR)/usr/lib/lv2 -r
++	cp $(CURDIR)/plugins/triceratops/presets/triceratops_presets_electric_piano.lv2 $(DESTDIR)/usr/lib/lv2 -r
++	cp $(CURDIR)/plugins/triceratops/presets/triceratops_presets_experimental.lv2 $(DESTDIR)/usr/lib/lv2 -r
++	cp $(CURDIR)/plugins/triceratops/presets/triceratops_presets_house_and_rave $(DESTDIR)/usr/lib/lv2 -r
++	cp $(CURDIR)/plugins/triceratops/presets/triceratops_presets_lead.lv2 $(DESTDIR)/usr/lib/lv2 -r
++	cp $(CURDIR)/plugins/triceratops/presets/triceratops_presets_pads.lv2 $(DESTDIR)/usr/lib/lv2 -r
++	cp $(CURDIR)/plugins/triceratops/presets/triceratops_presets_synth.lv2 $(DESTDIR)/usr/lib/lv2 -r
++	cp $(CURDIR)/plugins/triceratops/presets/triceratops_presets_vocal.lv2 $(DESTDIR)/usr/lib/lv2 -r
++	cp $(CURDIR)/plugins/triceratops/logo.png $(DESTDIR)/usr/lib/lv2/triceratops.lv2
++	cp $(CURDIR)/plugins/triceratops/manifest.ttl $(DESTDIR)/usr/lib/lv2/triceratops.lv2
++	cp $(CURDIR)/bin/triceratops-dssi $(DESTDIR)/usr/lib/dssi -r
++	cp $(CURDIR)/bin/triceratops-dssi.so $(DESTDIR)/usr/lib/dssi
++	cp $(CURDIR)/bin/triceratops-vst.so $(DESTDIR)/usr/lib/vst
+ 	chmod +x $(CURDIR)/bin/triceratops
+ 	cp $(CURDIR)/bin/triceratops /usr/bin
+ 
+ # --------------------------------------------------------------
+ uninstall:
+ 	rm ~/.config/thunderox -R
+-	rm /usr/lib/lv2/triceratops.lv2 -rf
+-	rm /usr/lib/lv2/triceratops_presets_bass -rf
+-	rm /usr/lib/lv2/triceratops_presets_brass -rf
+-	rm /usr/lib/lv2/triceratops_presets_electric_piano -rf
+-	rm /usr/lib/lv2/triceratops_presets_experimental -rf
+-	rm /usr/lib/lv2/triceratops_presets_house_and_rave-rf
+-	rm /usr/lib/lv2/triceratops_presets_lead -rf
+-	rm /usr/lib/lv2/triceratops_presets_pads -rf
+-	rm /usr/lib/lv2/triceratops_presets_synth -rf	
+-	rm /usr/lib/lv2/triceratops_presets_vocal -rf	
+-	rm /usr/lib/dssi/triceratops.dssi -rf
+-	rm /usr/lib/dssi/triceratops-dssi.so -f
+-	rm /usr/lib/vst/triceratops-vst.so -f
+-	rm /usr/bin/triceratops
++	rm $(DESTDIR)/usr/lib/lv2/triceratops.lv2 -rf
++	rm $(DESTDIR)/usr/lib/lv2/triceratops_presets_bass -rf
++	rm $(DESTDIR)/usr/lib/lv2/triceratops_presets_brass -rf
++	rm $(DESTDIR)/usr/lib/lv2/triceratops_presets_electric_piano -rf
++	rm $(DESTDIR)/usr/lib/lv2/triceratops_presets_experimental -rf
++	rm $(DESTDIR)/usr/lib/lv2/triceratops_presets_house_and_rave-rf
++	rm $(DESTDIR)/usr/lib/lv2/triceratops_presets_lead -rf
++	rm $(DESTDIR)/usr/lib/lv2/triceratops_presets_pads -rf
++	rm $(DESTDIR)/usr/lib/lv2/triceratops_presets_synth -rf	
++	rm $(DESTDIR)/usr/lib/lv2/triceratops_presets_vocal -rf	
++	rm $(DESTDIR)/usr/lib/dssi/triceratops.dssi -rf
++	rm $(DESTDIR)/usr/lib/dssi/triceratops-dssi.so -f
++	rm $(DESTDIR)/usr/lib/vst/triceratops-vst.so -f
++	rm $(DESTDIR)/usr/bin/triceratops
+ 
+ 
+ # --------------------------------------------------------------
