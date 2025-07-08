@@ -1,0 +1,12 @@
+zynthbox-plugin-triceratops (0.5-1-2) bookworm; urgency=medium
+
+  * Build migrated
+
+ -- Probal Basak <probal31@gmail.com>  Tue, 08 Jul 2025 17:00:00 +0530
+
+zynthbox-plugin-triceratops (0.5-1-1) bullseye; urgency=medium
+
+  * Build
+
+ -- Anupam Basak <anupam.basak27@gmail.com>  Fri, 03 Mar 2023 22:58:32 +0530
+

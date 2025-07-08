@@ -88,6 +88,9 @@ case "$PACKAGE_NAME" in
     string-machine)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/string-machine-git+7050cb1.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    triceratops)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/triceratops-git+fed9daf.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1
