@@ -35,7 +35,7 @@ on:
         - webconf
         - zynthbox-qml
         - libzynthbox
-        - zynthbox-update-scripts
+        - zynthbox-update-script
 
 jobs:
   build:

@@ -79,8 +79,8 @@ case "$PACKAGE_NAME" in
     libzynthbox)
         echo "repolink=https://github.com/zynthbox/libzynthbox.git" >> $GITHUB_OUTPUT
         ;;
-    zynthbox-update-scripts)
-        echo "repolink=https://github.com/zynthbox/zynthbox-update-scripts.git" >> $GITHUB_OUTPUT
+    zynthbox-update-script)
+        echo "repolink=https://github.com/zynthbox/zynthbox-update-script.git" >> $GITHUB_OUTPUT
         ;;
     *)
         echo "Unknown choice"
