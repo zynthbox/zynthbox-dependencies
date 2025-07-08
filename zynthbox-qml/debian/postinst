@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Delete cache files after install/update
+echo "Cleaning up zynthbox-qml cache files"
+find /zynthian/zynthbox-qml -name "*.pyc" -exec rm {} \;
+find /zynthian/zynthbox-qml -name "*.qmlc" -exec rm {} \;
+find /zynthian/zynthbox-qml -name "*.jsc" -exec rm {} \;
+rm -rf /root/.cache/zynthian_qt_gui.py/qmlcache/
+rm -rf /root/.cache/zynthbox/libzynthbox/qmlcache/
+rm -rf /root/.cache/bootlog_window.py/qmlcache/
+
+#DEBHELPER#

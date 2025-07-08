@@ -73,6 +73,9 @@ case "$PACKAGE_NAME" in
     webconf)
         echo "repolink=https://github.com/zynthbox/zynthian-webconf.git" >> $GITHUB_OUTPUT
         ;;
+    zynthbox-qml)
+        echo "repolink=https://github.com/zynthbox/zynthbox-qml.git" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1

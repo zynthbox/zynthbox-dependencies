@@ -1,0 +1,27 @@
+Source: zynthbox-qml
+Section: misc
+Priority: optional
+Maintainer: Leszek Lesner <leszek@zevenos.com>
+Build-Depends: debhelper (>= 11), cmake (>= 3.13), extra-cmake-modules (>= 5.54.0), qtbase5-dev (>= 5.11.3), kirigami2-dev, qtdeclarative5-dev, pkg-config, librtmidi-dev
+Standards-Version: 4.1.3
+Homepage: https://github.com/zynthbox/zynthbox-qml
+
+Package: zynthbox-qml
+Architecture: all
+Depends:    ${misc:Depends},
+            ${shlibs:Depends},
+            ffmpeg,
+            gstreamer1.0-libav,
+            kwin-x11,
+            libqt5multimedia5-plugins,
+            libzynthbox,
+            libjucy,
+            qml-module-org-kde-bluezqt,
+            zita-ajbridge,
+            zyncoder,
+            zynthian-webconf,
+            python3-magic
+Replaces: zynthian-qml (<= 1.1)
+Conflicts: zynthian-qml (<= 1.1)
+Description: Zynthbox QML frontend
+ A frontend for Zynthian written in QML

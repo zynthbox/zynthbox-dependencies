@@ -33,6 +33,7 @@ on:
         - zynthbox-virtualkeyboard-theme
         - sosynth
         - webconf
+        - zynthbox-qml
 
 jobs:
   build:
