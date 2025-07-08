@@ -1,0 +1,18 @@
+libzynthbox (0.7-1-1) bookworm; urgency=medium
+
+  * Build migrated to github
+
+ -- Probal Basak <probal31@gmail.com>  Tue 08 Jul 2025 13:00:00 +0530
+
+libzynthbox (0.6-1-1) buster; urgency=medium
+
+  * Generate python bindings with shiboken2 for classes : AudioLevels, ClipAudioSource, Plugin, PlayGridManager, SyncTimer, MidiRouter
+
+ -- Anupam Basak <anupam.basak27@gmail.com>  Thu 13 Apr 2023 11:10:00 +0530
+
+
+libzynthbox (0.5-1-1) buster; urgency=medium
+
+  * Initial release
+
+ -- Anupam Basak <anupam.basak27@gmail.com>  Thu 13 Apr 2023 11:10:00 +0530

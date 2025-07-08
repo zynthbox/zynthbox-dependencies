@@ -76,6 +76,9 @@ case "$PACKAGE_NAME" in
     zynthbox-qml)
         echo "repolink=https://github.com/zynthbox/zynthbox-qml.git" >> $GITHUB_OUTPUT
         ;;
+    libzynthbox)
+        echo "repolink=https://github.com/zynthbox/libzynthbox.git" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1
