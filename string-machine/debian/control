@@ -1,0 +1,12 @@
+Source: zynthbox-plugin-string-machine
+Section: misc
+Priority: optional
+Maintainer: Probal Basak <probal31@gmail.com>
+Build-Depends: debhelper (>= 11), lv2-dev
+Standards-Version: 4.1.3
+Homepage: https://github.com/jpcima/string-machine.git
+
+Package: zynthbox-plugin-string-machine
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, lv2-dev
+Description: Build zynthbox-plugin-string-machine deb

@@ -1,0 +1,12 @@
+zynthbox-plugin-string-machine (1.1.0-1-2) bookworm; urgency=medium
+
+  * Build migrated
+
+ -- Probal Basak <probal31@gmail.com>  Tue, 08 Jul 2025 16:00:00 +0530
+
+zynthbox-plugin-string-machine (1.1.0-1-1) bullseye; urgency=medium
+
+  * Build
+
+ -- Anupam Basak <anupam.basak27@gmail.com>  Sat, 04 Mar 2023 18:26:00 +0530
+
