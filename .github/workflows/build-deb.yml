@@ -37,6 +37,7 @@ on:
         - libzynthbox
         - zynthbox-update-script
         - stereo-mixer
+        - string-machine
 
 jobs:
   build:

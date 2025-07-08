@@ -85,6 +85,9 @@ case "$PACKAGE_NAME" in
     stereo-mixer)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/stereo-mixer-git+9b85e1a.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    string-machine)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/string-machine-git+7050cb1.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1
