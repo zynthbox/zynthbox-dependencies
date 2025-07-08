@@ -1,0 +1,17 @@
+zynthian-webconf (0.7-1-1) bookworm; urgency=medium
+
+  * Build in github actions
+
+ -- Probal Basak <probal31@gmail.com>  Tue, 08 Jul 2025 13:00:00 +0530
+
+zynthian-webconf (0.6-1-1) buster; urgency=medium
+
+  * Fixed login password check
+
+ -- Anupam Basak <anupam.basak27@gmail.com>  Wed, 26 Apr 2023 16:49:00 +0530
+
+zynthian-webconf (0.5-1-1) buster; urgency=medium
+
+  * Initial testing repo release
+
+ -- Probal Basak <probal31@gmail.com>  Tue, 01 Nov 2022 13:10:00 +0530

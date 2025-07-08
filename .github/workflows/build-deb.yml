@@ -32,6 +32,7 @@ on:
         - sorcer
         - zynthbox-virtualkeyboard-theme
         - sosynth
+        - webconf
 
 jobs:
   build:

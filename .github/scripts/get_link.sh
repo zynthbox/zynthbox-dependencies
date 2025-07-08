@@ -70,6 +70,9 @@ case "$PACKAGE_NAME" in
     sosynth)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/sosynth-1.5.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    webconf)
+        echo "repolink=https://github.com/zynthbox/zynthian-webconf.git" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1
