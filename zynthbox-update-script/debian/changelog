@@ -1,0 +1,11 @@
+zynthbox-update-script (0.6-1-1) bookworm; urgency=medium
+
+  * Migrated build to github
+
+ -- Probal Basak <probal31@gmail.com>  Tue, 08 Jul 2025 14:00:00 +0530
+
+zynthbox-update-script (0.5-1-1) buster; urgency=medium
+
+  * Initial release
+
+ -- Probal Basak <probal31@gmail.com>  Tue, 01 Nov 2022 17:55:00 +0530

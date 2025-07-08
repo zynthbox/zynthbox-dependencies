@@ -1,0 +1,11 @@
+Source: zynthbox-update-script
+Section: admin
+Priority: optional
+Maintainer: Probal Basak <probal31@gmail.com>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.7.2
+
+Package: zynthbox-update-script
+Architecture: all
+Description: Update Script for Zynthbox
+  This package provides a script to update Zynthbox.
