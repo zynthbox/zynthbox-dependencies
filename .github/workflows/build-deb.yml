@@ -42,6 +42,7 @@ on:
         - vl1
         - libspecbleach
         - noise-repellent
+        - lsp-plugins
 
 jobs:
   build:

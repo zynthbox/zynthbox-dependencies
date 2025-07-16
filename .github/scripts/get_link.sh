@@ -100,6 +100,9 @@ case "$PACKAGE_NAME" in
     noise-repellent)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/noise-repellent-0.2.3.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    lsp-plugins)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/lsp-plugins-1.2.20.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1
