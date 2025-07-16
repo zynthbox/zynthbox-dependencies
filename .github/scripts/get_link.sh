@@ -94,6 +94,9 @@ case "$PACKAGE_NAME" in
     vl1)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/vl1-git+892545c.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    noise-repellent)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/noise-repellent-0.2.3.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1
