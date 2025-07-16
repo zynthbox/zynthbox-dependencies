@@ -43,6 +43,7 @@ on:
         - libspecbleach
         - noise-repellent
         - lsp-plugins
+        - mod-pitchshifter
 
 jobs:
   build:

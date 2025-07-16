@@ -103,6 +103,9 @@ case "$PACKAGE_NAME" in
     lsp-plugins)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/lsp-plugins-1.2.20.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    mod-pitchshifter)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/mod-pitchshifter-20221011.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1

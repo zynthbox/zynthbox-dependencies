@@ -1,0 +1,18 @@
+Source: zynthbox-plugin-mod-pitchshifter
+Section: misc
+Priority: optional
+Maintainer: Probal Basak <probal31@gmail.com>
+Build-Depends: 
+  debhelper (>= 11), 
+  cmake, 
+  g++,
+  libarmadillo-dev,
+  libfftw3-dev,
+  python3-mpmath
+Standards-Version: 4.1.3
+Homepage: https://github.com/mod-audio/mod-pitchshifter
+
+Package: zynthbox-plugin-mod-pitchshifter
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Build zynthbox-plugin-mod-pitchshifter deb
