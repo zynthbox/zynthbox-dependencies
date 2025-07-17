@@ -6,6 +6,7 @@ Build-Depends:
   debhelper (>= 11), 
   cmake, 
   g++,
+  lv2-dev,
   libarmadillo-dev,
   libfftw3-dev,
   python3-mpmath
