@@ -106,6 +106,9 @@ case "$PACKAGE_NAME" in
     mod-pitchshifter)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/mod-pitchshifter-20221011.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    lilv)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/lilv-0.24.14.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1

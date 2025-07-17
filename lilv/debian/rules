@@ -1,0 +1,18 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+
+override_dh_auto_build:
+
+override_dh_auto_install:
+	install -D bindings/python/lilv.py $(shell pwd)/debian/zynthbox-dependency-python3-lilv/usr/lib/python3/dist-packages/lilv.py
+
+override_dh_clean:
+
+override_dh_usrlocal:

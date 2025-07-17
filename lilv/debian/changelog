@@ -1,0 +1,12 @@
+zynthbox-dependency-python3-lilv (2.0.0-1-1) bookworm; urgency=medium
+
+  * Build migrated to GH
+
+ -- Probal Basak <probal31@gmail.com>  Thu, 17 Jul 2025 15:00:00 +0530
+
+zynthbox-dependency-python3-lilv (1.0.0-1-1) bullseye; urgency=medium
+
+  * Build
+
+ -- Anupam Basak <anupam.basak27@gmail.com>  Thu, 20 Jun 2024 09:36:22 +0530
+
