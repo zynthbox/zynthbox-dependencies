@@ -9,43 +9,42 @@ on:
         required: true
         type: choice
         options:
-        # The name should be same as the folder name in the repository
-        - synthv1-lv2
-        - synthv1-lv2-1.3.2
-        - tap-lv2
-        - swh
-        - surge
-        - raffo
-        - moony-lv2
-        - njconnect
-        - sonobus
-        - sunshine
-        - distrho-plugin-ports-lv2
-        - airwin2rack
-        - regrader
-        - remid
-        - punk-console
-        - preset2lv2
-        - padthv1-lv2
-        - zynthbox-docs
-        - shiro-plugins
-        - sorcer
-        - zynthbox-virtualkeyboard-theme
-        - sosynth
-        - webconf
-        - zynthbox-qml
-        - libzynthbox
-        - zynthbox-update-script
-        - stereo-mixer
-        - string-machine
-        - triceratops
-        - vl1
-        - libspecbleach
-        - noise-repellent
-        - lsp-plugins
-        - mod-pitchshifter
-        - lilv
-
+          # The name should be same as the folder name in the repository
+          - airwin2rack
+          - distrho-plugin-ports-lv2
+          - libspecbleach
+          - libzynthbox
+          - lilv
+          - lsp-plugins
+          - mod-pitchshifter
+          - moony-lv2
+          - njconnect
+          - noise-repellent
+          - padthv1-lv2
+          - preset2lv2
+          - punk-console
+          - raffo
+          - regrader
+          - remid
+          - shiro-plugins
+          - sonobus
+          - sorcer
+          - sosynth
+          - stereo-mixer
+          - string-machine
+          - sunshine
+          - surge
+          - swh
+          - synthv1-lv2
+          - synthv1-lv2-1.3.2
+          - tap-lv2
+          - triceratops
+          - vl1
+          - webconf
+          - zynthbox-docs
+          - zynthbox-qml
+          - zynthbox-update-script
+          - zynthbox-virtualkeyboard-theme
 jobs:
   build:
     name: Build ${{ inputs.package_name }} plugin
