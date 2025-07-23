@@ -1,0 +1,182 @@
+diff --git a/src/bentdelay/CMakeLists.txt b/src/bentdelay/CMakeLists.txt
+index 745847b..fcb31bf 100644
+--- a/src/bentdelay/CMakeLists.txt
++++ b/src/bentdelay/CMakeLists.txt
+@@ -5,7 +5,6 @@ set(PLUGIN "bentdelay")
+ 
+ include(CheckCCompilerFlag)
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -g -Og")
+-check_c_compiler_flag("-msse2 -mfpmath=sse" SUPPORTS_SSE )
+ check_c_compiler_flag("-ffast-math" SUPPORTS_FAST_MATH )
+ if(SUPPORTS_SSE)
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2 -mfpmath=sse")
+diff --git a/src/casynth/CMakeLists.txt b/src/casynth/CMakeLists.txt
+index bc0a9a0..876a878 100644
+--- a/src/casynth/CMakeLists.txt
++++ b/src/casynth/CMakeLists.txt
+@@ -4,7 +4,6 @@ cmake_minimum_required(VERSION 2.8)
+ set(PLUGIN "casynth") 
+ include(CheckCCompilerFlag)
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -g -std=c99 -Og")
+-check_c_compiler_flag("-msse2 -mfpmath=sse" SUPPORTS_SSE )
+ check_c_compiler_flag("-ffast-math" SUPPORTS_FAST_MATH )
+ if(SUPPORTS_SSE)
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2 -mfpmath=sse")
+diff --git a/src/cheapdist/CMakeLists.txt b/src/cheapdist/CMakeLists.txt
+index c6df007..8baf057 100644
+--- a/src/cheapdist/CMakeLists.txt
++++ b/src/cheapdist/CMakeLists.txt
+@@ -5,7 +5,6 @@ set(PLUGIN "cheapdist")
+ 
+ include(CheckCCompilerFlag)
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -g -Og")
+-check_c_compiler_flag("-msse2 -mfpmath=sse" SUPPORTS_SSE )
+ check_c_compiler_flag("-ffast-math" SUPPORTS_FAST_MATH )
+ if(SUPPORTS_SSE)
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2 -mfpmath=sse")
+diff --git a/src/cheapoct/CMakeLists.txt b/src/cheapoct/CMakeLists.txt
+index daf8b62..91ee7f5 100644
+--- a/src/cheapoct/CMakeLists.txt
++++ b/src/cheapoct/CMakeLists.txt
+@@ -5,7 +5,6 @@ set(PLUGIN "cheapoct")
+ 
+ include(CheckCCompilerFlag)
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -g -Og")
+-check_c_compiler_flag("-msse2 -mfpmath=sse" SUPPORTS_SSE )
+ check_c_compiler_flag("-ffast-math" SUPPORTS_FAST_MATH )
+ if(SUPPORTS_SSE)
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2 -mfpmath=sse")
+diff --git a/src/duffer/CMakeLists.txt b/src/duffer/CMakeLists.txt
+index 6b1f243..60d4178 100644
+--- a/src/duffer/CMakeLists.txt
++++ b/src/duffer/CMakeLists.txt
+@@ -5,7 +5,6 @@ set(PLUGIN "duffer")
+ 
+ include(CheckCCompilerFlag)
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -g -std=c99 -Og")
+-check_c_compiler_flag("-msse2 -mfpmath=sse" SUPPORTS_SSE )
+ check_c_compiler_flag("-ffast-math" SUPPORTS_FAST_MATH )
+ if(SUPPORTS_SSE)
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2 -mfpmath=sse")
+diff --git a/src/envfollower/CMakeLists.txt b/src/envfollower/CMakeLists.txt
+index d3387a2..c02a1a1 100644
+--- a/src/envfollower/CMakeLists.txt
++++ b/src/envfollower/CMakeLists.txt
+@@ -5,7 +5,6 @@ set(PLUGIN "envfollower")
+ 
+ include(CheckCCompilerFlag)
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -g -std=c99 -Og")
+-check_c_compiler_flag("-msse2 -mfpmath=sse" SUPPORTS_SSE )
+ check_c_compiler_flag("-ffast-math" SUPPORTS_FAST_MATH )
+ if(SUPPORTS_SSE)
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2 -mfpmath=sse")
+diff --git a/src/ewham/CMakeLists.txt b/src/ewham/CMakeLists.txt
+index ccf2f4d..6e9f363 100644
+--- a/src/ewham/CMakeLists.txt
++++ b/src/ewham/CMakeLists.txt
+@@ -7,9 +7,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../../cmake/")
+ 
+ include(CheckCCompilerFlag)
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -g -Og")
+-#CHECK_CXX_COMPILER_FLAG("-msse2 -mfpmath=sse" SUPPORTS_SSE )
+ #CHECK_CXX_COMPILER_FLAG("-ffast-math" SUPPORTS_FAST_MATH )
+-check_c_compiler_flag("-msse2 -mfpmath=sse" SUPPORTS_SSE )
+ check_c_compiler_flag("-ffast-math" SUPPORTS_FAST_MATH )
+ if(SUPPORTS_SSE)
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2 -mfpmath=sse")
+diff --git a/src/hip2b/CMakeLists.txt b/src/hip2b/CMakeLists.txt
+index a4c4363..9f3357f 100644
+--- a/src/hip2b/CMakeLists.txt
++++ b/src/hip2b/CMakeLists.txt
+@@ -5,7 +5,6 @@ set(PLUGIN "hip2b")
+ 
+ include(CheckCCompilerFlag)
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -g -Og")
+-check_c_compiler_flag("-msse2 -mfpmath=sse" SUPPORTS_SSE )
+ check_c_compiler_flag("-ffast-math" SUPPORTS_FAST_MATH )
+ if(SUPPORTS_SSE)
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2 -mfpmath=sse")
+diff --git a/src/lushlife/CMakeLists.txt b/src/lushlife/CMakeLists.txt
+index 1d48ee5..7ba9367 100644
+--- a/src/lushlife/CMakeLists.txt
++++ b/src/lushlife/CMakeLists.txt
+@@ -7,7 +7,6 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../../cmake/")
+ 
+ include(CheckCXXCompilerFlag)
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -g -Og")
+-check_cxx_compiler_flag("-msse2 -mfpmath=sse" SUPPORTS_SSE )
+ check_cxx_compiler_flag("-ffast-math" SUPPORTS_FAST_MATH )
+ if(SUPPORTS_SSE)
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse2 -mfpmath=sse")
+diff --git a/src/mindi/CMakeLists.txt b/src/mindi/CMakeLists.txt
+index 3954aa6..e04b305 100644
+--- a/src/mindi/CMakeLists.txt
++++ b/src/mindi/CMakeLists.txt
+@@ -5,7 +5,6 @@ set(PLUGIN "mindi")
+ 
+ include(CheckCCompilerFlag)
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -g -std=c99")
+-check_c_compiler_flag("-msse2 -mfpmath=sse" SUPPORTS_SSE )
+ check_c_compiler_flag("-ffast-math" SUPPORTS_FAST_MATH )
+ if(SUPPORTS_SSE)
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2 -mfpmath=sse")
+diff --git a/src/octolo/CMakeLists.txt b/src/octolo/CMakeLists.txt
+index b714dbf..df0b96d 100644
+--- a/src/octolo/CMakeLists.txt
++++ b/src/octolo/CMakeLists.txt
+@@ -5,7 +5,6 @@ set(PLUGIN "octolo")
+ 
+ include(CheckCCompilerFlag)
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -g -std=c99")
+-check_c_compiler_flag("-msse2 -mfpmath=sse" SUPPORTS_SSE )
+ check_c_compiler_flag("-ffast-math" SUPPORTS_FAST_MATH )
+ if(SUPPORTS_SSE)
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2 -mfpmath=sse")
+diff --git a/src/pms/CMakeLists.txt b/src/pms/CMakeLists.txt
+index fbf3ba3..d06a8ac 100644
+--- a/src/pms/CMakeLists.txt
++++ b/src/pms/CMakeLists.txt
+@@ -5,7 +5,6 @@ set(PLUGIN "pms")
+ 
+ include(CheckCCompilerFlag)
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -g -Og")
+-check_c_compiler_flag("-msse2 -mfpmath=sse" SUPPORTS_SSE )
+ check_c_compiler_flag("-ffast-math" SUPPORTS_FAST_MATH )
+ if(SUPPORTS_SSE)
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2 -mfpmath=sse")
+diff --git a/src/powercut/CMakeLists.txt b/src/powercut/CMakeLists.txt
+index c4f1774..61bc001 100644
+--- a/src/powercut/CMakeLists.txt
++++ b/src/powercut/CMakeLists.txt
+@@ -5,7 +5,6 @@ set(PLUGIN "powercut")
+ 
+ include(CheckCCompilerFlag)
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -g -Og")
+-check_c_compiler_flag("-msse2 -mfpmath=sse" SUPPORTS_SSE )
+ check_c_compiler_flag("-ffast-math" SUPPORTS_FAST_MATH )
+ if(SUPPORTS_SSE)
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2 -mfpmath=sse")
+diff --git a/src/powerup/CMakeLists.txt b/src/powerup/CMakeLists.txt
+index b74dbf5..ec8f96a 100644
+--- a/src/powerup/CMakeLists.txt
++++ b/src/powerup/CMakeLists.txt
+@@ -5,7 +5,6 @@ set(PLUGIN "powerup")
+ 
+ include(CheckCCompilerFlag)
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -g -Og")
+-check_c_compiler_flag("-msse2 -mfpmath=sse" SUPPORTS_SSE )
+ check_c_compiler_flag("-ffast-math" SUPPORTS_FAST_MATH )
+ if(SUPPORTS_SSE)
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2 -mfpmath=sse")
+diff --git a/src/stuck/CMakeLists.txt b/src/stuck/CMakeLists.txt
+index 26a3cad..d79aa90 100644
+--- a/src/stuck/CMakeLists.txt
++++ b/src/stuck/CMakeLists.txt
+@@ -5,7 +5,6 @@ set(PLUGIN "stuck")
+ 
+ include(CheckCCompilerFlag)
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -g -Og")
+-check_c_compiler_flag("-msse2 -mfpmath=sse" SUPPORTS_SSE )
+ check_c_compiler_flag("-ffast-math" SUPPORTS_FAST_MATH )
+ if(SUPPORTS_SSE)
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2 -mfpmath=sse")

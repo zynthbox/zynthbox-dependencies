@@ -9,7 +9,4 @@
 override_dh_strip:
 	dh_strip --no-automatic-dbgsym
 
-dh_override_dh_auto_configure:
-	dh_auto_configure -- -DSUPPORTS_SSE=OFF
-
 override_dh_usrlocal:
