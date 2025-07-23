@@ -112,6 +112,9 @@ case "$PACKAGE_NAME" in
     infamous-plugins)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/infamous-plugins-0.3.2.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    invada-studio-plugins-lv2)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/invada-studio-plugins-lv2-20210819.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1
