@@ -12,6 +12,7 @@ on:
           # The name should be same as the folder name in the repository
           - airwin2rack
           - distrho-plugin-ports-lv2
+          - infamous-plugins
           - libspecbleach
           - libzynthbox
           - lilv

@@ -109,6 +109,9 @@ case "$PACKAGE_NAME" in
     lilv)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/lilv-0.24.14.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    infamous-plugins)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/infamous-plugins-0.3.2.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1
