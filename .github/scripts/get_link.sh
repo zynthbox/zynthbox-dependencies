@@ -115,6 +115,9 @@ case "$PACKAGE_NAME" in
     invada-studio-plugins-lv2)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/invada-studio-plugins-lv2-20210819.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    cv-lfo-blender-lv2)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/cv-lfo-blender-lv2-20200520.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1

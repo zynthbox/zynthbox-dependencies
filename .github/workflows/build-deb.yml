@@ -11,6 +11,7 @@ on:
         options:
           # The name should be same as the folder name in the repository
           - airwin2rack
+          - cv-lfo-blender-lv2
           - distrho-plugin-ports-lv2
           - infamous-plugins
           - invada-studio-plugins-lv2
