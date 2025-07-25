@@ -118,6 +118,9 @@ case "$PACKAGE_NAME" in
     cv-lfo-blender-lv2)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/cv-lfo-blender-lv2-20200520.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    caps-lv2)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/caps-lv2-0.9.26.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1
