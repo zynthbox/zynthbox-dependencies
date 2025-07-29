@@ -121,6 +121,9 @@ case "$PACKAGE_NAME" in
     caps-lv2)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/caps-lv2-0.9.26.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    blop-lv2)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/blop-lv2-1.0.4.tar.bz2" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1
