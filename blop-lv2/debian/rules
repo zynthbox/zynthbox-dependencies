@@ -11,15 +11,12 @@ override_dh_strip:
 
 override_dh_auto_configure:
 	meson setup build
-	cd build
-	meson configure
+	cd build && meson configure
 
 override_dh_auto_build:
-	cd build
-	meson compile
+	cd build && meson compile
 
 override_dh_auto_install:
-	cd build
-	meson install --destdir=$(CURDIR)/debian/blop-lv2
+	cd build && meson install --destdir=$(CURDIR)/debian/blop-lv2
 
 override_dh_usrlocal:
