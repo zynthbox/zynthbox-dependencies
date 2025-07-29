@@ -17,6 +17,6 @@ override_dh_auto_build:
 	cd build && meson compile
 
 override_dh_auto_install:
-	cd build && meson install
+	cd build && meson install --destdir=$(CURDIR)/debian/zynthbox-plugin-blop-lv2
 
 override_dh_usrlocal:
