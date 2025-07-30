@@ -127,6 +127,9 @@ case "$PACKAGE_NAME" in
     bshapr)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/bshapr-0.13.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    bslizr)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/bslizr-1.2.16.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1
