@@ -12,6 +12,7 @@ on:
           # The name should be same as the folder name in the repository
           - airwin2rack
           - blop-lv2
+          - bshapr
           - caps-lv2
           - cv-lfo-blender-lv2
           - distrho-plugin-ports-lv2

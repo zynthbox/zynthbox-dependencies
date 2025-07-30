@@ -124,6 +124,9 @@ case "$PACKAGE_NAME" in
     blop-lv2)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/blop-lv2-1.0.4.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    bshapr)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/bshapr-0.13.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1
