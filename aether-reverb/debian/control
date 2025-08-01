@@ -1,0 +1,12 @@
+Source: zynthbox-plugin-aether-reverb
+Section: misc
+Priority: optional
+Maintainer: Anupam Basak <anupam.basak27@gmail.com>
+Build-Depends: debhelper (>= 11), cmake, g++, libx11-dev, libgl1-mesa-dev, libglu1-mesa-dev, lv2-dev
+Standards-Version: 4.1.3
+Homepage: https://github.com/Dougal-s/Aether/
+
+Package: zynthbox-plugin-aether-reverb
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, lv2-dev
+Description: Build zynthbox-plugin-aether-reverb deb

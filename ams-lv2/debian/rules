@@ -1,0 +1,22 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
+
+%:
+	./waf configure
+	dh $@
+
+override_dh_auto_configure:
+	./waf configure
+
+override_dh_auto_build:
+	./waf
+
+override_dh_auto_install:
+	./waf install --destdir=$(shell pwd)/debian/${CI_PROJECT_NAME}
+	
+override_dh_auto_clean:
+	./waf clean
+
+override_dh_usrlocal:

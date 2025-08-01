@@ -130,6 +130,15 @@ case "$PACKAGE_NAME" in
     bslizr)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/bslizr-1.2.16.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    aether-reverb)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/aether-reverb-git+0beea43.tar.gz" >> $GITHUB_OUTPUT
+        ;;
+    alo)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/alo-0.9.tar.gz" >> $GITHUB_OUTPUT
+        ;;
+    ams-lv2)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/ams-lv2-1.2.2.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1
