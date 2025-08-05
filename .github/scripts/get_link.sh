@@ -142,6 +142,9 @@ case "$PACKAGE_NAME" in
     gammaray)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/gammaray-3.2.1.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    abgate)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/abgate-1.2.0.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1
