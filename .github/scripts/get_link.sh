@@ -145,6 +145,9 @@ case "$PACKAGE_NAME" in
     abgate)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/abgate-1.2.0.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    artyfx)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/artyfx-1.3.1.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1
