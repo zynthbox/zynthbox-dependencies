@@ -1,0 +1,14 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
+
+%:
+	dh $@ 
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+		-DCMAKE_INSTALL_PREFIX=/usr -DGAMMARAY_BUILD_DOCS=false -DBUILD_TESTING=false
+
+override_dh_auto_build:
+	dh_auto_build -- -j$(shell nproc)
