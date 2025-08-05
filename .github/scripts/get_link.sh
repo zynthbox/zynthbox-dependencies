@@ -139,6 +139,9 @@ case "$PACKAGE_NAME" in
     ams-lv2)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/ams-lv2-1.2.2.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    gammaray)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/gammaray-3.2.1.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1

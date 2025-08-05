@@ -20,6 +20,7 @@ on:
           - caps-lv2
           - cv-lfo-blender-lv2
           - distrho-plugin-ports-lv2
+          - gammaray
           - infamous-plugins
           - invada-studio-plugins-lv2
           - libspecbleach
