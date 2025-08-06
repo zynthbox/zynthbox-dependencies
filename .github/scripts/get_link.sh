@@ -148,6 +148,9 @@ case "$PACKAGE_NAME" in
     artyfx)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/artyfx-1.3.1.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    bchoppr)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/bchoppr-1.12.6.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1
