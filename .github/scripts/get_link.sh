@@ -151,6 +151,9 @@ case "$PACKAGE_NAME" in
     bchoppr)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/bchoppr-1.12.6.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    beatslash-lv2)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/beatslash-lv2-1.0.6.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1
