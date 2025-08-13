@@ -154,6 +154,9 @@ case "$PACKAGE_NAME" in
     beatslash-lv2)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/beatslash-lv2-1.0.6.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    bolliedelay)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/bolliedelay-0.2.6.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1
