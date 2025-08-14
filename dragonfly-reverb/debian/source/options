@@ -1,0 +1,8 @@
+# Ignore all `prebuilt` files
+extend-diff-ignore = "dragonfly-reverb-.*/.*"
+
+# Ignore all `.gitlab-ci.yml`
+extend-diff-ignore = ".gitlab-ci.yml"
+
+# Ignore all `README` files
+extend-diff-ignore = "README|README.md"

@@ -10,3 +10,5 @@ mkdir build && cd build
 make -j$(nproc)
 make install
 ```
+
+Build dragonfly-reverb from source https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/dragonfly-reverb-3.2.10.tar.gz

@@ -163,6 +163,9 @@ case "$PACKAGE_NAME" in
     dpf-plugins)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/dpf-plugins-1.7.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    dragonfly-reverb)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/dragonfly-reverb-3.2.10.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1
