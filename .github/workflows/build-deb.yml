@@ -26,6 +26,7 @@ on:
           - caps-lv2
           - cv-lfo-blender-lv2
           - distrho-plugin-ports-lv2
+          - dpf-plugins
           - gammaray
           - infamous-plugins
           - invada-studio-plugins-lv2

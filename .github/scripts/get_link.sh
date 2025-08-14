@@ -160,6 +160,9 @@ case "$PACKAGE_NAME" in
     calf-plugins)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/calf-plugins-0.90.4.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    dpf-plugins)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/dpf-plugins-1.7.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1
