@@ -157,6 +157,9 @@ case "$PACKAGE_NAME" in
     bolliedelay)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/bolliedelay-0.2.6.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    calf-plugins)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/calf-plugins-0.90.4.tar.gz" >> $GITHUB_OUTPUT
+        ;;
     *)
         echo "Unknown choice"
         exit 1
