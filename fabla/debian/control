@@ -1,0 +1,16 @@
+Source: zynthbox-plugin-fabla
+Section: misc
+Priority: optional
+Maintainer: Probal Basak <probal31@gmail.com>
+Build-Depends: debhelper (>= 11), lv2-dev,	zynthbox-dependency-ntk
+Standards-Version: 4.1.3
+Homepage: https://github.com/openAVproductions/openAV-Fabla/
+
+Package: zynthbox-plugin-fabla
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Breaks: fabla
+Provides: fabla
+Replaces: fabla
+Conflicts: fabla
+Description: Build zynthbox-plugin-fabla deb

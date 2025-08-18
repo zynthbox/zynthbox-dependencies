@@ -178,6 +178,10 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/drumkv1-lv2-1.3.0.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
+    fabla)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/fabla-1.4.tar.gz" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1
