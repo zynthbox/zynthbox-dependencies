@@ -1,7 +1,7 @@
-diff --git a/trunk/wscript b/trunk/wscript
-index b915199a..f3e4d129 100644
---- a/trunk/wscript
-+++ b/trunk/wscript
+diff --git a/wscript b/wscript
+index b915199..f3e4d12 100644
+--- a/wscript
++++ b/wscript
 @@ -534,7 +534,7 @@ def sub_file(task):
      dst_fname = task.outputs[0].abspath()
      lst = task.generator.sub_list
