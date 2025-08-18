@@ -182,6 +182,10 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/fabla-1.4.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
+    fluidplug)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/fluidplug-git+697be3d.tar.xz" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1
