@@ -190,6 +190,10 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/foo-yc20-git+6d2d4a2.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
+    geonkick)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/geonkick-3.5.2.tar.gz" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1
