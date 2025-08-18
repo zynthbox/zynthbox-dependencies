@@ -10,16 +10,6 @@ on:
         type: choice
         options:
           # The name should be same as the folder name in the repository
-          - gxdenoiser2
-          - gula-plugins
-          - guitarix
-          - geonkick
-          - foo-yc20
-          - fluidplug
-          - fabla
-          - drumkv1-lv2
-          - drumgizmo
-          - drmr
           - abgate
           - aether-reverb
           - airwin2rack
@@ -38,7 +28,17 @@ on:
           - distrho-plugin-ports-lv2
           - dpf-plugins
           - dragonfly-reverb
+          - drmr
+          - drumgizmo
+          - drumkv1-lv2
+          - fabla
+          - fluidplug
+          - foo-yc20
           - gammaray
+          - geonkick
+          - guitarix
+          - gula-plugins
+          - gxdenoiser2
           - infamous-plugins
           - invada-studio-plugins-lv2
           - libspecbleach
