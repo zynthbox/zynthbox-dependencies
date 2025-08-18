@@ -1,0 +1,13 @@
+diff --git a/src/Makefile b/src/Makefile
+index 8ec084a..5c516d1 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -3,7 +3,7 @@ plugins := vibey.lv2 splits.lv2 fades.lv2 ssap_tone.lv2 sweabed.lv2 pequed.lv2 p
+ URI_PREFIX = https://github.com/steveb/gula-plugins
+ 
+ FAUSTARCH = lv2.cpp
+-FAUSTLIB_SEARCH = /usr/share/faust/$(FAUSTARCH) /usr/local/share/faust/$(FAUSTARCH)
++FAUSTLIB_SEARCH = /usr/local/lib/faust/$(FAUSTARCH) /usr/local/share/faust/$(FAUSTARCH)
+ FAUSTLIB = $(shell dirname `ls -f $(FAUSTLIB_SEARCH) 2>/dev/null | tail -1`)
+ FAUSTINC = $(subst share,include,$(FAUSTLIB))
+ FAUSTTOOLSFLAGS = -DURI_PREFIX=\"$(URI_PREFIX)\" -DFAUST_META=1 -DFAUST_MIDICC=0 -DFAUST_MTS=0
