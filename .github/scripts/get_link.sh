@@ -202,6 +202,10 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/gula-plugins-git+edc2be7.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
+    gxdenoiser2)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/gxdenoiser2-git+249be4d.tar.gz" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1

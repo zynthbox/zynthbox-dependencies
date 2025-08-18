@@ -1,0 +1,17 @@
+diff --git a/Makefile b/Makefile
+index e1ef7b5..1b6679f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,11 +1,4 @@
+-	
+-	# check if user is root
+-	user = $(shell whoami)
+-	ifeq ($(user),root)
+-	INSTALL_DIR = /usr/lib/lv2
+-	else 
+-	INSTALL_DIR = ~/.lv2
+-	endif
++	INSTALL_DIR = /zynthian/zynthian-plugins/lv2/
+ 
+ 	# check CPU and supported optimization flags
+ 	ifneq ($(shell cat /proc/cpuinfo | grep sse3 ) , )
