@@ -166,6 +166,10 @@ case "$PACKAGE_NAME" in
     dragonfly-reverb)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/dragonfly-reverb-3.2.10.tar.gz" >> $GITHUB_OUTPUT
         ;;
+    drmr)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/drmr-master.tar.gz" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1
