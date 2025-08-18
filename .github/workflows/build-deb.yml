@@ -124,7 +124,7 @@ jobs:
             rm -rf source-tmp
           elif [ -n "${{ steps.setup.outputs.sourcelink }}" ]; then
             wget -O ../${PACKAGE_NAME}_${PACKAGE_VERSION}.orig.tar.gz ${{ steps.setup.outputs.sourcelink }}
-            tar -xzf ../${PACKAGE_NAME}_${PACKAGE_VERSION}.orig.tar.gz -C ./ --strip-components=1
+            tar -xvf ../${PACKAGE_NAME}_${PACKAGE_VERSION}.orig.tar.gz -C ./ --strip-components=1
           else
             echo "No valid source or repo link found."
             exit 1
