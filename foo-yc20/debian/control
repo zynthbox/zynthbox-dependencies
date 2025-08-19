@@ -8,5 +8,5 @@ Homepage: https://github.com/zynthian/foo-yc20.git
 
 Package: zynthbox-plugin-foo-yc20
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, lv2-dev, zfaust
+Depends: ${shlibs:Depends}, ${misc:Depends}, lv2-dev, faust
 Description: Build zynthbox-plugin-foo-yc20 deb
