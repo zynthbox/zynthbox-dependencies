@@ -2,7 +2,7 @@ Source: zynthbox-plugin-gula
 Section: misc
 Priority: optional
 Maintainer: Anupam Basak <anupam.basak27@gmail.com>
-Build-Depends: debhelper (>= 11), zynthbox-dependency-faust, lv2-dev
+Build-Depends: debhelper (>= 11), faust, lv2-dev
 Standards-Version: 4.1.3
 Homepage: https://github.com/steveb/gula-plugins.git
 
