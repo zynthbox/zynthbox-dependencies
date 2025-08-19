@@ -11,5 +11,10 @@ Architecture: any
 Provides: faust, faust-common, libfaust2
 Replaces: faust, faust-common, libfaust2
 Conflicts: faust, faust-common, libfaust2
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: faust-common, ${shlibs:Depends}, ${misc:Depends}
 Description: Build zynthbox-dependency-faust deb
+
+Package: faust-common
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Build zynthbox-dependency-faust-common deb

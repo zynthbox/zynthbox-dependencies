@@ -10,7 +10,6 @@ on:
         type: choice
         options:
           # The name should be same as the folder name in the repository
-          - faust
           - abgate
           - aether-reverb
           - airwin2rack
@@ -33,6 +32,7 @@ on:
           - drumgizmo
           - drumkv1-lv2
           - fabla
+          - faust
           - fluidplug
           - foo-yc20
           - gammaray
