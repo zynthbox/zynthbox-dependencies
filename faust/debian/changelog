@@ -1,0 +1,13 @@
+Maintainer: Probal Basak <probal31@gmail.com>
+zynthbox-dependency-faust (0.9.73-1-2) unstable; urgency=medium
+
+  * Migrated from opencode to gh
+
+ -- Probal Basak <probal31@gmail.com>  Tue, 19 Aug 2025 10:18:46 +0000
+
+zynthbox-dependency-faust (0.9.73-1-1) bullseye; urgency=medium
+
+  * Build
+
+ -- Anupam Basak <anupam.basak27@gmail.com>  Fri, 03 Mar 2023 22:22:25 +0530
+

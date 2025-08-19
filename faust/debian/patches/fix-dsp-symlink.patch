@@ -1,0 +1,8 @@
+diff --git a/architecture/faust/audio/dsp.h b/architecture/faust/audio/dsp.h
+new file mode 120000
+index 00000000..96970c8b
+--- /dev/null
++++ b/architecture/faust/audio/dsp.h
+@@ -0,0 +1 @@
++../dsp/dsp.h
+\ No newline at end of file
