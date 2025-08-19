@@ -8,5 +8,5 @@ Homepage: https://github.com/steveb/gula-plugins.git
 
 Package: zynthbox-plugin-gula
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, zynthbox-dependency-faust, lv2-dev
+Depends: ${shlibs:Depends}, ${misc:Depends}, faust, lv2-dev
 Description: Build zynthbox-plugin-gula deb
