@@ -207,7 +207,7 @@ case "$PACKAGE_NAME" in
         ;;
 
     faust)
-        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/faust-v2-1-0.tar.gz" >> $GITHUB_OUTPUT
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/faust-1316c96.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
     *)
