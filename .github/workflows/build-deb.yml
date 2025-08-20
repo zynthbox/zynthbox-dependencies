@@ -10,8 +10,6 @@ on:
         type: choice
         options:
           # The name should be same as the folder name in the repository
-          - gxplugins
-          - gxdistortionplus
           - abgate
           - aether-reverb
           - airwin2rack
@@ -42,6 +40,8 @@ on:
           - guitarix
           - gula-plugins
           - gxdenoiser2
+          - gxdistortionplus
+          - gxplugins
           - infamous-plugins
           - invada-studio-plugins-lv2
           - libspecbleach
