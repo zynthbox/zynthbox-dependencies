@@ -10,19 +10,6 @@ on:
         type: choice
         options:
           # The name should be same as the folder name in the repository
-          - wolf-shaper
-          - sooperlooper-lv2
-          - rubberband-lv2
-          - qmidiarp
-          - mod-utilities
-          - mod-mda
-          - mod-distortion
-          - mod-cv-plugins
-          - mod-cabsim-ir-loader
-          - mod-arpeggiator
-          - miniopl3
-          - midi-display
-          - mclk
           - abgate
           - aether-reverb
           - airwin2rack
@@ -62,18 +49,30 @@ on:
           - libzynthbox
           - lilv
           - lsp-plugins
+          - mclk
+          - midi-display
+          - miniopl3
+          - mod-arpeggiator
+          - mod-cabsim-ir-loader
+          - mod-cv-plugins
+          - mod-distortion
+          - mod-mda
           - mod-pitchshifter
+          - mod-utilities
           - moony-lv2
           - njconnect
           - noise-repellent
           - padthv1-lv2
           - preset2lv2
           - punk-console
+          - qmidiarp
           - raffo
           - regrader
           - remid
+          - rubberband-lv2
           - shiro-plugins
           - sonobus
+          - sooperlooper-lv2
           - sorcer
           - sosynth
           - stereo-mixer
@@ -87,6 +86,7 @@ on:
           - triceratops
           - vl1
           - webconf
+          - wolf-shaper
           - zynthbox-docs
           - zynthbox-qml
           - zynthbox-update-script
