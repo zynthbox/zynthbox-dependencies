@@ -1,0 +1,12 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
+
+%:
+	dh $@
+
+override_dh_auto_install:
+	DESTDIR=$(shell pwd)/debian/zynthbox-plugin-midi-display PREFIX=/zynthian/zynthian-plugins/ SYSPATH=/lv2/ make install
+
+override_dh_usrlocal:
