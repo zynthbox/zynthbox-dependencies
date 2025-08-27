@@ -1,0 +1,16 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	sed -i 's/-mtune\S*//g' dpf/Makefile.base.mk
+	make -j$(shell nproc)
+
+override_dh_auto_install:
+	DESTDIR=$(shell pwd)/debian/zynthbox-plugin-mod-arpeggiator LV2_DIR=/zynthian/zynthian-plugins/lv2 make install
+
+override_dh_usrlocal:

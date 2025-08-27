@@ -234,6 +234,10 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/miniopl3-git+205ae76.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
+    mod-arpeggiator)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/mod-arpeggiator-git+82f3d9f.tar.gz" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1
