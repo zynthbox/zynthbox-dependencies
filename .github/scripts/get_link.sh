@@ -246,6 +246,10 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/mod-cv-plugins-20230612.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
+    mod-distortion)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/mod-distortion-20191001.tar.gz" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1
