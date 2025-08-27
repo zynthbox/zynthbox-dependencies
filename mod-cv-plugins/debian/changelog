@@ -1,0 +1,12 @@
+zynthbox-plugin-mod-cv-plugins (20230612-1-2) unstable; urgency=medium
+
+  * Migrated from opencode to gh
+
+ -- Probal Basak <probal31@gmail.com>  Wed, 27 Aug 2025 07:18:00 +0000
+
+zynthbox-plugin-mod-cv-plugins (20230612-1-1) bullseye; urgency=medium
+
+  * Build
+
+ -- Probal Basak <probal31@gmail.com>  Tue, 08 Apr 2025 16:02:32 +0530
+
