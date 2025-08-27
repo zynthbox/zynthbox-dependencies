@@ -230,6 +230,10 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/midi-display-git+ccf031e.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
+    miniopl3)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/miniopl3-git+205ae76.tar.gz" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1

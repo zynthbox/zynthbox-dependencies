@@ -1,0 +1,21 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
+
+%:
+	dh $@
+
+override_dh_auto_clean:
+	sed -i -- 's/\-mtune\=generic//' ./dpf/Makefile.base.mk
+	make clean
+
+override_dh_auto_build:
+	sed -i -- 's/\-mtune\=generic//' ./dpf/Makefile.base.mk
+	make -j$(shell nproc)
+
+override_dh_auto_install:
+	sed -i -- 's/\-mtune\=generic//' ./dpf/Makefile.base.mk
+	DESTDIR=$(shell pwd)/debian/zynthbox-plugin-miniopl3 make install
+
+override_dh_usrlocal:
