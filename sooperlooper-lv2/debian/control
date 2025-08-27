@@ -1,0 +1,12 @@
+Source: zynthbox-plugin-sooperlooper-lv2-plugin
+Section: misc
+Priority: optional
+Maintainer: Anupam Basak <anupam.basak27@gmail.com>
+Build-Depends: debhelper (>= 11), lv2-dev
+Standards-Version: 4.1.3
+Homepage: https://github.com/moddevices/sooperlooper-lv2-plugin.git
+
+Package: zynthbox-plugin-sooperlooper-lv2-plugin
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, lv2-dev
+Description: Build zynthbox-plugin-sooperlooper-lv2-plugin deb

@@ -266,6 +266,10 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/rubberband-lv2-4.0.0.tar.bz2" >> $GITHUB_OUTPUT
         ;;
 
+    sooperlooper-lv2)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/sooperlooper-lv2-git+d3e8002.tar.gz" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1

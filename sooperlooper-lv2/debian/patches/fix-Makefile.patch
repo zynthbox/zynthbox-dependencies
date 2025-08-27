@@ -1,0 +1,13 @@
+diff --git a/sooperlooper/Makefile b/sooperlooper/Makefile
+index b87e43a..69e37f2 100644
+--- a/sooperlooper/Makefile
++++ b/sooperlooper/Makefile
+@@ -9,7 +9,7 @@ PLUGIN_SO = $(PLUGIN).so
+ 
+ # installation path
+ ifndef INSTALL_PATH
+-INSTALL_PATH = /usr/local/lib/lv2/
++INSTALL_PATH = /zynthian/zynthian-plugins/lv2/
+ endif
+ INSTALLATION_PATH = $(DESTDIR)$(INSTALL_PATH)/$(PLUGIN).lv2/
+ 

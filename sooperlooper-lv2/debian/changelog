@@ -1,0 +1,12 @@
+zynthbox-plugin-sooperlooper-lv2-plugin (0.93-1-2) unstable; urgency=medium
+
+  * Migrated from opencode to gh
+
+ -- Probal Basak <probal31@gmail.com>  Wed, 27 Aug 2025 07:22:52 +0000
+
+zynthbox-plugin-sooperlooper-lv2-plugin (0.93-1-1) bullseye; urgency=medium
+
+  * Build
+
+ -- Anupam Basak <anupam.basak27@gmail.com>  Thu, 02 Mar 2023 11:12:47 +0530
+

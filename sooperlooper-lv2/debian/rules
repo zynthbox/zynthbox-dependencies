@@ -1,0 +1,18 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	dh_auto_build -- -C sooperlooper
+
+override_dh_auto_install:
+	dh_auto_install -- -C sooperlooper
+
+override_dh_auto_clean:
+	dh_auto_clean -- -C sooperlooper
+
+override_dh_usrlocal:
