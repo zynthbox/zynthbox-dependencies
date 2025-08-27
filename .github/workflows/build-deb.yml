@@ -10,6 +10,7 @@ on:
         type: choice
         options:
           # The name should be same as the folder name in the repository
+          - mod-utilities
           - mod-mda
           - mod-distortion
           - mod-cv-plugins

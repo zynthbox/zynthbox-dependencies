@@ -254,6 +254,10 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/mda-lv2-1.2.10.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
+    mod-utilities)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/mod-utilities-20230131.tar.gz" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1
