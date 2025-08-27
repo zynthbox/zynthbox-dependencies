@@ -1,0 +1,19 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	meson setup build -Djni=disabled -Dladspa=disabled -Dvamp=disabled -Dcmdline=disabled -Dtests=disabled
+
+override_dh_auto_build:
+	cd build && ninja
+
+override_dh_auto_install:
+	cd build && DESTDIR=$(shell pwd)/debian/zynthbox-plugin-rubberband-lv2 ninja install
+
+override_dh_usrlocal:
+	
