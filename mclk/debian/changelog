@@ -1,0 +1,12 @@
+zynthbox-plugin-mclk (0.2.2-1-2) unstable; urgency=medium
+
+  * Migrated from opencode to gh
+
+ -- Probal Basak <probal31@gmail.com>  Wed, 27 Aug 2025 07:12:34 +0000
+
+zynthbox-plugin-mclk (0.2.2-1-1) bullseye; urgency=medium
+
+  * Build
+
+ -- Anupam Basak <anupam.basak27@gmail.com>  Mon, 06 Mar 2023 19:19:47 +0530
+

@@ -1,0 +1,22 @@
+diff --git a/Makefile b/Makefile
+index 3f844a2..6bd4e6f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,7 +4,7 @@
+ #   make CFLAGS=-O2
+ #   make install DESTDIR=$(CURDIR)/debian/mclk.lv2 PREFIX=/usr
+ #
+-OPTIMIZATIONS ?= -msse -msse2 -mfpmath=sse -ffast-math -fomit-frame-pointer -O3 -fno-finite-math-only
++OPTIMIZATIONS ?= -ffast-math -fomit-frame-pointer -O3 -fno-finite-math-only
+ PREFIX ?= /usr/local
+ CFLAGS ?= $(OPTIMIZATIONS) -Wall
+ LIBDIR ?= lib
+@@ -17,7 +17,7 @@ mclk_VERSION?=$(shell git describe --tags HEAD 2>/dev/null | sed 's/-g.*$$//;s/^
+ ###############################################################################
+ LIB_EXT=.so
+ 
+-LV2DIR ?= $(PREFIX)/$(LIBDIR)/lv2
++LV2DIR ?= /zynthian/zynthian-plugins/lv2
+ LOADLIBES=-lm
+ LV2NAME=mclk
+ BUNDLE=mclk.lv2

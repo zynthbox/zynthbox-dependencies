@@ -1,0 +1,22 @@
+diff --git a/manifest.ttl b/manifest.ttl
+new file mode 100644
+index 0000000..33f66d7
+--- /dev/null
++++ b/manifest.ttl
+@@ -0,0 +1,15 @@
++<http://gareus.org/oss/lv2/mclk>
++    modgui:gui [
++        modgui:resourcesDirectory <modgui> ;
++        modgui:iconTemplate <modgui/icon-mclk.html> ;
++        modgui:stylesheet <modgui/stylesheet-mclk.css> ;
++        modgui:screenshot <modgui/screenshot-mclk.png> ;
++        modgui:thumbnail <modgui/thumbnail-mclk.png> ;
++        modgui:brand "x42" ;
++        modgui:label "MIDI Clock" ;
++        modgui:port [
++            lv2:index 0 ;
++            lv2:symbol "mode" ;
++            lv2:name "Mode" ;
++        ] ;
++    ] .
+\ No newline at end of file
