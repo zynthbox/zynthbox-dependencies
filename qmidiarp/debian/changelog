@@ -1,0 +1,12 @@
+zynthbox-plugin-qmidiarp (0.6.6-1-2) unstable; urgency=medium
+
+  * Migrated from opencode to gh
+
+ -- Probal Basak <probal31@gmail.com>  Wed, 27 Aug 2025 07:21:29 +0000
+
+zynthbox-plugin-qmidiarp (0.6.6-1-1) bullseye; urgency=medium
+
+  * Build
+
+ -- Anupam Basak <anupam.basak27@gmail.com>  Mon, 06 Mar 2023 19:12:00 +0530
+

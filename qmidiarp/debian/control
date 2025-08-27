@@ -1,0 +1,12 @@
+Source: zynthbox-plugin-qmidiarp
+Section: misc
+Priority: optional
+Maintainer: Anupam Basak <anupam.basak27@gmail.com>
+Build-Depends: debhelper (>= 11), lv2-dev
+Standards-Version: 4.1.3
+Homepage: https://github.com/zynthian/qmidiarp.git
+
+Package: zynthbox-plugin-qmidiarp
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, lv2-dev
+Description: Build zynthbox-plugin-qmidiarp deb
