@@ -1,0 +1,12 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	dh_auto_build -- BUILD_VST2=false BUILD_LV2=true BUILD_JACK=false
+
+override_dh_usrlocal:

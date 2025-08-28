@@ -1,0 +1,13 @@
+diff --git a/dpf/dgl/Makefile.mk.orig b/dpf/dgl/Makefile.mk
+index 86d87a9..d7941df 100644
+--- a/dpf/dgl/Makefile.mk.orig
++++ b/dpf/dgl/Makefile.mk
+@@ -23,7 +23,7 @@ endif
+ # Set build and link flags
+ 
+ BASE_FLAGS = -Wall -Wextra -pipe -MD -MP
+-BASE_OPTS  = -O2 -mtune=generic -msse -msse2 -fdata-sections -ffunction-sections
++BASE_OPTS  = -O2 -mtune=generic -fdata-sections -ffunction-sections
+ 
+ ifeq ($(MACOS),true)
+ # MacOS linker flags

@@ -87,6 +87,7 @@ on:
           - vl1
           - webconf
           - wolf-shaper
+          - wolf-spectrum
           - zynthbox-docs
           - zynthbox-qml
           - zynthbox-update-script

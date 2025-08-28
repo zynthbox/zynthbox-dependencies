@@ -274,6 +274,10 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/wolf-shaper-1.0.2.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
+    wolf-spectrum)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/wolf-spectrum-1.0.0.tar.gz" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1

@@ -1,0 +1,18 @@
+diff --git a/Makefile.mk.orig b/Makefile.mk
+index b1badbc..9f0eb27 100644
+--- a/Makefile.mk.orig
++++ b/Makefile.mk
+@@ -33,11 +33,11 @@ endif
+ # Set build and link flags
+ 
+ BASE_FLAGS = -Wall -Wextra -pipe
+-BASE_OPTS  = -O2 -ffast-math -mtune=generic -msse -msse2 -fdata-sections -ffunction-sections
++BASE_OPTS  = -O2 -ffast-math -mtune=generic -fdata-sections -ffunction-sections
+ 
+ ifneq ($(MACOS),true)
+ # MacOS doesn't support this
+-BASE_OPTS += -mfpmath=sse
++# BASE_OPTS += -mfpmath=sse
+ endif
+ 
+ ifeq ($(MACOS),true)
