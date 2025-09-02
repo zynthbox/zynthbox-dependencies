@@ -318,6 +318,10 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/mod-host-git+a8a0a2e.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
+    mod-ttymidi)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/mod-ttymidi-git+512edcc.tar.gz" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1

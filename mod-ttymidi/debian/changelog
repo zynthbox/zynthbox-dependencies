@@ -1,0 +1,12 @@
+zynthbox-dependency-mod-ttymidi (1.0-1-2) unstable; urgency=medium
+
+  * Migrated from opencode to gh
+
+ -- Probal Basak <probal31@gmail.com>  Tue, 02 Sep 2025 10:56:01 +0000
+
+zynthbox-dependency-mod-ttymidi (1.0-1-1) bullseye; urgency=medium
+
+  * Build
+
+ -- Anupam Basak <anupam.basak27@gmail.com>  Tue, 24 Feb 2023 14:31:00 +0530
+

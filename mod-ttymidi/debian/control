@@ -1,0 +1,14 @@
+Source: zynthbox-dependency-mod-ttymidi
+Section: misc
+Priority: optional
+Maintainer: Anupam Basak <anupam.basak27@gmail.com>
+Build-Depends: debhelper (>= 11), libjack-jackd2-dev
+Standards-Version: 4.1.3
+Homepage: https://github.com/moddevices/mod-ttymidi.git
+
+Package: zynthbox-dependency-mod-ttymidi
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libjack-jackd2-dev
+Description: ttyMIDI is a GPL-licensed program that allows external serial devices to interface with JACK MIDI clients.
+
+
