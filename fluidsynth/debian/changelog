@@ -1,0 +1,12 @@
+fluidsynth (2.4.3-1-2) unstable; urgency=medium
+
+  * Migrated from opencode to gh
+
+ -- Probal Basak <probal31@gmail.com>  Tue, 02 Sep 2025 10:51:51 +0000
+
+fluidsynth (2.4.3-1-1) bullseye; urgency=medium
+
+  * Build
+
+ -- Probal Basak <probal31@gmail.com>  Tue, 08 Apr 2025 14:49:12 +0530
+

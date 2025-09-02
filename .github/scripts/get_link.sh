@@ -294,6 +294,10 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/zynthbox-soundfonts.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
+    fluidsynth)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/fluidsynth-2.4.3.tar.gz" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1

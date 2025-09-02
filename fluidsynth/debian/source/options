@@ -1,0 +1,23 @@
+# Ignore all files having `/build/` in filepath
+extend-diff-ignore = "(.*\/)?build\/.*"
+
+# Ignore all files having `/.waf/` in filepath
+extend-diff-ignore = "(.*\/)?\.waf.*\/.*"
+
+# Ignore all files having `/man/` in filepath
+extend-diff-ignore = "(.*\/)?man\/.*"
+
+# Ignore all `.wafpickle` files
+extend-diff-ignore = ".*\.wafpickle.*"
+
+# Ignore all `.lock-waf` files
+extend-diff-ignore = ".*\.lock-waf.*"
+
+# Ignore all `.pyc` pycache files
+extend-diff-ignore = ".*.pyc"
+
+# Ignore all `.gitlab-ci.yml`
+extend-diff-ignore = ".gitlab-ci.yml"
+
+# Ignore all `README` files
+extend-diff-ignore = "README|README.md"
