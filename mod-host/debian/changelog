@@ -1,0 +1,12 @@
+zynthbox-dependency-mod-host (0.10.6-1-2) unstable; urgency=medium
+
+  * Migrated from opencode to gh
+
+ -- Probal Basak <probal31@gmail.com>  Tue, 02 Sep 2025 10:55:25 +0000
+
+zynthbox-dependency-mod-host (0.10.6-1-1) bullseye; urgency=medium
+
+  * Build
+
+ -- Anupam Basak <anupam.basak27@gmail.com>  Mon, 06 Mar 2023 22:53:17 +0530
+

@@ -1,0 +1,12 @@
+Source: zynthbox-dependency-mod-host
+Section: misc
+Priority: optional
+Maintainer: Anupam Basak <anupam.basak27@gmail.com>
+Build-Depends: debhelper (>= 11), liblilv-dev, lilv-utils, libreadline-dev, libfftw3-dev, libjack-jackd2-dev
+Standards-Version: 4.1.3
+Homepage: https://github.com/moddevices/mod-host.git
+
+Package: zynthbox-dependency-mod-host
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, liblilv-dev, lilv-utils
+Description: Build zynthbox-dependency-mod-host deb
