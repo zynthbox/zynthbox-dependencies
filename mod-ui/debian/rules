@@ -1,0 +1,21 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+
+override_dh_auto_build:
+	make -j$(shell nproc) -C utils build
+
+override_dh_auto_install:
+	mkdir -p $(shell pwd)/debian/zynthbox-dependency-mod-ui/zynthian/zynthian-sw/mod-ui/
+	find ./ -maxdepth 1 -not -name ".git*" -not -name . -not -name debian -exec cp -a {} $(shell pwd)/debian/zynthbox-dependency-mod-ui/zynthian/zynthian-sw/mod-ui/ \;
+	
+override_dh_auto_clean:
+
+override_dh_usrlocal:
+	
