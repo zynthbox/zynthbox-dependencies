@@ -278,6 +278,10 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/wolf-spectrum-1.0.0.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
+    ykchorus)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/ykchorus-git+ee0e362.tar.gz" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1
