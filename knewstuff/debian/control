@@ -1,0 +1,129 @@
+Source: knewstuff
+Section: libs
+Priority: optional
+Maintainer: Probal Basak <probal31@gmail.com>
+Build-Depends: debhelper (>= 11), 
+               cmake, g++, 
+               clang-format, 
+               libkf5archive-dev, 
+               libkf5completion-dev, 
+               libkf5coreaddons-dev, 
+               libkf5config-dev,
+               libkf5i18n-dev, 
+               libkf5iconthemes-dev, 
+               libkf5kio-dev, 
+               libkf5itemviews-dev, 
+               libkf5package-dev, 
+               libkf5service-dev, 
+               libkf5textwidgets-dev, 
+               libkf5widgetsaddons-dev, 
+               libkf5xmlgui-dev, 
+               libkf5attica-dev, 
+               kirigami2-dev, 
+               libkf5syndication-dev,
+               qttools5-dev-tools,
+               qtdeclarative5-dev,
+               libqt5sql5-sqlite,
+               qtbase5-dev,
+               qttools5-dev,
+               pkg-kde-tools,
+               graphviz,
+               doxygen,
+               xauth,
+               xvfb
+Standards-Version: 4.1.3
+Homepage: https://github.com/KDE/knewstuff
+
+Package: knewstuff-dialog
+Architecture: any
+Depends: libkf5newstuff-data (= ${source:Version}),
+         qml-module-org-kde-newstuff (= ${binary:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Description: Support for downloading application assets from the network.
+ Framework for downloading and sharing additional
+ application data.
+ .
+ This package contains standalone tool for use by apps which don't
+ want a hard dependency.
+
+Package: libkf5newstuff-data
+Architecture: all
+Depends: ${misc:Depends},
+Multi-Arch: foreign
+Description: Support for downloading application assets from the network.
+ Framework for downloading and sharing additional
+ application data.
+ .
+ This package contains the data files.
+
+Package: libkf5newstuff-dev
+Section: libdevel
+Architecture: any
+Depends: libkf5archive-dev (>= 5.103.0~),
+         libkf5attica-dev (>= 5.103.0~),
+         libkf5kio-dev (>= 5.103.0~),
+         libkf5newstuff5 (= ${binary:Version}),
+         libkf5newstuffcore5 (= ${binary:Version}),
+         libkf5newstuffwidgets5 (= ${binary:Version}),
+         libkf5xmlgui-dev (>= 5.103.0~),
+         qtbase5-dev (>= 5.15.2~),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Recommends: libkf5newstuff-doc (= ${source:Version}),
+Description: development files for knewstuff
+ Framework for downloading and sharing additional
+ application data.
+ .
+ Contains development files for knewstuff.
+Breaks: libkf5kdelibs4support-dev (<< 5.54),
+
+Package: libkf5newstuff-doc
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+Description: Support for downloading application assets from the network (documentation)
+ Framework for downloading and sharing additional
+ application data.
+ .
+ This package contains the qch documentation files.
+Section: doc
+
+Package: libkf5newstuff5
+Architecture: any
+Multi-Arch: same
+Depends: libkf5newstuff-data (= ${source:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Description: Support for downloading application assets from the network.
+ Framework for downloading and sharing additional
+ application data.
+
+Package: libkf5newstuffcore5
+Architecture: any
+Multi-Arch: same
+Recommends: qml-module-org-kde-newstuff (= ${binary:Version}),
+Depends: kio (>= 5.54), ${misc:Depends}, ${shlibs:Depends},
+Description: Support for downloading application assets from the network.
+ Framework for idownloading and sharing additional
+ application data.
+Breaks: frameworkintegration (<< 5.54),
+
+Package: libkf5newstuffwidgets5
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends}, ${shlibs:Depends},
+Description: Support for downloading application assets from the network.
+ Framework for idownloading and sharing additional
+ application data.
+ 
+Package: qml-module-org-kde-newstuff
+Architecture: any
+Depends: qml-module-org-kde-kirigami2 (>= 5.54),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Description: Support for downloading application assets from the network.
+ Framework for downloading and sharing additional
+ application data.
+ .
+ This package contains the runtime files

@@ -1,0 +1,168 @@
+From d14233ae1c9d275e9ae5327ada666a5b1da4c022 Mon Sep 17 00:00:00 2001
+From: Dan Leinir Turthra Jensen <admin@leinir.dk>
+Date: Thu, 27 Mar 2025 15:53:48 +0000
+Subject: [PATCH] First step towards the ability to add author info to the
+ download location
+
+This does not clean out the directory once the last of that author's
+entries has been uninstalled.
+---
+ src/core/installation.cpp | 81 ++++++++++++++++++++++++++++++++++++---
+ src/core/installation.h   | 12 ++++++
+ 2 files changed, 88 insertions(+), 5 deletions(-)
+
+diff --git a/src/core/installation.cpp b/src/core/installation.cpp
+index 5a6c3eeb..0910af4c 100644
+--- a/src/core/installation.cpp
++++ b/src/core/installation.cpp
+@@ -46,6 +46,7 @@ Installation::Installation(QObject *parent)
+     // TODO KF6 Make these real properties, when we can refactor this and add a proper dptr
+     setProperty("kpackageType", QLatin1String(""));
+     setProperty("uncompressSetting", UncompressionOptions::NeverUncompress);
++    setProperty("authorSubdir", AuthorSubdirOptions::NoAuthorSubdir);
+ }
+ 
+ bool Installation::readConfig(const KConfigGroup &group)
+@@ -82,6 +83,26 @@ bool Installation::readConfig(const KConfigGroup &group)
+     targetDirectory = group.readEntry("TargetDir");
+     xdgTargetDirectory = group.readEntry("XdgTargetDir");
+ 
++    AuthorSubdirOptions authorSubdir{NoAuthorSubdir};
++    const QString authorSubdirSetting = group.readEntry("AuthorSubdir", QStringLiteral("none")).toLower();
++    if (authorSubdirSetting == QStringLiteral("none") || authorSubdirSetting.isEmpty()) {
++        authorSubdir = NoAuthorSubdir;
++    } else if (authorSubdirSetting == QStringLiteral("id")) {
++        authorSubdir = IdAuthorSubdir;
++    } else if (authorSubdirSetting == QStringLiteral("name")) {
++        authorSubdir = NameAuthorSubdir;
++    } else if (authorSubdirSetting == QStringLiteral("nameandid")) {
++        authorSubdir = NameIdAuthorSubdir;
++    } else if (authorSubdirSetting == QStringLiteral("email")) {
++        authorSubdir = EmailAuthorSubdir;
++    } else if (authorSubdirSetting == QStringLiteral("nameandemail")) {
++        authorSubdir = NameAndEmailAuthorSubdir;
++    } else {
++        qCCritical(KNEWSTUFFCORE) << "invalid AuthorSubdir setting chosen, must be one of: none, id, name, namdeandid, or email";
++        return false;
++    }
++    setProperty("authorSubdir", authorSubdir);
++
+ #if KNEWSTUFFCORE_BUILD_DEPRECATED_SINCE(5, 77)
+     // Provide some compatibility
+     if (standardResourceDirectory == QLatin1String("wallpaper")) {
+@@ -418,6 +439,56 @@ QStringList Installation::installDownloadedFileAndUncompress(const KNSCore::Entr
+     bool isarchive = true;
+     UncompressionOptions uncompressionOpt = uncompressionSetting();
+ 
++    // Respect the author subdir setting
++    QString fullInstallDir{installdir};
++    if (fullInstallDir.endsWith(QStringLiteral("/")) == false) {
++        fullInstallDir.append(QStringLiteral("/"));
++    }
++    const AuthorSubdirOptions authorSubdirOptions{property("authorSubdir").value<AuthorSubdirOptions>()};
++    const QString authorId{entry.author().id().isEmpty() ? QStringLiteral("unknown") : entry.author().id()};
++    switch (authorSubdirOptions) {
++    case NoAuthorSubdir:
++        // No need to fetch author information here
++        break;
++    case IdAuthorSubdir:
++        fullInstallDir.append(QString::fromUtf8("%1/").arg(authorId));
++        break;
++    case NameAuthorSubdir:
++        if (entry.author().name().isEmpty()) {
++            fullInstallDir.append(QString::fromUtf8("%1/").arg(authorId));
++        } else {
++            fullInstallDir.append(QString::fromUtf8("%1/").arg(entry.author().name()));
++        }
++        break;
++    case NameIdAuthorSubdir:
++        if (entry.author().name().isEmpty()) {
++            fullInstallDir.append(QString::fromUtf8("unknown.%1/").arg(authorId));
++        } else {
++            fullInstallDir.append(QString::fromUtf8("%1.%2/").arg(entry.author().name()).arg(authorId));
++        }
++        break;
++    case EmailAuthorSubdir:
++        if (entry.author().email().isEmpty()) {
++            fullInstallDir.append(QString::fromUtf8("%1/").arg(authorId));
++        } else {
++            fullInstallDir.append(QString::fromUtf8("%1/").arg(entry.author().email()));
++        }
++        break;
++    case NameAndEmailAuthorSubdir:
++        if (entry.author().name().isEmpty() && entry.author().email().isEmpty()) {
++            fullInstallDir.append(QString::fromUtf8("unknown (%1)/").arg(authorId));
++        } else if (entry.author().name().isEmpty()) {
++            fullInstallDir.append(QString::fromUtf8("unknown (%1)/").arg(entry.author().email()));
++        } else if (entry.author().email().isEmpty()) {
++            fullInstallDir.append(QString::fromUtf8("%1 (%2)/").arg(entry.author().name()).arg(authorId));
++        } else {
++            fullInstallDir.append(QString::fromUtf8("%1 (%2)/").arg(entry.author().name()).arg(entry.author().email()));
++        }
++        break;
++    }
++    // Create the install directory if it doesn't yet exist (common case when installing new things)
++    QDir().mkpath(fullInstallDir);
++
+     // respect the uncompress flag in the knsrc
+     if (uncompressionOpt == UseKPackageUncompression) {
+         qCDebug(KNEWSTUFFCORE) << "Using KPackage for installation";
+@@ -606,9 +677,9 @@ QStringList Installation::installDownloadedFileAndUncompress(const KNSCore::Entr
+                     const bool isSubdir =
+                         (uncompressionOpt == UncompressIntoSubdir || uncompressionOpt == UncompressIntoSubdirIfArchive) && dir->entries().count() > 1;
+                     if (isSubdir) {
+-                        installpath = installdir + QLatin1Char('/') + QFileInfo(archive->fileName()).baseName();
++                        installpath = fullInstallDir + QLatin1Char('/') + QFileInfo(archive->fileName()).baseName();
+                     } else {
+-                        installpath = installdir;
++                        installpath = fullInstallDir;
+                     }
+ 
+                     if (dir->copyTo(installpath)) {
+@@ -656,9 +727,9 @@ QStringList Installation::installDownloadedFileAndUncompress(const KNSCore::Entr
+             } else {
+                 installfile = source.fileName();
+             }
+-            const QString installpath = QDir(installdir).filePath(installfile);
++            const QString installpath = QDir(fullInstallDir).filePath(installfile);
+ #else
+-            const QString installpath = QDir(installdir).filePath(source.fileName());
++            const QString installpath = QDir(fullInstallDir).filePath(source.fileName());
+ #endif
+ 
+             qCDebug(KNEWSTUFFCORE) << "Install to file" << installpath;
+@@ -671,7 +742,7 @@ QStringList Installation::installDownloadedFileAndUncompress(const KNSCore::Entr
+             bool success = true;
+             const bool update = ((entry.status() == KNS3::Entry::Updateable) || (entry.status() == KNS3::Entry::Updating));
+ 
+-            if (QFile::exists(installpath) && QDir::tempPath() != installdir) {
++            if (QFile::exists(installpath) && QDir::tempPath() != fullInstallDir) {
+                 if (!update) {
+                     Question question(Question::YesNoQuestion);
+                     question.setEntry(entry);
+diff --git a/src/core/installation.h b/src/core/installation.h
+index 22e1059d..ed50da3c 100644
+--- a/src/core/installation.h
++++ b/src/core/installation.h
+@@ -68,6 +68,18 @@ public:
+     };
+     Q_ENUM(UncompressionOptions)
+ 
++    enum AuthorSubdirOptions {
++        NoAuthorSubdir, ///< No author subdirectory will be created
++        IdAuthorSubdir, ///< Entries will be installed into a subdirectory matching the author's ID
++        NameAuthorSubdir, ///< Entries will be installed into a subdirectory matching the author's name (falling back to the ID if there is no name set set)
++        NameIdAuthorSubdir, ///< Entries will be installed into a subdirectory matching the author's name (if the name is not set, the string will be
++                            ///< "unknown"), suffixed with their ID (separated from the name by a period)
++        EmailAuthorSubdir, ///< Entries will be installed into a subdirectory matching the author's email (falling back to the ID if there is no email set)
++        NameAndEmailAuthorSubdir, ///< Entries will be installed into a subdirectory matching the author's name (if the name is not set, the string will be
++                                  ///< "unknown"), suffixed with their email in a parenthesis (falling back to the ID if there is no email set)
++    };
++    Q_ENUM(AuthorSubdirOptions)
++
+     bool readConfig(const KConfigGroup &group);
+ 
+ #if KNEWSTUFFCORE_ENABLE_DEPRECATED_SINCE(5, 71)
+-- 
+2.48.1
+

@@ -1,0 +1,39 @@
+From 427e99be7e679579807f6025d207a72347d69142 Mon Sep 17 00:00:00 2001
+From: Dan Leinir Turthra Jensen <admin@leinir.dk>
+Date: Fri, 28 Mar 2025 13:59:18 +0000
+Subject: [PATCH 2/3] Add an EntrySubdirOptions enum, to match the EntrySubdir
+ option
+
+This intends to partner up the AuthorSubdir option with a matching
+option for the entries themselves, allowing you to install entries into
+a subdir of their own. You can mix and match, or you can have just the
+entry in a subdir, with no author (though in that case, recommending to
+use nameandid).
+---
+ src/core/installation.h | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/src/core/installation.h b/src/core/installation.h
+index ed50da3c..631d42d4 100644
+--- a/src/core/installation.h
++++ b/src/core/installation.h
+@@ -80,6 +80,16 @@ public:
+     };
+     Q_ENUM(AuthorSubdirOptions)
+ 
++    // Set the productSubdir option to install entries into a subdirectory (if authorSubdir is set, the product subdirectory will be underneath that)
++    enum EntrySubdirOptions {
++        NoEntrySubdir, ///< No product subdirectory will be created
++        IdEntrySubdir, ///< Entries will be installed into a subdirectory matching the product's ID
++        NameEntrySubdir, ///< Entries will be installed into a subdirectory matching the product's name
++        NameAndIdEntrySubdir, ///< Entries will be installed into a subdirectory matching the product's name, suffixed by the product's ID (separated from the
++                              ///< name by a period)
++    };
++    Q_ENUM(EntrySubdirOptions)
++
+     bool readConfig(const KConfigGroup &group);
+ 
+ #if KNEWSTUFFCORE_ENABLE_DEPRECATED_SINCE(5, 71)
+-- 
+2.48.1
+
