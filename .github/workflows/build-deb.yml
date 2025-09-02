@@ -10,19 +10,6 @@ on:
         type: choice
         options:
           # The name should be same as the folder name in the repository
-          - ntk
-          - mod-ui
-          - mod-ttymidi
-          - mod-host
-          - mod-browsepy
-          - lvtk-v1
-          - dxsyx
-          - knewstuff
-          - fluidsynth
-          - zynthbox-soundfonts
-          - zlfo
-          - zam-plugins
-          - ykchorus
           - abgate
           - aether-reverb
           - airwin2rack
@@ -44,9 +31,11 @@ on:
           - drmr
           - drumgizmo
           - drumkv1-lv2
+          - dxsyx
           - fabla
           - faust
           - fluidplug
+          - fluidsynth
           - foo-yc20
           - gammaray
           - geonkick
@@ -58,23 +47,30 @@ on:
           - gxswitchlesswah
           - infamous-plugins
           - invada-studio-plugins-lv2
+          - knewstuff
           - libspecbleach
           - libzynthbox
           - lilv
           - lsp-plugins
+          - lvtk-v1
           - mclk
           - midi-display
           - miniopl3
           - mod-arpeggiator
+          - mod-browsepy
           - mod-cabsim-ir-loader
           - mod-cv-plugins
           - mod-distortion
+          - mod-host
           - mod-mda
           - mod-pitchshifter
+          - mod-ttymidi
+          - mod-ui
           - mod-utilities
           - moony-lv2
           - njconnect
           - noise-repellent
+          - ntk
           - padthv1-lv2
           - preset2lv2
           - punk-console
@@ -101,8 +97,12 @@ on:
           - webconf
           - wolf-shaper
           - wolf-spectrum
+          - ykchorus
+          - zam-plugins
+          - zlfo
           - zynthbox-docs
           - zynthbox-qml
+          - zynthbox-soundfonts
           - zynthbox-update-script
           - zynthbox-virtualkeyboard-theme
 jobs:
