@@ -1,0 +1,12 @@
+zynthbox-soundfonts (1.0.0-1-2) unstable; urgency=medium
+
+  * Migrated from opencode to gh
+
+ -- Probal Basak <probal31@gmail.com>  Tue, 02 Sep 2025 10:51:05 +0000
+
+zynthbox-soundfonts (1.0.0-1-1) bookworm; urgency=medium
+
+  * Build
+
+ -- Anupam Basak <anupam.basak27@gmail.com>  Tue, 19 Feb 2025 13:23:11 +0530
+

@@ -1,0 +1,11 @@
+Source: zynthbox-soundfonts
+Section: misc
+Priority: optional
+Maintainer: Anupam Basak <anupam.basak27@gmail.com>
+Build-Depends: debhelper (>= 11)
+Standards-Version: 4.1.3
+
+Package: zynthbox-soundfonts
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Build zynthbox-soundfonts deb
