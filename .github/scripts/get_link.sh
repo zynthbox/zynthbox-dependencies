@@ -282,6 +282,10 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/ykchorus-git+ee0e362.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
+    zam-plugins)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/zam-plugins-4.3.tar.gz" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1

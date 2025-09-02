@@ -1,0 +1,12 @@
+zynthbox-plugin-zam-plugins (4.3-1-2) unstable; urgency=medium
+
+  * Migrated from opencode to gh
+
+ -- Probal Basak <probal31@gmail.com>  Tue, 02 Sep 2025 10:49:36 +0000
+
+zynthbox-plugin-zam-plugins (4.3-1-1) bullseye; urgency=medium
+
+  * Build
+
+ -- Probal Basak <probal31@gmail.com>  Mon, 05 May 2025 19:47:35 +0530
+
