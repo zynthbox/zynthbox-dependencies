@@ -1,0 +1,12 @@
+zynthbox-dependency-dxsyx (0.1-1-2) unstable; urgency=medium
+
+  * Migrated from opencode to gh
+
+ -- Probal Basak <probal31@gmail.com>  Tue, 02 Sep 2025 10:53:46 +0000
+
+zynthbox-dependency-dxsyx (0.1-1-1) bullseye; urgency=medium
+
+  * Build
+
+ -- Anupam Basak <anupam.basak27@gmail.com>  Mon, 27 Feb 2023 17:58:16 +0530
+
