@@ -1,0 +1,12 @@
+Source: zynthbox-plugin-zlfo
+Section: misc
+Priority: optional
+Maintainer: Probal Basak <probal31@gmail.com>
+Build-Depends: debhelper (>= 11), lv2-dev, librsvg2-dev
+Standards-Version: 4.1.3
+Homepage: https://github.com/zrythm/ZLFO
+
+Package: zynthbox-plugin-zlfo
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Build zynthbox-plugin-zlfo deb
