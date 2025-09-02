@@ -1,0 +1,12 @@
+Source: zynthbox-dependency-mod-browsepy
+Section: misc
+Priority: optional
+Maintainer: Anupam Basak <anupam.basak27@gmail.com>
+Build-Depends: debhelper (>= 11)
+Standards-Version: 4.1.3
+Homepage: https://github.com/moddevices/browsepy.git
+
+Package: zynthbox-dependency-mod-browsepy
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Build zynthbox-dependency-mod-browsepy deb
