@@ -334,6 +334,10 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/zynaddsubfx-3.0.5.tar.bz2" >> $GITHUB_OUTPUT
         ;;
 
+    setbfree)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/setbfree-0.8.1.tar.gz" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1

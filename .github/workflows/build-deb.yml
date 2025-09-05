@@ -79,6 +79,7 @@ on:
           - regrader
           - remid
           - rubberband-lv2
+          - setbfree
           - shiro-plugins
           - sonobus
           - sooperlooper-lv2
