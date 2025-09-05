@@ -331,7 +331,7 @@ case "$PACKAGE_NAME" in
         ;;
 
     zynaddsubfx)
-        echo "https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/zynaddsubfx-3.0.5.tar.bz2" >> $GITHUB_OUTPUT
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/zynaddsubfx-3.0.5.tar.bz2" >> $GITHUB_OUTPUT
         ;;
 
     *)
