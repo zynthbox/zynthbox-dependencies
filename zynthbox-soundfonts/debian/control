@@ -8,4 +8,8 @@ Standards-Version: 4.1.3
 Package: zynthbox-soundfonts
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Breaks: zynthbox-dependency-squishbox-sf2
+Provides: zynthbox-dependency-squishbox-sf2
+Replaces: zynthbox-dependency-squishbox-sf2
+Conflicts: zynthbox-dependency-squishbox-sf2
 Description: Build zynthbox-soundfonts deb
