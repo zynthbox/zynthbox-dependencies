@@ -3,8 +3,25 @@
 # output every command that modifies files on the build system.
 #export DH_VERBOSE = 1
 
+DEB_BUILD_ARCH = $(shell dpkg-architecture -qDEB_BUILD_ARCH)
+
+FLAGS  = -O3 -ffast-math -fPIC -DPIC -fvisibility=hidden -fdata-sections -ffunction-sections -DNDEBUG -Wno-deprecated
+ifeq ($(DEB_BUILD_ARCH),armhf)
+FLAGS += -march=armv7ve -mcpu=cortex-a7 -mfloat-abi=hard -mfpu=neon-vfpv4
+else ifeq ($(DEB_BUILD_ARCH),arm64)
+FLAGS += -march=armv8-a -mcpu=cortex-a53
+endif
+
+export CFLAGS=$(FLAGS)
+export CXXFLAGS=$(FLAGS) -fvisibility-inlines-hidden
+export CPPFLAGS=
+export LDFLAGS=-Wl,-O1 -Wl,--as-needed -Wl,--no-undefined -Wl,--gc-sections -Wl,--strip-all
+
 %:
 	dh $@
+
+override_dh_auto_build:
+	dh_auto_build -- NOOPT=true
 
 override_dh_auto_install:
 	dh_auto_install -- PREFIX=/usr

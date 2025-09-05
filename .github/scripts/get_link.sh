@@ -59,7 +59,7 @@ case "$PACKAGE_NAME" in
         echo "repolink=https://github.com/zynthbox/zynthbox-docs.git" >> $GITHUB_OUTPUT
         ;;
     shiro-plugins)
-        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/shiro-plugins-20201110.tar.gz" >> $GITHUB_OUTPUT
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/shiro-plugins_20191002.tar.gz" >> $GITHUB_OUTPUT
         ;;
     sorcer)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/sorcer-1.1.3.tar.gz" >> $GITHUB_OUTPUT
