@@ -1,4 +1,4 @@
-setbfree (0.8.1-1-1) bookworm; urgency=medium
+setbfree (6:0.8.1-1-2) bookworm; urgency=medium
 
   * Build
 
