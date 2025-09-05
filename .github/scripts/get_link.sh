@@ -330,6 +330,10 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/ntk-1.3.1001.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
+    zynaddsubfx)
+        echo "https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/zynaddsubfx-3.0.5.tar.bz2" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1

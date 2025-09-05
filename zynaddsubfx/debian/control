@@ -1,0 +1,16 @@
+Source: zynaddsubfx
+Section: misc
+Priority: optional
+Maintainer: Anupam Basak <anupam.basak27@gmail.com>
+Build-Depends: debhelper (>= 11), cmake, g++, lv2-dev, libfftw3-dev, libmxml-dev, zlib1g-dev, liblo-dev, libjack-jackd2-dev
+Standards-Version: 4.1.3
+Homepage: https://zynaddsubfx.sourceforge.io/
+
+Package: zynaddsubfx
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Breaks: zynaddsubfx-data
+Provides: zynaddsubfx-data
+Replaces: zynaddsubfx-data
+Conflicts: zynaddsubfx-data
+Description: Build zynaddsubfx deb
