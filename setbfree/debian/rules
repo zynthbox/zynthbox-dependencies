@@ -15,7 +15,7 @@ endif
 export CFLAGS=$(FLAGS)
 export CXXFLAGS=$(FLAGS) -fvisibility-inlines-hidden
 export CPPFLAGS=
-export LDFLAGS=-Wl,-O1 -Wl,--as-needed -Wl,--no-undefined -Wl,--gc-sections -Wl,--strip-all -lm
+# export LDFLAGS=-Wl,-O1 -Wl,--as-needed -Wl,--no-undefined -Wl,--gc-sections -Wl,--strip-all -lm
 
 %:
 	dh $@
