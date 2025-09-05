@@ -6,4 +6,7 @@
 %:
 	dh $@
 
+override_dh_auto_install:
+	DESTDIR=$(shell pwd)/debian/zynthbox-plugin-mod-utilities INSTALL_PATH=/usr/lib/lv2 make install
+
 override_dh_usrlocal:
