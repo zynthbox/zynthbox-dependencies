@@ -29,13 +29,13 @@ override_dh_auto_install:
 		PREFIX=/usr \
 		DESTDIR=$(CURDIR)/debian/setbfree
 
-	mkdir -p $(CURDIR)/debian/setbfree/usr/lib/vst/
-
-	cp /opt/kxstudio/lib/lv2vst.so $(CURDIR)/debian/setbfree/usr/lib/vst/b_synth.lv2.so
-	echo "/usr/lib/lv2/b_synth/" > $(CURDIR)/debian/setbfree/usr/lib/vst/b_synth.lv2.bundle
-
-	cp /opt/kxstudio/lib/lv2vst.so $(CURDIR)/debian/setbfree/usr/lib/vst/b_whirl.lv2.so
-	echo "/usr/lib/lv2/b_whirl/" > $(CURDIR)/debian/setbfree/usr/lib/vst/b_whirl.lv2.bundle
+# 	mkdir -p $(CURDIR)/debian/setbfree/usr/lib/vst/
+#
+# 	cp /opt/kxstudio/lib/lv2vst.so $(CURDIR)/debian/setbfree/usr/lib/vst/b_synth.lv2.so
+# 	echo "/usr/lib/lv2/b_synth/" > $(CURDIR)/debian/setbfree/usr/lib/vst/b_synth.lv2.bundle
+#
+# 	cp /opt/kxstudio/lib/lv2vst.so $(CURDIR)/debian/setbfree/usr/lib/vst/b_whirl.lv2.so
+# 	echo "/usr/lib/lv2/b_whirl/" > $(CURDIR)/debian/setbfree/usr/lib/vst/b_whirl.lv2.bundle
 
 override_dh_auto_clean:
 	dh_auto_clean
