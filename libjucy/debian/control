@@ -1,0 +1,12 @@
+Source: libjucy
+Section: misc
+Priority: optional
+Maintainer: Anupam Basak <anupam.basak27@gmail.com>
+Build-Depends: debhelper (>= 11), libwebkit2gtk-4.0-dev, cmake (>= 3.15), qtbase5-dev, qtdeclarative5-dev, qtquickcontrols2-5-dev, libjack-jackd2-dev, libcurl4-gnutls-dev, ladspa-sdk, pkg-config, extra-cmake-modules, libshiboken2-dev, libpyside2-dev, libclang-dev, llvm-dev, libfftw3-dev
+Standards-Version: 4.1.3
+Homepage: https://github.com/libjucy/libjucy
+
+Package: libjucy
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Jucy library

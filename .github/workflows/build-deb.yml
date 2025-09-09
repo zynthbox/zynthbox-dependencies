@@ -51,6 +51,7 @@ on:
           - infamous-plugins
           - invada-studio-plugins-lv2
           - knewstuff
+          - libjucy
           - libspecbleach
           - libzynthbox
           - lilv

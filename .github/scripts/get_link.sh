@@ -370,6 +370,10 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/xmodits-cli-0.11.5.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
+    libjucy)
+        echo "repolink=https://github.com/libjucy/libjucy" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1
