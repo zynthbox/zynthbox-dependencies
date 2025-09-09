@@ -1,0 +1,12 @@
+bluez-alsa (0.5-1-2) unstable; urgency=medium
+
+  * Migrated from opencode to gh
+
+ -- Probal Basak <probal31@gmail.com>  Tue, 09 Sep 2025 10:21:49 +0000
+
+bluez-alsa (0.5-1-1) buster; urgency=medium
+
+  * Initial release
+
+ -- Probal Basak <probal31@gmail.com>  Tue, 14 Jan 2023 14:55:00 +0530
+

@@ -20,6 +20,7 @@ on:
           - bchoppr
           - beatslash-lv2
           - blop-lv2
+          - bluez-alsa
           - bolliedelay
           - bshapr
           - bslizr
