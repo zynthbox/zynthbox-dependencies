@@ -1,0 +1,12 @@
+diff --git a/vstgui.surge/vstgui/lib/vstguifwd.h b/vstgui.surge/vstgui/lib/vstguifwd.h
+index 306a5e9..341f704 100644
+--- a/vstgui.surge/vstgui/lib/vstguifwd.h
++++ b/vstgui.surge/vstgui/lib/vstguifwd.h
+@@ -7,6 +7,7 @@
+ 
+ #include "vstguibase.h"
+ #include <functional>
++#include <limits>
+ 
+ namespace VSTGUI {
+ 

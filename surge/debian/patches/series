@@ -1,3 +1,4 @@
 fix-linkage.patch
 fix-no-git-version.patch
 disable-vst-headless.patch
+fix-include.patch
