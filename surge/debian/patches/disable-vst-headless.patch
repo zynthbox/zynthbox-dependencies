@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 7523be6..4257c66 100644
+index 7523be6..42c5d7a 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -37,8 +37,8 @@ list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/")
@@ -13,3 +13,16 @@ index 7523be6..4257c66 100644
  
  if( DEFINED ARM_NATIVE )
     include( cmake/arm-${ARM_NATIVE}.cmake )
+@@ -1061,6 +1061,11 @@ if( APPLE )
+ 
+ endif()
+ 
++if( BUILD_LV2 )
++  install(DIRECTORY ${SURGE_PRODUCT_DIR}/Surge.lv2 DESTINATION lib/lv2)
++  install(DIRECTORY ${CMAKE_SOURCE_DIR}/resources/data/ DESTINATION share/surge)
++endif()
++
+ # Extra packages and utils
+ if( ${BUILD_SVGSHOW} )
+   add_subdirectory( utils/svgshow )
+ 
