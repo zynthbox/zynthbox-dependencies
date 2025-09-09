@@ -24,7 +24,7 @@ export PKG_CONFIG_PATH=/opt/kxstudio/lib/pkgconfig
 override_dh_auto_build:
 	echo "deb http://archive.debian.org/debian/ bullseye main contrib non-free" | sudo tee /etc/apt/sources.list.d/bullseye.list
 	sudo apt update
-	sudo apt install gcc-9
+	sudo apt install -y gcc-9
 	sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 1
 	gcc -v
 	$(MAKE) standalone lv2 vst -j4
