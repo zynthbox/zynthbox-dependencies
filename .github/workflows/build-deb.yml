@@ -112,6 +112,7 @@ on:
           - zam-plugins
           - zlfo
           - zynaddsubfx
+          - zyncoder
           - zynthbox-docs
           - zynthbox-qml
           - zynthbox-soundfonts
