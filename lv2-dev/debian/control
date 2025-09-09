@@ -1,0 +1,29 @@
+Source: lv2
+Section: sound
+Priority: optional
+Maintainer: Christian Marillat <marillat@deb-multimedia.org>
+Bugs: mailto:marillat@deb-multimedia.org
+Homepage: https://lv2plug.in/
+Rules-Requires-Root: no
+Standards-Version: 4.7.0
+Build-Depends: debhelper-compat (= 13), libsndfile1-dev, meson,
+ libgtk2.0-dev,
+
+Package: lv2-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends}, ${shlibs:Depends},
+Breaks: lv2-extensions-good (<= 0~20111202+dfsg0-2~), lv2core (<= 6.0+dfsg0-2~), lv2-examples,
+Replaces: lv2-extensions-good (<= 0~20111202+dfsg0-2~), lv2core (<= 6.0+dfsg0-2~), lv2-examples,
+Description: LV2 audio plugin specification
+ LV2 is a simple but extensible successor of LADSPA plugins,
+ intended to address the limitations of LADSPA which many
+ applications have outgrown.
+ .
+ This package contains the LV2 audio plugin specification,
+ with all the official extension packages, as well as example
+ plugins, lv2specgen, and additional data.
+ .
+ Implementations are encouraged to abandon the “copy paste
+ headers” practice and depend on this package instead.

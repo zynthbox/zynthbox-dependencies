@@ -1,0 +1,185 @@
+lv2 (2: 1.18.10-1-2) bookworm; urgency=medium
+
+  * Repack
+
+ -- Anupam Basak <anupam.basak27@gmail.com>  Wed, 09 Sep 2025 14:25:00 +0530
+
+lv2-dmo (1:1.18.10-dmo7) unstable; urgency=medium
+
+  * Convert symlinks to directories with dpkg-maintscript-helper and remove
+    preinst file.
+
+ -- Christian Marillat <marillat@deb-multimedia.org>  Sat, 10 Aug 2024 10:19:39 +0200
+
+lv2-dmo (1:1.18.10-dmo6) unstable; urgency=medium
+
+  * Add a missing if...
+
+ -- Christian Marillat <marillat@deb-multimedia.org>  Fri, 03 Mar 2023 16:44:59 +0100
+
+lv2-dmo (1:1.18.10-dmo5) unstable; urgency=medium
+
+  * As dpkg is unable to delete symbolic links found in lv2-dev 1.18.4
+    package, tries to remove them in the preinst script.
+
+ -- Christian Marillat <marillat@deb-multimedia.org>  Fri, 03 Mar 2023 16:20:43 +0100
+
+lv2-dmo (1:1.18.10-dmo4) unstable; urgency=medium
+
+  * Last upload ? Add 'Multi-Arch: same' for lv2-dev
+
+ -- Christian Marillat <marillat@deb-multimedia.org>  Fri, 03 Mar 2023 15:17:05 +0100
+
+lv2-dmo (1:1.18.10-dmo3) unstable; urgency=medium
+
+  * Files should be installed to /usr/lib/lv2/ and not
+    /usr/lib/x86_64-linux-gnu/lv2/
+
+ -- Christian Marillat <marillat@deb-multimedia.org>  Fri, 03 Mar 2023 15:07:04 +0100
+
+lv2-dmo (1:1.18.10-dmo2) unstable; urgency=medium
+
+  * Drop lv2-examples package and add Conflicts/Replaces for this package.
+
+ -- Christian Marillat <marillat@deb-multimedia.org>  Fri, 03 Mar 2023 14:53:24 +0100
+
+lv2-dmo (1:1.18.10-dmo1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Christian Marillat <marillat@deb-multimedia.org>  Fri, 03 Mar 2023 13:37:12 +0100
+
+lv2-dmo (1:1.18.4-dmo2) unstable; urgency=medium
+
+  * Don't build with --copy-headers
+
+ -- Christian Marillat <marillat@deb-multimedia.org>  Fri, 27 May 2022 09:59:53 +0200
+
+lv2-dmo (1:1.18.4-dmo1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Christian Marillat <marillat@deb-multimedia.org>  Fri, 27 May 2022 08:02:19 +0200
+
+lv2-dmo (1:1.18.2-dmo1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Christian Marillat <marillat@deb-multimedia.org>  Fri, 08 Jan 2021 09:02:38 +0100
+
+lv2-dmo (1:1.18.0-dmo1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Christian Marillat <marillat@deb-multimedia.org>  Sun, 26 Apr 2020 20:02:02 +0200
+
+lv2-dmo (1:1.16.0-dmo1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Christian Marillat <marillat@deb-multimedia.org>  Fri, 07 Jun 2019 09:15:51 +0200
+
+lv2 (1.14.0~dfsg1-2) unstable; urgency=medium
+
+  * Bump Standards.
+  * Set dh/compat 11.
+  * Update VCS to salsa.
+  * New maintainer address <debian-multimedia@lists.d.o>
+  * Use secure uri in copyright file.
+  * Fix pkg-config path for cross compilation. (Closes: #888762)
+
+ -- Jaromír Mikeš <mira.mikes@seznam.cz>  Mon, 29 Jan 2018 23:02:59 +0100
+
+lv2 (1.14.0~dfsg1-1) unstable; urgency=medium
+
+  * New upstream version 1.14.0~dfsg1
+  * Fix hardening.
+  * Fix VCS fields.
+  * Bump Standards.
+  * Add .gitignore file.
+
+ -- Jaromír Mikeš <mira.mikes@seznam.cz>  Thu, 22 Sep 2016 13:20:16 +0200
+
+lv2 (1.12.0~dfsg0-1) unstable; urgency=medium
+
+  [ Felipe Sateler ]
+  * Simplify lv2-examples install file. Thanks to Falktx
+
+  [ Alessio Treglia ]
+  * New upstream release.
+  * debian/docs: Fix readme's filename.
+  * Bump Standards.
+
+ -- Alessio Treglia <alessio@debian.org>  Sun, 26 Apr 2015 20:21:39 +0100
+
+lv2 (1.10.0~dfsg1-1) unstable; urgency=medium
+
+  * New upstream release.
+
+  [ Jaromír Mikeš ]
+  * Set dh/compat 9.
+  * Remove --debug from configure to cppflags be passed.
+  * Tuned get-orig-source.
+
+  [ Alessio Treglia ]
+  * Add script to help out repacking the tarball.
+  * Move example plugins from lv2-dev to lv-examples.
+
+ -- Alessio Treglia <alessio@debian.org>  Wed, 13 Aug 2014 16:29:24 +0100
+
+lv2 (1.8.0~dfsg0-1) unstable; urgency=low
+
+  * New upstream release:
+    - Install lv2specgen for use by other projects.
+    - lv2specgen: Fix links to externally defined terms.
+    - Add scope example plugin from Robin Gareus.
+    - lv2core: Add lv2:prototype for property inheritance.
+    - atom: Make lv2_atom_*_is_end() arguments const.
+    - log: Add missing include <string.h> to logger.h for memset.
+    - ui: Fix LV2_UI_INVALID_PORT_INDEX identifier in documentation.
+  * Bump Standards.
+
+ -- Alessio Treglia <alessio@debian.org>  Mon, 06 Jan 2014 10:29:02 +0000
+
+lv2 (1.6.0~dfsg0-1) unstable; urgency=low
+
+  [ Alessio Treglia ]
+  * New upstream release.
+
+  [ Jaromír Mikeš ]
+  * Added myself as uploader
+
+ -- Alessio Treglia <alessio@debian.org>  Tue, 27 Aug 2013 17:56:31 +0100
+
+lv2 (1.4.0~dfsg1-2) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Alessio Treglia <alessio@debian.org>  Mon, 06 May 2013 11:16:26 +0200
+
+lv2 (1.4.0~dfsg1-1) experimental; urgency=low
+
+  * New upstream release.
+  * Fix Vcs fields.
+  * Bump Standards.
+
+ -- Alessio Treglia <alessio@debian.org>  Wed, 06 Mar 2013 13:26:05 +0000
+
+lv2 (1.2.0~dfsg1-1) experimental; urgency=low
+
+  * New upstream release.
+  * Add get-orig-source target to strip out waf.
+
+ -- Alessio Treglia <alessio@debian.org>  Fri, 19 Oct 2012 09:49:54 +0100
+
+lv2 (1.0.0~dfsg2-2) unstable; urgency=low
+
+  * Breaks/Replaces on lv2-extensions-good rather than Conflicts/Replaces.
+
+ -- Alessio Treglia <alessio@debian.org>  Sat, 05 May 2012 01:56:58 +0200
+
+lv2 (1.0.0~dfsg2-1) unstable; urgency=low
+
+  * Initial release. (Closes: #669232)
+
+ -- Alessio Treglia <alessio@debian.org>  Wed, 18 Apr 2012 12:12:33 +0200
