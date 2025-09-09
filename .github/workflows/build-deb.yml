@@ -99,6 +99,7 @@ on:
           - synthv1-lv2
           - synthv1-lv2-1.3.2
           - tap-lv2
+          - touchosc2midi
           - triceratops
           - vl1
           - webconf

@@ -362,6 +362,10 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/raw/refs/heads/main/sfizz/sfizz-1.2.3.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
+    touchosc2midi)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/touchosc2midi-git+e370fa1.tar.gz" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1

@@ -1,0 +1,12 @@
+zynthbox-dependency-touchosc2midi (0.0.11-1-2) unstable; urgency=medium
+
+  * Migrated from opencode to gh
+
+ -- Probal Basak <probal31@gmail.com>  Tue, 09 Sep 2025 10:57:11 +0000
+
+zynthbox-dependency-touchosc2midi (0.0.11-1-1) bullseye; urgency=medium
+
+  * Build
+
+ -- Anupam Basak <anupam.basak27@gmail.com>  Tue, 28 Feb 2023 10:29:27 +0530
+

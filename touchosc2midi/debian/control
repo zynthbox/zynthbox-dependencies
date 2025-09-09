@@ -1,0 +1,12 @@
+Source: zynthbox-dependency-touchosc2midi
+Section: misc
+Priority: optional
+Maintainer: Anupam Basak <anupam.basak27@gmail.com>
+Build-Depends: debhelper (>= 11)
+Standards-Version: 4.1.3
+Homepage: https://github.com/zynthian/touchosc2midi.git
+
+Package: zynthbox-dependency-touchosc2midi
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Build zynthbox-dependency-touchosc2midi deb
