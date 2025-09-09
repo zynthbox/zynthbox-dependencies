@@ -1,0 +1,11 @@
+zynthbox-theme (0.5-1-2) unstable; urgency=medium
+
+  * Migrated from opencode to gh
+
+ -- Probal Basak <probal31@gmail.com>  Tue, 09 Sep 2025 11:04:55 +0000
+
+zynthbox-theme (0.5-1-1) bookworm; urgency=medium
+
+  * Initial release
+
+ -- Anupam Basak <anupam.basak27@gmail.com>  Tue, 21 Mar 2023 12:38:00 +0530

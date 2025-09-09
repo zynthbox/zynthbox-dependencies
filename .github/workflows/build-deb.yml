@@ -117,6 +117,7 @@ on:
           - zynthbox-meta
           - zynthbox-qml
           - zynthbox-soundfonts
+          - zynthbox-theme
           - zynthbox-update-script
           - zynthbox-virtualkeyboard-theme
 jobs:
