@@ -6,7 +6,7 @@ FLAGS  = -O3 -ffast-math -fPIC -DPIC -fvisibility=hidden -fdata-sections -ffunct
 ifeq ($(DEB_HOST_ARCH),armhf)
 FLAGS += -march=armv7ve -mcpu=cortex-a7 -mfloat-abi=hard -mfpu=neon-vfpv4
 else ifeq ($(DEB_HOST_ARCH),arm64)
-FLAGS += -march=armv8-a -mcpu=cortex-a53
+FLAGS += -march=armv8-a -mcpu=cortex-a53 -munaligned-access
 else
 FLAGS += -mtune=generic -msse -msse2 -mfpmath=sse
 endif
