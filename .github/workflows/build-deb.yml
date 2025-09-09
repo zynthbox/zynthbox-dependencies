@@ -122,6 +122,7 @@ on:
           - zynthbox-update-script
           - zynthbox-virtualkeyboard-theme
           - zynthian-data
+          - zynthian-sys
 jobs:
   build:
     name: Build ${{ inputs.package_name }} plugin

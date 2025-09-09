@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /zynthian/zynthian-sys/scripts
+./update_zynthian_sys.sh

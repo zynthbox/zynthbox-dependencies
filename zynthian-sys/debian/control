@@ -1,0 +1,11 @@
+Source: zynthian-sys
+Section: misc
+Priority: optional
+Maintainer: Anupam Basak <anupam.basak27@gmail.com>
+Build-Depends: debhelper (>= 11), rsync
+Standards-Version: 4.1.3
+
+Package: zynthian-sys
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: zynthian-sys Repository

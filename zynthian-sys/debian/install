@@ -1,0 +1,9 @@
+boot /zynthian/zynthian-sys
+config /zynthian/zynthian-sys
+custom /zynthian/zynthian-sys
+etc /zynthian/zynthian-sys
+sbin /zynthian/zynthian-sys
+scripts /zynthian/zynthian-sys
+snapshots /zynthian/zynthian-sys
+*.txt /zynthian/zynthian-sys
+*.md /zynthian/zynthian-sys
