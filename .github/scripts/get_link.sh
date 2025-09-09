@@ -394,6 +394,10 @@ case "$PACKAGE_NAME" in
         echo "repolink=https://github.com/zynthbox/zynthbox-theme-alt" >> $GITHUB_OUTPUT
         ;;
 
+    zynthian-data)
+        echo "repolink=https://github.com/zynthbox/zynthian-data" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1
