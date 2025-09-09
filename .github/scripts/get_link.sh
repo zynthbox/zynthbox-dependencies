@@ -350,7 +350,7 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/helm-0.9.0.tar.bz2" >> $GITHUB_OUTPUT
         ;;
 
-    lv2)
+    lv2-dev)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/lv2-1.18.10.tar.xz" >> $GITHUB_OUTPUT
         ;;
 
