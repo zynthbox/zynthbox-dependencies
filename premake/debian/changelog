@@ -1,0 +1,23 @@
+premake (3.7-1-2) bookworm; urgency=medium
+
+  * Repack
+
+ -- Anupam Basak <anupam.basak27@gmail.com>  Wed, 09 Sep 2025 12:53:00 +0530
+
+premake (3.7-1kxstudio1) bionic; urgency=medium
+
+  * Repack once again
+
+ -- falkTX <falktx@gmail.com>  Sun, 08 Sep 2019 03:18:29 +0100
+
+premake (3.7-1) trusty; urgency=medium
+
+  * Repack for PPA
+
+ -- falkTX <falktx@gmail.com>  Sun, 12 Aug 2018 10:29:12 +0200
+
+premake (3.7-1) unstable; urgency=low
+
+  * Initial release. (Closes: #262864)
+
+ -- James Goppert <james.goppert@gmail.com>  Sat, 14 Aug 2010 14:59:46 -0400

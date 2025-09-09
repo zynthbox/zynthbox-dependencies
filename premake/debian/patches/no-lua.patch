@@ -1,0 +1,472 @@
+This patch unembeds lua from the source.
+Index: premake-3.7/Src/premake.lua
+===================================================================
+--- premake-3.7.orig/Src/premake.lua	2010-08-18 16:05:24.000000000 -0400
++++ premake-3.7/Src/premake.lua	2010-08-18 16:06:27.000000000 -0400
+@@ -34,7 +34,7 @@
+ -- Libraries
+ 
+ 	if (OS == "linux") then
+-		package.links = { "m" }
++		package.links = { "m","lua5.1" }
+ 	end
+ 
+ 
+@@ -44,3 +44,8 @@
+ 	{
+ 		matchrecursive("*.h", "*.c")
+ 	}
++
++	package.excludes =
++	{
++		matchrecursive("Lua/*.h", "Lua/*.c")
++	}
+Index: premake-3.7/Src/Makefile
+===================================================================
+--- premake-3.7.orig/Src/Makefile	2010-08-18 16:09:19.000000000 -0400
++++ premake-3.7/Src/Makefile	2010-08-18 16:11:45.000000000 -0400
+@@ -16,7 +16,7 @@
+   CPPFLAGS := $(DEPFLAGS) -D "_CRT_SECURE_NO_DEPRECATE" -D "USE_POPEN=1"
+   CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -g -Wall
+   CXXFLAGS += $(CFLAGS)
+-  LDFLAGS += -L$(BINDIR) -L$(LIBDIR) -lm
++  LDFLAGS += -L$(BINDIR) -L$(LIBDIR) -lm -llua5.1
+   LDDEPS :=
+   RESFLAGS := -D "_CRT_SECURE_NO_DEPRECATE" -D "USE_POPEN=1"
+   TARGET := premake
+@@ -31,7 +31,7 @@
+   CPPFLAGS := $(DEPFLAGS) -D "_CRT_SECURE_NO_DEPRECATE" -D "USE_POPEN=1"
+   CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -Os -Wall
+   CXXFLAGS += $(CFLAGS)
+-  LDFLAGS += -L$(BINDIR) -L$(LIBDIR) -s -lm
++  LDFLAGS += -L$(BINDIR) -L$(LIBDIR) -s -lm -llua5.1
+   LDDEPS :=
+   RESFLAGS := -D "_CRT_SECURE_NO_DEPRECATE" -D "USE_POPEN=1"
+   TARGET := premake
+@@ -39,68 +39,38 @@
+ endif
+ 
+ OBJECTS := \
+-	$(OBJDIR)/platform_windows.o \
+-	$(OBJDIR)/os.o \
+-	$(OBJDIR)/gnu.o \
+ 	$(OBJDIR)/premake.o \
+-	$(OBJDIR)/gnu_cpp.o \
+-	$(OBJDIR)/gnu_cs.o \
+-	$(OBJDIR)/util.o \
+-	$(OBJDIR)/vs2008.o \
++	$(OBJDIR)/sharpdev.o \
++	$(OBJDIR)/vs2005_cs.o \
+ 	$(OBJDIR)/sharpdev_cs.o \
++	$(OBJDIR)/vs.o \
++	$(OBJDIR)/util.o \
++	$(OBJDIR)/cb_cpp.o \
++	$(OBJDIR)/monodev_cs.o \
++	$(OBJDIR)/monodev.o \
++	$(OBJDIR)/arg.o \
+ 	$(OBJDIR)/platform_posix.o \
+ 	$(OBJDIR)/clean.o \
+-	$(OBJDIR)/sharpdev.o \
+-	$(OBJDIR)/vs2002.o \
++	$(OBJDIR)/project.o \
++	$(OBJDIR)/vs2005.o \
++	$(OBJDIR)/vs6.o \
++	$(OBJDIR)/platform_windows.o \
++	$(OBJDIR)/cb.o \
++	$(OBJDIR)/codelite.o \
++	$(OBJDIR)/script.o \
++	$(OBJDIR)/vs2008_cs.o \
+ 	$(OBJDIR)/vs2002_cs.o \
+ 	$(OBJDIR)/path.o \
+-	$(OBJDIR)/vs2008_cs.o \
+-	$(OBJDIR)/vs6.o \
+-	$(OBJDIR)/io.o \
+-	$(OBJDIR)/arg.o \
++	$(OBJDIR)/gnu_cpp.o \
++	$(OBJDIR)/gnu.o \
++	$(OBJDIR)/gnu_cs.o \
+ 	$(OBJDIR)/codelite_cpp.o \
+-	$(OBJDIR)/vs6_cpp.o \
+-	$(OBJDIR)/vs2005_cs.o \
+-	$(OBJDIR)/cb.o \
+-	$(OBJDIR)/monodev.o \
+-	$(OBJDIR)/cb_cpp.o \
+-	$(OBJDIR)/project.o \
+-	$(OBJDIR)/vs.o \
+-	$(OBJDIR)/monodev_cs.o \
++	$(OBJDIR)/io.o \
+ 	$(OBJDIR)/gnu_helpers.o \
+-	$(OBJDIR)/script.o \
+-	$(OBJDIR)/vs2005.o \
+-	$(OBJDIR)/codelite.o \
+-	$(OBJDIR)/lapi.o \
+-	$(OBJDIR)/lstate.o \
+-	$(OBJDIR)/lvm.o \
+-	$(OBJDIR)/liolib.o \
+-	$(OBJDIR)/ldblib.o \
+-	$(OBJDIR)/ltablib.o \
+-	$(OBJDIR)/lstring.o \
+-	$(OBJDIR)/ldebug.o \
+-	$(OBJDIR)/lstrlib.o \
+-	$(OBJDIR)/lfunc.o \
+-	$(OBJDIR)/lauxlib.o \
+-	$(OBJDIR)/lgc.o \
+-	$(OBJDIR)/ldo.o \
+-	$(OBJDIR)/ltests.o \
+-	$(OBJDIR)/ltm.o \
+-	$(OBJDIR)/lundump.o \
+-	$(OBJDIR)/ldump.o \
+-	$(OBJDIR)/lmem.o \
+-	$(OBJDIR)/lbaselib.o \
+-	$(OBJDIR)/loadlib.o \
+-	$(OBJDIR)/ltable.o \
+-	$(OBJDIR)/lparser.o \
+-	$(OBJDIR)/lzio.o \
+-	$(OBJDIR)/llex.o \
+-	$(OBJDIR)/loslib.o \
+-	$(OBJDIR)/lcode.o \
+-	$(OBJDIR)/lopcodes.o \
+-	$(OBJDIR)/lmathlib.o \
+-	$(OBJDIR)/lobject.o \
+-	$(OBJDIR)/linit.o \
++	$(OBJDIR)/vs2008.o \
++	$(OBJDIR)/os.o \
++	$(OBJDIR)/vs2002.o \
++	$(OBJDIR)/vs6_cpp.o \
+ 	$(OBJDIR)/ow.o \
+ 
+ MKDIR_TYPE := msdos
+@@ -143,42 +113,17 @@
+ 	-@if exist $(subst /,\,$(OBJDIR)) rmdir /s /q $(subst /,\,$(OBJDIR))
+ endif
+ 
+-$(OBJDIR)/platform_windows.o: platform_windows.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/os.o: os.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/gnu.o: gnu.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+ $(OBJDIR)/premake.o: premake.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/gnu_cpp.o: gnu_cpp.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/gnu_cs.o: gnu_cs.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/util.o: util.c
++$(OBJDIR)/sharpdev.o: sharpdev.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/vs2008.o: vs2008.c
++$(OBJDIR)/vs2005_cs.o: vs2005_cs.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+@@ -188,47 +133,27 @@
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/platform_posix.o: platform_posix.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/clean.o: clean.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/sharpdev.o: sharpdev.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/vs2002.o: vs2002.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/vs2002_cs.o: vs2002_cs.c
++$(OBJDIR)/vs.o: vs.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/path.o: path.c
++$(OBJDIR)/util.o: util.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/vs2008_cs.o: vs2008_cs.c
++$(OBJDIR)/cb_cpp.o: cb_cpp.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/vs6.o: vs6.c
++$(OBJDIR)/monodev_cs.o: monodev_cs.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/io.o: io.c
++$(OBJDIR)/monodev.o: monodev.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+@@ -238,32 +163,12 @@
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/codelite_cpp.o: codelite_cpp.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/vs6_cpp.o: vs6_cpp.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/vs2005_cs.o: vs2005_cs.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/cb.o: cb.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/monodev.o: monodev.c
++$(OBJDIR)/platform_posix.o: platform_posix.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/cb_cpp.o: cb_cpp.c
++$(OBJDIR)/clean.o: clean.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+@@ -273,182 +178,97 @@
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/vs.o: vs.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/monodev_cs.o: monodev_cs.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/gnu_helpers.o: gnu_helpers.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/script.o: script.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+ $(OBJDIR)/vs2005.o: vs2005.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/codelite.o: codelite.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/lapi.o: Lua/lapi.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/lstate.o: Lua/lstate.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/lvm.o: Lua/lvm.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/liolib.o: Lua/liolib.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/ldblib.o: Lua/ldblib.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/ltablib.o: Lua/ltablib.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/lstring.o: Lua/lstring.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/ldebug.o: Lua/ldebug.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/lstrlib.o: Lua/lstrlib.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/lfunc.o: Lua/lfunc.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/lauxlib.o: Lua/lauxlib.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/lgc.o: Lua/lgc.c
+-	-@$(CMD_MKOBJDIR)
+-	@echo $(notdir $<)
+-	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+-
+-$(OBJDIR)/ldo.o: Lua/ldo.c
++$(OBJDIR)/vs6.o: vs6.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/ltests.o: Lua/ltests.c
++$(OBJDIR)/platform_windows.o: platform_windows.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/ltm.o: Lua/ltm.c
++$(OBJDIR)/cb.o: cb.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/lundump.o: Lua/lundump.c
++$(OBJDIR)/codelite.o: codelite.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/ldump.o: Lua/ldump.c
++$(OBJDIR)/script.o: script.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/lmem.o: Lua/lmem.c
++$(OBJDIR)/vs2008_cs.o: vs2008_cs.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/lbaselib.o: Lua/lbaselib.c
++$(OBJDIR)/vs2002_cs.o: vs2002_cs.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/loadlib.o: Lua/loadlib.c
++$(OBJDIR)/path.o: path.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/ltable.o: Lua/ltable.c
++$(OBJDIR)/gnu_cpp.o: gnu_cpp.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/lparser.o: Lua/lparser.c
++$(OBJDIR)/gnu.o: gnu.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/lzio.o: Lua/lzio.c
++$(OBJDIR)/gnu_cs.o: gnu_cs.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/llex.o: Lua/llex.c
++$(OBJDIR)/codelite_cpp.o: codelite_cpp.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/loslib.o: Lua/loslib.c
++$(OBJDIR)/io.o: io.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/lcode.o: Lua/lcode.c
++$(OBJDIR)/gnu_helpers.o: gnu_helpers.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/lopcodes.o: Lua/lopcodes.c
++$(OBJDIR)/vs2008.o: vs2008.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/lmathlib.o: Lua/lmathlib.c
++$(OBJDIR)/os.o: os.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/lobject.o: Lua/lobject.c
++$(OBJDIR)/vs2002.o: vs2002.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"
+ 
+-$(OBJDIR)/linit.o: Lua/linit.c
++$(OBJDIR)/vs6_cpp.o: vs6_cpp.c
+ 	-@$(CMD_MKOBJDIR)
+ 	@echo $(notdir $<)
+ 	@$(CC) $(CFLAGS) -o "$@" -c "$<"

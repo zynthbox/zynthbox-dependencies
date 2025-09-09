@@ -1,0 +1,13 @@
+Index: premake-3.7/README.txt
+===================================================================
+--- premake-3.7.orig/README.txt	2010-08-22 17:00:53.000000000 -0400
++++ premake-3.7/README.txt	2010-08-22 17:01:03.000000000 -0400
+@@ -2,7 +2,7 @@
+ Build Script Generation
+ 
+ Copyright (C) 2002-2008 by Jason Perkins
+-Distributed under the GNU General Public License, see LICENSE.txt
++Distributed under the GNU General Public License
+ 
+ The Lua language and runtime library is (C) TeCGraf, PUC-Rio.
+ See their website at http://www.lua.org/

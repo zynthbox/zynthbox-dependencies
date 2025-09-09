@@ -1,0 +1,44 @@
+.TH "premake" "1" "3.7" "Jason Perkins and the Premake Project" "Development"
+.SH "Name"
+premake \- a build script generator
+.SH "Copyright"
+Copyright (C) 2002\-2008 Jason Perkins and the Premake Project
+Lua 5.1 Copyright (C) 1994\-2008 Lua.org, PUC\-Rio
+.SH "Usage"
+
+ \-\-file name       Process the specified premake script file
+
+ \-\-clean           Remove all binaries and build scripts
+ \-\-verbose       Generate verbose makefiles (where applicable)
+
+ \-\-cc name         Choose a C/C++ compiler, if supported by target; one of:
+      gcc       GNU gcc compiler
+      dmc       Digital Mars C/C+ compiler (experimental)
+
+ \-\-dotnet name     Choose a .NET compiler set, if supported by target; one of:
+      ms        Microsoft (csc)
+      mono      Mono (mcs)
+      mono2     Mono .NET 2.0 (gmcs)
+      pnet      Portable.NET (cscc)
+
+ \-\-os name         Generate files for different operating system; one of:
+      bsd       OpenBSD, NetBSD, or FreeBSD
+      linux     Linux
+      macosx    MacOS X
+      windows   Microsoft Windows
+
+ \-\-target name     Generate input files for the specified toolset; one of:
+      cb\-gcc    Code::Blocks Studio with GCC
+      cb\-ow     Code::Blocks Studio with Open Watcom C/C++
+      cl\-gcc    CodeLite with GCC
+      gnu       GNU Makefile for POSIX, MinGW, and Cygwin
+      monodev   MonoDevelop
+      sharpdev  ICSharpCode SharpDevelop
+      vs6       Microsoft Visual Studio 6
+      vs2002    Microsoft Visual Studio 2002
+      vs2003    Microsoft Visual Studio 2003
+      vs2005    Microsoft Visual Studio 2005 (includes Express editions)
+      vs2008    Microsoft Visual Studio 2008 (experimental)
+
+ \-\-help            Display this information
+ \-\-version         Display version information
