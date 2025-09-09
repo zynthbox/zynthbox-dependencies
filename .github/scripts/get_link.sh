@@ -382,6 +382,10 @@ case "$PACKAGE_NAME" in
         echo "repolink=https://github.com/zynthbox/zyncoder" >> $GITHUB_OUTPUT
         ;;
 
+    zynthbox-meta)
+        echo "repolink=https://github.com/zynthbox/zynthbox-meta" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1

@@ -114,6 +114,7 @@ on:
           - zynaddsubfx
           - zyncoder
           - zynthbox-docs
+          - zynthbox-meta
           - zynthbox-qml
           - zynthbox-soundfonts
           - zynthbox-update-script
