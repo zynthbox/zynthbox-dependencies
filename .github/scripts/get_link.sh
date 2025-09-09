@@ -359,7 +359,7 @@ case "$PACKAGE_NAME" in
         ;;
 
     sfizz)
-        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/raw/refs/heads/main/sfizz/sfizz-1.2.3.tar.gz" >> $GITHUB_OUTPUT
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/sfizz-1.2.3.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
     touchosc2midi)
