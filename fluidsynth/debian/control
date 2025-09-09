@@ -1,4 +1,4 @@
-Source: fluidsynth
+Source: zynthbox-plugin-fluidsynth
 Section: misc
 Priority: optional
 Maintainer: Probal Basak <probal31@gmail.com>
@@ -6,7 +6,11 @@ Build-Depends: debhelper (>= 11)
 Standards-Version: 4.1.3
 Homepage: https://github.com/FluidSynth/fluidsynth
 
-Package: fluidsynth
+Package: zynthbox-plugin-fluidsynth
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: Build fluidsynth deb
+Description: Build zynthbox-plugin-fluidsynth deb
+Breaks: fluidsynth, libfluidsynth-dev, libfluidsynth3
+Conflicts: fluidsynth, libfluidsynth-dev, libfluidsynth3
+Provides: fluidsynth, libfluidsynth-dev, libfluidsynth3
+Replaces: fluidsynth, libfluidsynth-dev, libfluidsynth3

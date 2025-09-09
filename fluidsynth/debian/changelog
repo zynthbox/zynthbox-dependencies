@@ -1,3 +1,9 @@
+zynthbox-plugin-fluidsynth (2.4.3-1-3) bookworm; urgency=medium
+
+  * Repack
+
+ -- Anupam Basak <anupam@gmail.com>  Wed, 09 Sep 2025 18:21:00 +0000
+
 fluidsynth (2.4.3-1-2) unstable; urgency=medium
 
   * Migrated from opencode to gh
