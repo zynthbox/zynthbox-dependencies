@@ -13,10 +13,8 @@ Build-Depends:
   libxkbcommon-dev,
   libxcb-cursor-dev,
   libxcb-keysyms1-dev,
-  python,
-  libsndfile-static,
-  libxcb-util-static,
-  vstsdk2.4
+  libsndfile1-dev,
+  libxcb-util-dev
 Standards-Version: 4.1.3
 Homepage: https://github.com/surge-synthesizer/surge
 
