@@ -185,21 +185,9 @@ jobs:
           curl -L https://repo.zynthbox.io/repo_key.pub | apt-key add -;
           if [ "$RELEASE" = "bookworm" ]; then
             echo "deb https://repo.zynthbox.io/testing-bookworm/ bookworm main" | tee "/etc/apt/sources.list.d/zynthbox.list"
-            echo "deb https://repo.zynthbox.io/kxstudio/ bookworm main" | tee "/etc/apt/sources.list.d/zynthbox-kxstudio.list"
-            echo "deb https://repo.zynthbox.io/deb-multimedia/ bookworm main" | tee "/etc/apt/sources.list.d/zynthbox-debmultimedia.list"
           else
             echo "UNKNOWN RELEASE $RELEASE"
           fi
-
-          # lv2-dev package from kxstudio is missing header files. Give priority to deb-multimedia one when installing and make sure kxstudio one never gets installed
-          echo "Package: lv2-dev" >> /etc/apt/preferences.d/lv2-dev
-          echo "Pin: origin www.deb-multimedia.org" >> /etc/apt/preferences.d/lv2-dev
-          echo "Pin-Priority: 1001" >> /etc/apt/preferences.d/lv2-dev
-          echo "" >> /etc/apt/preferences.d/lv2-dev
-          echo "Package: lv2-dev" >> /etc/apt/preferences.d/lv2-dev
-          echo "Pin: origin ppa.launchpad.net" >> /etc/apt/preferences.d/lv2-dev
-          echo "Pin-Priority: 1" >> /etc/apt/preferences.d/lv2-dev
-          echo "" >> /etc/apt/preferences.d/lv2-dev
 
           ### Make the aptly jobs wait on a global lock file so that the aptly jobs are mutually exclusive
           ### Create a lock file /tmp/publish-aptly-zynthbox.lock and cleanup before completing the job
