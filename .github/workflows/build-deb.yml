@@ -11,6 +11,7 @@ on:
         options:
           # The name should be same as the folder name in the repository
           - abgate
+          - aeolus
           - aether-reverb
           - airwin2rack
           - alo
@@ -45,6 +46,7 @@ on:
           - gxdistortionplus
           - gxplugins
           - gxswitchlesswah
+          - helm
           - infamous-plugins
           - invada-studio-plugins-lv2
           - knewstuff
@@ -72,6 +74,7 @@ on:
           - noise-repellent
           - ntk
           - padthv1-lv2
+          - premake
           - preset2lv2
           - punk-console
           - qmidiarp

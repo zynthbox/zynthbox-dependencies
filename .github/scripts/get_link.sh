@@ -338,6 +338,18 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/setbfree-0.8.1.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
+    premake)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/premake-3.7.tar.gz" >> $GITHUB_OUTPUT
+        ;;
+
+    aeolus)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/aeolus-0.10.4.tar.bz2" >> $GITHUB_OUTPUT
+        ;;
+
+    helm)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/helm-0.9.0.tar.bz2" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1
