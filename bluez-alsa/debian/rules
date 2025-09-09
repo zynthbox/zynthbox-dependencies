@@ -8,5 +8,6 @@
 
 
 override_dh_auto_configure:
+	apt-get install -yy libfdk-aac-dev
 	autoreconf --install
 	./configure --prefix=/usr --enable-aac --enable-mp3lame --enable-mpg123 --enable-msbc --enable-systemd --enable-upower --enable-a2dpconf
