@@ -1,0 +1,4 @@
+obj-*/surge_products/Surge.lv2  usr/lib/lv2
+obj-*/surge_products/Surge.so   usr/lib/vst
+obj-*/surge_products/Surge.vst3 usr/lib/vst3
+resources/data/* usr/share/surge

@@ -17,7 +17,7 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/swh-git+8b6d075.tar.gz" >> $GITHUB_OUTPUT
         ;;
     surge)
-        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/surge-1.3.4.tar.gz" >> $GITHUB_OUTPUT
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/surge-1.7.1.tar.gz" >> $GITHUB_OUTPUT
         ;;
     raffo)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/raffo-git+e2731c9.tar.gz" >> $GITHUB_OUTPUT

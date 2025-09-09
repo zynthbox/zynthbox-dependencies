@@ -1,13 +1,22 @@
 Source: zynthbox-plugin-surge
 Section: misc
 Priority: optional
-Maintainer: Probal Basak <probal31@gmail.com>
+Maintainer: Anupam Basak <anupam.basak27@gmail.com>
 Build-Depends: 
   debhelper (>= 11), 
   cmake, 
   g++,
   libqt5svg5-dev,
-  lv2-dev
+  lv2-dev,
+  libcairo-dev,
+  libxkbcommon-x11-dev,
+  libxkbcommon-dev,
+  libxcb-cursor-dev,
+  libxcb-keysyms1-dev,
+  python,
+  libsndfile-static,
+  libxcb-util-static,
+  vstsdk2.4
 Standards-Version: 4.1.3
 Homepage: https://github.com/surge-synthesizer/surge
 

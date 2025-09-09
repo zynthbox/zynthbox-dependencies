@@ -1,0 +1,11 @@
+diff --git a/cmake/versiontools.cmake b/cmake/versiontools.cmake
+index c3f7ea0..79d8545 100644
+--- a/cmake/versiontools.cmake
++++ b/cmake/versiontools.cmake
+@@ -1,5 +1,5 @@
+ 
+-find_package(Git)
++# find_package(Git)
+ 
+ if( Git_FOUND )
+   execute_process(

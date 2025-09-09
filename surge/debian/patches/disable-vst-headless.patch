@@ -1,0 +1,15 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7523be6..4257c66 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -37,8 +37,8 @@ list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/")
+ find_package(LibMidiFile ${PACKAGE_OPTIONS})
+ 
+ # Things we can build
+-set( BUILD_HEADLESS true )
+-set( BUILD_VST3 true )
++set( BUILD_HEADLESS false )
++set( BUILD_VST3 false )
+ 
+ if( DEFINED ARM_NATIVE )
+    include( cmake/arm-${ARM_NATIVE}.cmake )
