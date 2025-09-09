@@ -374,6 +374,10 @@ case "$PACKAGE_NAME" in
         echo "repolink=https://github.com/libjucy/libjucy" >> $GITHUB_OUTPUT
         ;;
 
+    plasma-framework-zynthbox)
+        echo "repolink=https://github.com/zynthbox/plasma-framework-zynthbox" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1

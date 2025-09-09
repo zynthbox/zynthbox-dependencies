@@ -77,6 +77,7 @@ on:
           - noise-repellent
           - ntk
           - padthv1-lv2
+          - plasma-framework-zynthbox
           - premake
           - preset2lv2
           - punk-console
