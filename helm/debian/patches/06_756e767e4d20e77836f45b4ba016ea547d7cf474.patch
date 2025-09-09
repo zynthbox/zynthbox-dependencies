@@ -1,0 +1,86 @@
+From 756e767e4d20e77836f45b4ba016ea547d7cf474 Mon Sep 17 00:00:00 2001
+From: Matt Tytel <matthewtytel@gmail.com>
+Date: Mon, 19 Mar 2018 15:05:52 -0700
+Subject: [PATCH] Added channel pressure aftertouch.
+
+---
+ mopo/src/voice_handler.cpp    | 7 +++++++
+ mopo/src/voice_handler.h      | 1 +
+ src/common/midi_manager.cpp   | 5 +++++
+ src/synthesis/helm_engine.cpp | 4 ++++
+ src/synthesis/helm_engine.h   | 1 +
+ 5 files changed, 18 insertions(+)
+
+diff --git a/mopo/src/voice_handler.cpp b/mopo/src/voice_handler.cpp
+index a65a64779..d427fd8cf 100644
+--- a/mopo/src/voice_handler.cpp
++++ b/mopo/src/voice_handler.cpp
+@@ -344,6 +344,13 @@ namespace mopo {
+     }
+   }
+ 
++  void VoiceHandler::setChannelAftertouch(int channel, mopo_float aftertouch, int sample) {
++    for (Voice* voice : active_voices_) {
++      if (voice->state().channel == channel)
++        voice->setAftertouch(aftertouch, sample);
++    }
++  }
++
+   void VoiceHandler::setPolyphony(size_t polyphony) {
+     while (all_voices_.size() < polyphony) {
+       Voice* new_voice = createVoice();
+diff --git a/mopo/src/voice_handler.h b/mopo/src/voice_handler.h
+index a9e1001bb..0c1239741 100644
+--- a/mopo/src/voice_handler.h
++++ b/mopo/src/voice_handler.h
+@@ -146,6 +146,7 @@ namespace mopo {
+                           int sample = 0, int channel = 0) override;
+       virtual VoiceEvent noteOff(mopo_float note, int sample = 0) override;
+       void setAftertouch(mopo_float note, mopo_float aftertouch, int sample = 0);
++      void setChannelAftertouch(int channel, mopo_float aftertouch, int sample = 0);
+       void sustainOn();
+       void sustainOff(int sample = 0);
+ 
+diff --git a/src/common/midi_manager.cpp b/src/common/midi_manager.cpp
+index c1fb05b37..b24131efb 100644
+--- a/src/common/midi_manager.cpp
++++ b/src/common/midi_manager.cpp
+@@ -123,6 +123,11 @@ void MidiManager::processMidiMessage(const MidiMessage& midi_message, int sample
+     mopo::mopo_float value = (1.0 * midi_message.getAfterTouchValue()) / mopo::MIDI_SIZE;
+     engine_->setAftertouch(note, value);
+   }
++  else if (midi_message.isChannelPressure()) {
++    int channel = midi_message.getChannel();
++    mopo::mopo_float value = midi_message.getChannelPressureValue() / (mopo::MIDI_SIZE - 1.0f);
++    engine_->setChannelAftertouch(channel, value);
++  }
+   else if (midi_message.isPitchWheel()) {
+     double percent = (1.0 * midi_message.getPitchWheelValue()) / PITCH_WHEEL_RESOLUTION;
+     double value = 2 * percent - 1.0;
+diff --git a/src/synthesis/helm_engine.cpp b/src/synthesis/helm_engine.cpp
+index c6a21336e..379b7f1f8 100644
+--- a/src/synthesis/helm_engine.cpp
++++ b/src/synthesis/helm_engine.cpp
+@@ -406,6 +406,10 @@ namespace mopo {
+     voice_handler_->setAftertouch(note, value, sample);
+   }
+ 
++  void HelmEngine::setChannelAftertouch(int channel, mopo_float value, int sample) {
++    voice_handler_->setChannelAftertouch(channel, value, sample);
++  }
++
+   void HelmEngine::setBpm(mopo_float bpm) {
+     mopo_float bps = bpm / 60.0;
+     if (bps_->value() != bps)
+diff --git a/src/synthesis/helm_engine.h b/src/synthesis/helm_engine.h
+index 88d6d5bec..29b3c2647 100644
+--- a/src/synthesis/helm_engine.h
++++ b/src/synthesis/helm_engine.h
+@@ -60,6 +60,7 @@ namespace mopo {
+       void setBpm(mopo_float bpm);
+       void correctToTime(mopo_float samples) override;
+       void setAftertouch(mopo_float note, mopo_float value, int sample = 0);
++      void setChannelAftertouch(int channel, mopo_float value, int sample = 0);
+ 
+       // Sustain pedal events.
+       void sustainOn();

@@ -1,0 +1,22 @@
+From 81a65d0e68980f59450c1e46d008a54784ca6674 Mon Sep 17 00:00:00 2001
+From: mtytel <matthewtytel@gmail.com>
+Date: Thu, 26 Oct 2017 08:23:47 -0700
+Subject: [PATCH] Increased pitch bend range to 48
+
+---
+ src/common/helm_common.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/common/helm_common.cpp b/src/common/helm_common.cpp
+index 2e24b4193..a60302793 100644
+--- a/src/common/helm_common.cpp
++++ b/src/common/helm_common.cpp
+@@ -169,7 +169,7 @@ namespace mopo {
+       ValueDetails::kLinear, false, "cents", "Osc Feedback Tune" },
+     { "osc_mix", 0.0, 1.0, 0, 0.5, 0.0, 1.0, // DEPRECATED
+       ValueDetails::kLinear, false, "", "Osc Mix" },
+-    { "pitch_bend_range", 0.0, 24.0, 25, 2.0, 0.0, 1.0,
++    { "pitch_bend_range", 0.0, 48.0, 49, 2.0, 0.0, 1.0,
+       ValueDetails::kLinear, false, "semitones", "Pitch Bend Range" },
+     { "poly_lfo_amplitude", -1.0, 1.0, 0, 1.0, 0.0, 1.0,
+       ValueDetails::kLinear, false, "", "Poly LFO Amp" },

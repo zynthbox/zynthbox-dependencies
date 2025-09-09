@@ -5,8 +5,6 @@ URL : https://github.com/mtytel/helm
 
 ## Build Instructions
 ```sh
-apt install -yy 
-mkdir build && cd build
-make -j$(nproc) lv2
-make install_lv2
 ```
+
+Source collected from http://ppa.launchpad.net/kxstudio-debian/plugins/ubuntu/pool/main/h/helm/

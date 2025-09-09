@@ -1,0 +1,38 @@
+From 39280059621c32d5dfb130cf5ce30c6b3fbc1e47 Mon Sep 17 00:00:00 2001
+From: mtytel <matthewtytel@gmail.com>
+Date: Mon, 8 Jan 2018 09:23:29 -0800
+Subject: [PATCH] Fixed sample rate changing arp speed.
+
+---
+ src/synthesis/helm_engine.cpp | 5 +++++
+ src/synthesis/helm_engine.h   | 1 +
+ 2 files changed, 6 insertions(+)
+
+diff --git a/src/synthesis/helm_engine.cpp b/src/synthesis/helm_engine.cpp
+index 894653cb4..c6a21336e 100644
+--- a/src/synthesis/helm_engine.cpp
++++ b/src/synthesis/helm_engine.cpp
+@@ -372,6 +372,11 @@ namespace mopo {
+     arpeggiator_->setBufferSize(buffer_size);
+   }
+ 
++  void HelmEngine::setSampleRate(int sample_rate) {
++    ProcessorRouter::setSampleRate(sample_rate);
++    arpeggiator_->setSampleRate(sample_rate);
++  }
++
+   void HelmEngine::allNotesOff(int sample) {
+     arpeggiator_->allNotesOff(sample);
+   }
+diff --git a/src/synthesis/helm_engine.h b/src/synthesis/helm_engine.h
+index 2790446e3..88d6d5bec 100644
+--- a/src/synthesis/helm_engine.h
++++ b/src/synthesis/helm_engine.h
+@@ -40,6 +40,7 @@ namespace mopo {
+ 
+       void process() override;
+       void setBufferSize(int buffer_size) override;
++      void setSampleRate(int sample_rate) override;
+ 
+       std::set<ModulationConnection*> getModulationConnections() { return mod_connections_; }
+       bool isModulationActive(ModulationConnection* connection);

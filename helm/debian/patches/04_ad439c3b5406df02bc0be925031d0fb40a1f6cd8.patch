@@ -1,0 +1,36 @@
+From ad439c3b5406df02bc0be925031d0fb40a1f6cd8 Mon Sep 17 00:00:00 2001
+From: mtytel <matthewtytel@gmail.com>
+Date: Wed, 6 Dec 2017 09:28:14 -0800
+Subject: [PATCH] Fixed reverb damping not clamped to [0.0, 1.0].
+
+---
+ mopo/src/reverb.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/mopo/src/reverb.cpp b/mopo/src/reverb.cpp
+index 13f79e9b7..797519863 100644
+--- a/mopo/src/reverb.cpp
++++ b/mopo/src/reverb.cpp
+@@ -28,11 +28,13 @@ namespace mopo {
+     
+     Bypass* audio_input = new Bypass();
+     LinearSmoothBuffer* feedback_input = new LinearSmoothBuffer();
++    cr::Clamp* damping_clamp = new cr::Clamp(0.0f, 1.0f);
+     LinearSmoothBuffer* damping_input = new LinearSmoothBuffer();
+ 
+     registerInput(audio_input->input(), kAudio);
+     registerInput(feedback_input->input(), kFeedback);
+-    registerInput(damping_input->input(), kDamping);
++    registerInput(damping_clamp->input(0), kDamping);
++    damping_input->plug(damping_clamp);
+ 
+     Multiply* gained_input = new Multiply();
+     gained_input->plug(audio_input, 0);
+@@ -41,6 +43,7 @@ namespace mopo {
+     addProcessor(audio_input);
+     addProcessor(gained_input);
+     addProcessor(feedback_input);
++    addProcessor(damping_clamp);
+     addProcessor(damping_input);
+ 
+     VariableAdd* left_comb_total = new VariableAdd(NUM_COMB);

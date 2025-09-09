@@ -1,0 +1,91 @@
+helm (0.9.0-1-2) bookworm; urgency=medium
+
+  * Repack
+
+ -- Anupam Basak <anupam.basak27@gmail.com>  Wed, 09 Sep 2025 13:010:00 +0530
+
+helm (5:0.9.0-2kxstudio3) bionic; urgency=medium
+
+  * Fix preset location
+
+ -- falkTX <falktx@gmail.com>  Sat, 12 Oct 2019 00:18:44 +0100
+
+helm (5:0.9.0-2kxstudio2) bionic; urgency=medium
+
+  * Import patches from upstream
+  * Build for arm
+
+ -- falkTX <falktx@gmail.com>  Sat, 21 Sep 2019 19:08:15 +0100
+
+helm (2:0.9.0-1kxstudio2) trusty; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@gmail.com>  Sat, 05 Aug 2017 10:52:07 +0200
+
+helm (2:0.8.6-1kxstudio2) trusty; urgency=medium
+
+  * Update to 0.8.6
+
+ -- falkTX <falktx@gmail.com>  Sun, 07 Aug 2016 18:07:27 +0200
+
+helm (2:0.8.0+git20160702-1kxstudio1) trusty; urgency=medium
+
+  * Update to latest git
+
+ -- falkTX <falktx@gmail.com>  Sat, 02 Jul 2016 23:36:36 +0200
+
+helm (2:0.8.0-1kxstudio1) trusty; urgency=medium
+
+  * Update to stable release
+
+ -- falkTX <falktx@gmail.com>  Sat, 25 Jun 2016 23:35:03 +0200
+
+helm (2:0.6.1+git20160105-1kxstudio2) trusty; urgency=medium
+
+  * Rebuild to get patches for lv2
+
+ -- falkTX <falktx@gmail.com>  Sat, 23 Jan 2016 19:14:51 +0100
+
+helm (2:0.6.1+git20160105-1kxstudio1) trusty; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@gmail.com>  Thu, 31 Dec 2015 13:27:48 +0000
+
+helm (2:0.5.0+git20151113-1kxstudio1.1) trusty; urgency=medium
+
+  * Update, use dev branch
+
+ -- falkTX <falktx@gmail.com>  Fri, 13 Nov 2015 09:55:13 +0100
+
+helm (2:0.5.0+git20150929-1kxstudio1) trusty; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@gmail.com>  Fri, 11 Sep 2015 11:23:47 +0200
+
+helm (2:0.4.1+git20150804-1kxstudio1) trusty; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@gmail.com>  Tue, 04 Aug 2015 16:15:59 +0200
+
+helm (2:0.4.0+git20150723-1kxstudio1) trusty; urgency=medium
+
+  * Update
+
+ -- falkTX <falktx@gmail.com>  Thu, 16 Jul 2015 22:26:41 +0200
+
+helm (2:0.3.3+git20150713-1kxstudio2) trusty; urgency=medium
+
+  * Update
+  * Optimize
+
+ -- falkTX <falktx@gmail.com>  Mon, 13 Jul 2015 17:45:49 +0200
+
+helm (2:0.3.3+git20150708-1kxstudio2) trusty; urgency=medium
+
+  * New package
+
+ -- falkTX <falktx@gmail.com>  Tue, 07 Jul 2015 18:18:16 +0200

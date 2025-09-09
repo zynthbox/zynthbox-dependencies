@@ -1,0 +1,112 @@
+From 37e6f1084e85764063ce01eb67f5bc8296ddd712 Mon Sep 17 00:00:00 2001
+From: Matt Tytel <matthewtytel@gmail.com>
+Date: Wed, 12 Jul 2017 17:26:48 -0400
+Subject: [PATCH] Updated mopo.
+
+---
+ mopo/src/arpeggiator.cpp   | 4 ++--
+ mopo/src/circular_queue.h  | 9 +++++++++
+ mopo/src/memory.cpp        | 3 +--
+ mopo/src/utils.h           | 2 +-
+ mopo/src/voice_handler.cpp | 5 +++--
+ 5 files changed, 16 insertions(+), 7 deletions(-)
+
+diff --git a/mopo/src/arpeggiator.cpp b/mopo/src/arpeggiator.cpp
+index 1aa77866c..4dfc2d5c2 100644
+--- a/mopo/src/arpeggiator.cpp
++++ b/mopo/src/arpeggiator.cpp
+@@ -39,7 +39,7 @@ namespace mopo {
+   void Arpeggiator::process() {
+     if (input(kOn)->at(0) == 0.0)
+       return;
+-    
++
+     mopo_float frequency = input(kFrequency)->at(0);
+     mopo_float min_gate = (MIN_VOICE_TIME + VOICE_KILL_TIME) * frequency;
+     mopo_float gate = utils::interpolate(min_gate, 1.0, input(kGate)->at(0));
+@@ -184,7 +184,7 @@ namespace mopo {
+       removeNoteFromPatterns(note);
+     }
+ 
+-    pressed_notes_.remove(note);
++    pressed_notes_.removeAll(note);
+     return kVoiceOff;
+   }
+ } // namespace mopo
+diff --git a/mopo/src/circular_queue.h b/mopo/src/circular_queue.h
+index 4694301ea..9736a9117 100644
+--- a/mopo/src/circular_queue.h
++++ b/mopo/src/circular_queue.h
+@@ -142,6 +142,15 @@ namespace mopo {
+         }
+       }
+ 
++      void removeAll(T entry) {
++        for (int i = start_; i != end_; i = (i + 1) % capacity_) {
++          if (data_[i] == entry) {
++            removeAt((i - start_ + capacity_) % capacity_);
++            i--;
++          }
++        }
++      }
++
+       iterator erase(iterator& iter) {
+         int index = iter.get() - data_;
+         removeAt((index - start_ + capacity_) % capacity_);
+diff --git a/mopo/src/memory.cpp b/mopo/src/memory.cpp
+index 2a31a2b84..b645f49ad 100644
+--- a/mopo/src/memory.cpp
++++ b/mopo/src/memory.cpp
+@@ -23,8 +23,7 @@
+ namespace mopo {
+ 
+   Memory::Memory(int size) : offset_(0) {
+-    // Get the next largest power of two for optimization.
+-    size_ = pow(2.0, ceil(log(size) / log(2)));
++    size_ = utils::nextPowerOfTwo(size);
+     bitmask_ = size_ - 1;
+     memory_ = new mopo_float[size_];
+     utils::zeroBuffer(memory_, size_);
+diff --git a/mopo/src/utils.h b/mopo/src/utils.h
+index 762d5a275..0d09e903c 100644
+--- a/mopo/src/utils.h
++++ b/mopo/src/utils.h
+@@ -173,7 +173,7 @@ namespace mopo {
+     }
+ 
+     inline int nextPowerOfTwo(mopo_float value) {
+-      return round(pow(2.0f, ceil(log2(value))));
++      return round(pow(2.0, ceil(log(value) / log(2.0))));
+     }
+ 
+     inline mopo_float quickerTanh(mopo_float value) {
+diff --git a/mopo/src/voice_handler.cpp b/mopo/src/voice_handler.cpp
+index ef3b664af..a65a64779 100644
+--- a/mopo/src/voice_handler.cpp
++++ b/mopo/src/voice_handler.cpp
+@@ -51,7 +51,7 @@ namespace mopo {
+   VoiceHandler::~VoiceHandler() {
+     voice_router_.destroy();
+     global_router_.destroy();
+-    
++
+     for (Voice* voice : all_voices_)
+       delete voice;
+ 
+@@ -295,6 +295,7 @@ namespace mopo {
+     MOPO_ASSERT(channel >= 0 && channel < NUM_MIDI_CHANNELS);
+ 
+     Voice* voice = grabVoice();
++    pressed_notes_.remove(note);
+     pressed_notes_.push_front(note);
+ 
+     if (last_played_note_ < 0)
+@@ -305,7 +306,7 @@ namespace mopo {
+   }
+ 
+   VoiceEvent VoiceHandler::noteOff(mopo_float note, int sample) {
+-    pressed_notes_.remove(note);
++    pressed_notes_.removeAll(note);
+ 
+     VoiceEvent voice_event = kVoiceOff;
+ 

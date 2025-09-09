@@ -1,0 +1,10 @@
+obj-x86_64-linux-gnu/CMakeFiles/2.8.12.1/CMakeDetermineCompilerABI_C.bin
+obj-x86_64-linux-gnu/CMakeFiles/2.8.12.1/CMakeDetermineCompilerABI_CXX.bin
+obj-x86_64-linux-gnu/CMakeFiles/2.8.12.1/CompilerIdC/a.out
+obj-x86_64-linux-gnu/CMakeFiles/2.8.12.1/CompilerIdCXX/a.out
+obj-x86_64-linux-gnu/CMakeFiles/drmr.dir/drmr.c.o
+obj-x86_64-linux-gnu/CMakeFiles/drmr.dir/drmr_hydrogen.c.o
+obj-x86_64-linux-gnu/CMakeFiles/drmr_ui.dir/drmr_hydrogen.c.o
+obj-x86_64-linux-gnu/CMakeFiles/drmr_ui.dir/drmr_ui.c.o
+obj-x86_64-linux-gnu/CMakeFiles/drmr_ui.dir/nknob.c.o
+obj-x86_64-linux-gnu/drmr.so

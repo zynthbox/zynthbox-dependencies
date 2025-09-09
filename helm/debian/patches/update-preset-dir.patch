@@ -1,0 +1,22 @@
+--- helm-0.9.0.orig/src/common/load_save.cpp
++++ helm-0.9.0/src/common/load_save.cpp
+@@ -20,7 +20,7 @@
+ #include "midi_manager.h"
+ #include "synth_base.h"
+ 
+-#define LINUX_FACTORY_PATCH_DIRECTORY "/usr/share/helm/patches"
++#define LINUX_FACTORY_PATCH_DIRECTORY "/usr/share/Helm/patches"
+ #define USER_BANK_NAME "User Patches"
+ #define LINUX_BANK_DIRECTORY "~/.helm/patches"
+ #define EXPORTED_BANK_EXTENSION "helmbank"
+--- helm-0.9.0.orig/src/editor_sections/patch_browser.cpp
++++ helm-0.9.0/src/editor_sections/patch_browser.cpp
+@@ -28,7 +28,7 @@
+ #define PATCHES_WIDTH_PERCENT 0.285
+ #define PATCH_INFO_WIDTH_PERCENT 0.285
+ #define TEXT_PADDING 4.0f
+-#define LINUX_SYSTEM_PATCH_DIRECTORY "/usr/share/helm/patches"
++#define LINUX_SYSTEM_PATCH_DIRECTORY "/usr/share/Helm/patches"
+ #define LINUX_USER_PATCH_DIRECTORY "~/.helm/User Patches"
+ #define BROWSING_HEIGHT 430.0f
+ #define BROWSE_PADDING 8.0f

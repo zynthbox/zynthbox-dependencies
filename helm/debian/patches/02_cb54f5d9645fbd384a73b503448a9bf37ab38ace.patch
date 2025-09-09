@@ -1,0 +1,278 @@
+From cb54f5d9645fbd384a73b503448a9bf37ab38ace Mon Sep 17 00:00:00 2001
+From: mtytel <matthewtytel@gmail.com>
+Date: Sat, 22 Jul 2017 16:50:28 -0400
+Subject: [PATCH] Fixed Midi mapping to stepped value
+
+---
+ src/common/load_save.cpp                      | 11 ++++-----
+ src/common/midi_manager.cpp                   | 24 +++++++++++--------
+ src/common/midi_manager.h                     |  9 ++++---
+ src/common/synth_base.cpp                     |  5 ++--
+ src/common/synth_base.h                       |  2 +-
+ src/editor_components/synth_button.cpp        |  2 +-
+ src/editor_components/synth_slider.cpp        |  2 +-
+ src/plugin/value_bridge.h                     | 11 +++++----
+ .../builds/osx/Helm.xcodeproj/project.pbxproj |  6 +++++
+ 9 files changed, 40 insertions(+), 32 deletions(-)
+
+diff --git a/src/common/load_save.cpp b/src/common/load_save.cpp
+index 4a5ddae77..ab32f7b6b 100644
+--- a/src/common/load_save.cpp
++++ b/src/common/load_save.cpp
+@@ -502,8 +502,8 @@ void LoadSave::saveMidiMapConfig(MidiManager* midi_manager) {
+       DynamicObject* midi_destination_object = new DynamicObject();
+ 
+       midi_destination_object->setProperty("destination", String(midi_destination.first));
+-      midi_destination_object->setProperty("min_range", midi_destination.second.first);
+-      midi_destination_object->setProperty("max_range", midi_destination.second.second);
++      midi_destination_object->setProperty("min_range", midi_destination.second->min);
++      midi_destination_object->setProperty("max_range", midi_destination.second->max);
+       midi_destinations_object.add(midi_destination_object);
+     }
+ 
+@@ -550,11 +550,8 @@ void LoadSave::loadConfig(MidiManager* midi_manager, mopo::StringLayout* layout)
+           DynamicObject* destination_object = midi_destination->getDynamicObject();
+ 
+           String destination_name = destination_object->getProperty("destination").toString();
+-          mopo::mopo_float min_range = destination_object->getProperty("min_range");
+-          mopo::mopo_float max_range = destination_object->getProperty("max_range");
+-
+-          midi_learn_map[source][destination_name.toStdString()] =
+-              MidiManager::midi_range(min_range, max_range);
++          std::string dest = destination_name.toStdString();
++          midi_learn_map[source][dest] = &mopo::Parameters::getDetails(dest);
+         }
+       }
+     }
+diff --git a/src/common/midi_manager.cpp b/src/common/midi_manager.cpp
+index 353934391..c1fb05b37 100644
+--- a/src/common/midi_manager.cpp
++++ b/src/common/midi_manager.cpp
+@@ -28,23 +28,22 @@
+ MidiManager::MidiManager(SynthBase* synth, MidiKeyboardState* keyboard_state,
+                          std::map<std::string, String>* gui_state, Listener* listener) :
+     synth_(synth), keyboard_state_(keyboard_state), gui_state_(gui_state),
+-    listener_(listener), armed_range_(0.0, 1.0) {
++    listener_(listener), armed_value_(nullptr) {
+   engine_ = synth_->getEngine();
+ }
+ 
+ MidiManager::~MidiManager() {
+ }
+ 
+-void MidiManager::armMidiLearn(std::string name, mopo::mopo_float min, mopo::mopo_float max) {
++void MidiManager::armMidiLearn(std::string name) {
+   current_bank_ = -1;
+   current_folder_ = -1;
+   current_patch_ = -1;
+-  control_armed_ = name;
+-  armed_range_ = std::pair<mopo::mopo_float, mopo::mopo_float>(min, max);
++  armed_value_ = &mopo::Parameters::getDetails(name);
+ }
+ 
+ void MidiManager::cancelMidiLearn() {
+-  control_armed_ = "";
++  armed_value_ = nullptr;
+ }
+ 
+ void MidiManager::clearMidiLearn(const std::string& name) {
+@@ -57,9 +56,9 @@ void MidiManager::clearMidiLearn(const std::string& name) {
+ }
+ 
+ void MidiManager::midiInput(int midi_id, mopo::mopo_float value) {
+-  if (control_armed_.length()) {
+-    midi_learn_map_[midi_id][control_armed_] = armed_range_;
+-    control_armed_ = "";
++  if (armed_value_) {
++    midi_learn_map_[midi_id][armed_value_->name] = armed_value_;
++    armed_value_ = nullptr;
+ 
+     // TODO: Probably shouldn't write this config on the audio thread.
+     LoadSave::saveMidiMapConfig(this);
+@@ -67,9 +66,14 @@ void MidiManager::midiInput(int midi_id, mopo::mopo_float value) {
+ 
+   if (midi_learn_map_.count(midi_id)) {
+     for (auto& control : midi_learn_map_[midi_id]) {
+-      midi_range range = control.second;
++      const mopo::ValueDetails* details = control.second;
+       mopo::mopo_float percent = value / (mopo::MIDI_SIZE - 1);
+-      mopo::mopo_float translated = percent * (range.second - range.first) + range.first;
++      if (details->steps) {
++        mopo::mopo_float max_step = details->steps - 1;
++        percent = floor(percent * max_step + 0.5) / max_step;
++      }
++
++      mopo::mopo_float translated = percent * (details->max - details->min) + details->min;
+       listener_->valueChangedThroughMidi(control.first, translated);
+     }
+   }
+diff --git a/src/common/midi_manager.h b/src/common/midi_manager.h
+index c0f4fa991..9f139e3ba 100644
+--- a/src/common/midi_manager.h
++++ b/src/common/midi_manager.h
+@@ -19,6 +19,7 @@
+ 
+ #include "JuceHeader.h"
+ #include "common.h"
++#include "helm_common.h"
+ #include <string>
+ #include <map>
+ 
+@@ -30,8 +31,7 @@ namespace mopo {
+ 
+ class MidiManager : public MidiInputCallback {
+   public:
+-    typedef std::pair<mopo::mopo_float, mopo::mopo_float> midi_range;
+-    typedef std::map<int, std::map<std::string, midi_range>> midi_map;
++    typedef std::map<int, std::map<std::string, const mopo::ValueDetails*>> midi_map;
+ 
+     class Listener {
+       public:
+@@ -45,7 +45,7 @@ class MidiManager : public MidiInputCallback {
+                 std::map<std::string, String>* gui_state, Listener* listener = nullptr);
+     virtual ~MidiManager();
+ 
+-    void armMidiLearn(std::string name, mopo::mopo_float min, mopo::mopo_float max);
++    void armMidiLearn(std::string name);
+     void cancelMidiLearn();
+     void clearMidiLearn(const std::string& name);
+     void midiInput(int control, mopo::mopo_float value);
+@@ -85,8 +85,7 @@ class MidiManager : public MidiInputCallback {
+     int current_folder_;
+     int current_patch_;
+ 
+-    std::string control_armed_;
+-    std::pair<mopo::mopo_float, mopo::mopo_float> armed_range_;
++    const mopo::ValueDetails* armed_value_;
+     midi_map midi_learn_map_;
+ };
+ 
+diff --git a/src/common/synth_base.cpp b/src/common/synth_base.cpp
+index f24eb0189..36ebdeefd 100644
+--- a/src/common/synth_base.cpp
++++ b/src/common/synth_base.cpp
+@@ -323,9 +323,8 @@ void SynthBase::updateMemoryOutput(int samples, const mopo::mopo_float* left,
+   memory_input_offset_ -= samples;
+ }
+ 
+-void SynthBase::armMidiLearn(const std::string& name,
+-                             mopo::mopo_float min, mopo::mopo_float max) {
+-  midi_manager_->armMidiLearn(name, min, max);
++void SynthBase::armMidiLearn(const std::string& name) {
++  midi_manager_->armMidiLearn(name);
+ }
+ 
+ void SynthBase::cancelMidiLearn() {
+diff --git a/src/common/synth_base.h b/src/common/synth_base.h
+index 0f90a8c4f..66c233d0c 100644
+--- a/src/common/synth_base.h
++++ b/src/common/synth_base.h
+@@ -62,7 +62,7 @@ class SynthBase : public MidiManager::Listener {
+     virtual void endChangeGesture(const std::string& name) { }
+     virtual void setValueNotifyHost(const std::string& name, mopo::mopo_float value) { }
+ 
+-    void armMidiLearn(const std::string& name, mopo::mopo_float min, mopo::mopo_float max);
++    void armMidiLearn(const std::string& name);
+     void cancelMidiLearn();
+     void clearMidiLearn(const std::string& name);
+     bool isMidiMapped(const std::string& name);
+diff --git a/src/editor_components/synth_button.cpp b/src/editor_components/synth_button.cpp
+index 074106a69..052cf30e0 100644
+--- a/src/editor_components/synth_button.cpp
++++ b/src/editor_components/synth_button.cpp
+@@ -72,7 +72,7 @@ void SynthButton::handlePopupResult(int result) {
+   SynthBase* synth = parent->getSynth();
+ 
+   if (result == kArmMidiLearn)
+-    synth->armMidiLearn(getName().toStdString(), 0.0, 1.0);
++    synth->armMidiLearn(getName().toStdString());
+   else if (result == kClearMidiLearn)
+     synth->clearMidiLearn(getName().toStdString());
+ }
+diff --git a/src/editor_components/synth_slider.cpp b/src/editor_components/synth_slider.cpp
+index 146ad4f71..a9734183f 100644
+--- a/src/editor_components/synth_slider.cpp
++++ b/src/editor_components/synth_slider.cpp
+@@ -306,7 +306,7 @@ void SynthSlider::handlePopupResult(int result) {
+       parent->getSynth()->getDestinationConnections(getName().toStdString());
+ 
+   if (result == kArmMidiLearn)
+-    synth->armMidiLearn(getName().toStdString(), getMinimum(), getMaximum());
++    synth->armMidiLearn(getName().toStdString());
+   else if (result == kClearMidiLearn)
+     synth->clearMidiLearn(getName().toStdString());
+   else if (result == kDefaultValue)
+diff --git a/src/plugin/value_bridge.h b/src/plugin/value_bridge.h
+index fafc2b800..9015a164e 100644
+--- a/src/plugin/value_bridge.h
++++ b/src/plugin/value_bridge.h
+@@ -84,10 +84,13 @@ class ValueBridge : public AudioProcessorParameter {
+ 
+     // Converts from value from 0.0 to 1.0 to internal synth value.
+     float convertToSynthValue(mopo::mopo_float plugin_value) const {
+-      mopo::mopo_float raw_value = span_ * plugin_value + details_.min;
+-      if (details_.steps)
+-        return floor(raw_value + 0.5);
+-      return raw_value;
++      mopo::mopo_float percent = plugin_value;
++      if (details_.steps) {
++        mopo::mopo_float max_step = details_.steps - 1;
++        percent = floor(percent * max_step + 0.5) / max_step;
++      }
++
++      return percent * span_ + details_.min;
+     }
+ 
+     void setValueNotifyHost(float new_value) {
+diff --git a/standalone/builds/osx/Helm.xcodeproj/project.pbxproj b/standalone/builds/osx/Helm.xcodeproj/project.pbxproj
+index ff99afc19..8540779f5 100644
+--- a/standalone/builds/osx/Helm.xcodeproj/project.pbxproj
++++ b/standalone/builds/osx/Helm.xcodeproj/project.pbxproj
+@@ -1233,6 +1233,7 @@
+ 				COPY_PHASE_STRIP = NO;
+ 				DEVELOPMENT_TEAM = "";
+ 				GCC_DYNAMIC_NO_PIC = NO;
++				GCC_FAST_MATH = NO;
+ 				GCC_OPTIMIZATION_LEVEL = 0;
+ 				GCC_PREPROCESSOR_DEFINITIONS = (
+ 					"_DEBUG=1",
+@@ -1248,6 +1249,7 @@
+ 					"JucePlugin_Build_AAX=0",
+ 					"JucePlugin_Build_Standalone=0",
+ 				);
++				GCC_UNROLL_LOOPS = NO;
+ 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+ 				HEADER_SEARCH_PATHS = (
+ 					../../JuceLibraryCode,
+@@ -1266,6 +1268,7 @@
+ 				INFOPLIST_FILE = "Info-App.plist";
+ 				INFOPLIST_PREPROCESS = NO;
+ 				INSTALL_PATH = "$(HOME)/Applications";
++				LLVM_LTO = NO;
+ 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+ 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
+ 				PRODUCT_BUNDLE_IDENTIFIER = org.tytel.helm;
+@@ -1330,6 +1333,7 @@
+ 				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
+ 				DEAD_CODE_STRIPPING = YES;
+ 				DEVELOPMENT_TEAM = "";
++				GCC_FAST_MATH = YES;
+ 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+ 				GCC_OPTIMIZATION_LEVEL = 3;
+ 				GCC_PREPROCESSOR_DEFINITIONS = (
+@@ -1347,6 +1351,7 @@
+ 					"JucePlugin_Build_Standalone=0",
+ 				);
+ 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
++				GCC_UNROLL_LOOPS = YES;
+ 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+ 				HEADER_SEARCH_PATHS = (
+ 					../../JuceLibraryCode,
+@@ -1365,6 +1370,7 @@
+ 				INFOPLIST_FILE = "Info-App.plist";
+ 				INFOPLIST_PREPROCESS = NO;
+ 				INSTALL_PATH = "$(HOME)/Applications";
++				LLVM_LTO = YES;
+ 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+ 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
+ 				PRODUCT_BUNDLE_IDENTIFIER = org.tytel.helm;
