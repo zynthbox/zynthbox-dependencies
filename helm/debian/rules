@@ -22,9 +22,9 @@ export PKG_CONFIG_PATH=/opt/kxstudio/lib/pkgconfig
 	dh $@
 
 override_dh_auto_build:
-	echo "deb http://archive.debian.org/debian/ buster main" | sudo tee /etc/apt/sources.list.d/buster.list
+	echo "deb http://archive.debian.org/debian/ buster main contrib non-free" | sudo tee /etc/apt/sources.list.d/buster.list
 	sudo apt update
-	sudo apt install gcc-7
+	sudo apt install gcc-7 libgcc-7-dev
 	sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 1
 	gcc -v
 	$(MAKE) standalone lv2 vst -j4
