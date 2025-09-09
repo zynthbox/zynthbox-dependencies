@@ -85,6 +85,7 @@ on:
           - remid
           - rubberband-lv2
           - setbfree
+          - sfizz
           - shiro-plugins
           - sonobus
           - sooperlooper-lv2

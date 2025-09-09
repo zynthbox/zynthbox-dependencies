@@ -358,6 +358,10 @@ case "$PACKAGE_NAME" in
         echo "repolink=https://github.com/zynthbox/bluez-alsa" >> $GITHUB_OUTPUT
         ;;
 
+    sfizz)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/raw/refs/heads/main/sfizz/sfizz-1.2.3.tar.gz" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1

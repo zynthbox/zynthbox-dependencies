@@ -1,0 +1,12 @@
+zynthbox-dependency-sfizz (1.0.0-1-2) unstable; urgency=medium
+
+  * Migrated from opencode to gh
+
+ -- Probal Basak <probal31@gmail.com>  Tue, 09 Sep 2025 10:56:22 +0000
+
+zynthbox-dependency-sfizz (1.0.0-1-1) bullseye; urgency=medium
+
+  * Build
+
+ -- Anupam Basak <anupam.basak27@gmail.com>  Tue, 07 Mar 2023 10:54:11 +0530
+

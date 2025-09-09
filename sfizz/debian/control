@@ -1,0 +1,12 @@
+Source: zynthbox-dependency-sfizz
+Section: misc
+Priority: optional
+Maintainer: Anupam Basak <anupam.basak27@gmail.com>
+Build-Depends: debhelper (>= 11), cmake, g++, clang-format, libjack-jackd2-dev
+Standards-Version: 4.1.3
+Homepage: https://github.com/sfztools/sfizz.git
+
+Package: zynthbox-dependency-sfizz
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Build zynthbox-dependency-sfizz deb
