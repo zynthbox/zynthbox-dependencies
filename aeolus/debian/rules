@@ -1,0 +1,19 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+export DESTDIR=$(CURDIR)/debian/aeolus
+
+include /usr/share/dpkg/buildtools.mk
+
+export PKG_CONF=$(PKG_CONFIG)
+
+export PREFIX=/usr
+
+export LIBDIR=$(PREFIX)/lib/aeolus
+
+%:
+	dh $@ -Dsource
+
+override_dh_installchangelogs:
+	dh_installchangelogs README
