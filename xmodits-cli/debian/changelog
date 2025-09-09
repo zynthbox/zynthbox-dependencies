@@ -1,0 +1,12 @@
+zynthbox-dependency-xmodits (0.11.5-1-2) unstable; urgency=medium
+
+  * Migrated from opencode to gh
+
+ -- Probal Basak <probal31@gmail.com>  Tue, 09 Sep 2025 10:57:54 +0000
+
+zynthbox-dependency-xmodits (0.11.5-1-1) bullseye; urgency=medium
+
+  * Build
+
+ -- Anupam Basak <anupam.basak27@gmail.com>  Fri, 24 Jan 2025 12:23:28 +0530
+

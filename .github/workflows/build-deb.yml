@@ -105,6 +105,7 @@ on:
           - webconf
           - wolf-shaper
           - wolf-spectrum
+          - xmodits-cli
           - ykchorus
           - zam-plugins
           - zlfo

@@ -366,6 +366,10 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/touchosc2midi-git+e370fa1.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
+    xmodits-cli)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/xmodits-cli-0.11.5.tar.gz" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1
