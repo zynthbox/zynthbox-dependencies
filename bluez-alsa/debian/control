@@ -2,12 +2,12 @@ Source: bluez-alsa
 Section: misc
 Priority: optional
 Maintainer: Probal Basak <probal31@gmail.com>
-Build-Depends: debhelper (>= 11), pkg-config, binutils, make, g++, autoconf, automake, autotools-dev, libtool, libasound2-dev, libglib2.0-dev, systemd, bluez, libbluetooth-dev, libsbc-dev, libfdk-aac-dev, libfdk-aac2 (=2.0.2-1), libmp3lame-dev, libmp3lame0 (=3.100-6), libmpg123-dev, libspandsp-dev, libdbus-1-dev
+Build-Depends: debhelper (>= 11), pkg-config, binutils, make, g++, autoconf, automake, autotools-dev, libtool, libasound2-dev, libglib2.0-dev, systemd, bluez, libbluetooth-dev, libsbc-dev, libfdk-aac-dev, libfdk-aac2, libmp3lame-dev, libmp3lame0, libmpg123-dev, libspandsp-dev, libdbus-1-dev
 Standards-Version: 4.1.3
 Homepage: https://github.com/arkq/bluez-alsa
 
 Package: bluez-alsa
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, libfdk-aac2 (=2.0.2-1), libmp3lame0 (=3.100-6)
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Bluetooth Audio ALSA Backend
  A library to process audio and send to bluetooth device
