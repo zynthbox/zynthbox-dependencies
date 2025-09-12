@@ -1,5 +1,5 @@
-name: Build zynthbox plugins debs
-run-name: Build zynthbox plugins debs - ${{ github.event.inputs.package_name }}
+name: Build zynthbox plugins debs using buster
+run-name: Build zynthbox plugins debs using buster - ${{ github.event.inputs.package_name }}
 
 on:
   workflow_dispatch:
