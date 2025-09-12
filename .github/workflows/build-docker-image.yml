@@ -10,6 +10,13 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-22.04-arm
+    strategy:
+      matrix:
+        include:
+          - base_image: debian:bookworm
+            base_image_tag: debian-bookworm-arm
+          - base_image: debian:buster
+            base_image_tag: debian-buster-arm
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -24,11 +31,13 @@ jobs:
             username: probal31
             password: ${{ secrets.GHCR_PAT }}
 
-      - name: Build and Push
+      - name: Build and Push image with base ${{ matrix.base_image }}
         uses: docker/build-push-action@v5
         with:
             context: .
             file: Dockerfile.zynthbox-packaging
             platforms: linux/arm64
             push: true
-            tags: ghcr.io/probal31/zynthbox-packaging:arm64
+            tags: ghcr.io/probal31/zynthbox-packaging:${{ matrix.base_image_tag }}
+            build-args: |
+              BASE_IMAGE=${{ matrix.base_image }}
