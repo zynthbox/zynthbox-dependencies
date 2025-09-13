@@ -143,7 +143,7 @@ jobs:
 
     steps:
       - name: Show container image being used
-        run: echo "Using container: zynthbox-packaging:${{ matrix.tag || 'debian-bookworm-arm' }}"
+        run: echo "Using container zynthbox-packaging:${{ matrix.tag || 'debian-bookworm-arm' }}"
         
       - name: Checkout repository
         uses: actions/checkout@v4
