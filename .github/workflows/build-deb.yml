@@ -47,6 +47,7 @@ on:
           - gxdistortionplus
           - gxplugins
           - gxswitchlesswah
+          - helm
           - infamous-plugins
           - invada-studio-plugins-lv2
           - knewstuff
@@ -126,8 +127,13 @@ jobs:
   build:
     name: Build ${{ inputs.package_name }} plugin
     runs-on: ubuntu-22.04-arm
+    strategy:
+      matrix:
+        include:
+          - package_name: helm
+            tag: debian-buster-arm
     container:
-      image: ghcr.io/probal31/zynthbox-packaging:debian-bookworm-arm
+      image: ghcr.io/probal31/zynthbox-packaging:${{ matrix.tag || 'debian-bookworm-arm' }}
       env:
         DEBIAN_FRONTEND: noninteractive
         APTLY_REPO: testing
