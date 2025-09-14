@@ -9,6 +9,9 @@ on:
       package_name:
         required: true
         type: string
+    secrets:
+      APTLY_SSH_KEY:
+        required: true
 
 jobs:
   build:

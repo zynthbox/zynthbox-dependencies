@@ -129,3 +129,5 @@ jobs:
     with:
       package_name: ${{ github.event.inputs.package_name }}
       container_image: ${{ github.event.inputs.package_name == 'helm' && 'ghcr.io/probal31/zynthbox-packaging:debian-buster-arm' || 'ghcr.io/probal31/zynthbox-packaging:debian-bookworm-arm' }}
+    secrets:
+      APTLY_SSH_KEY: ${{ secrets.APTLY_SSH_KEY }}
