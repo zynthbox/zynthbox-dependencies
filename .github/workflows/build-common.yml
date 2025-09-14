@@ -1,0 +1,165 @@
+name: Build Common
+
+on:
+  workflow_call:
+    inputs:
+      container_image:
+        required: true
+        type: string
+      package_name:
+        required: true
+        type: string
+
+jobs:
+  build:
+    name: Build ${{ inputs.package_name }} plugin
+    runs-on: ubuntu-22.04-arm
+    container:
+      image: ${{ inputs.container_image }}
+      env:
+        DEBIAN_FRONTEND: noninteractive
+        APTLY_REPO: testing
+        RELEASE: bookworm
+        BUILDING_ZYNTHBOX_DEPENDENCY: 1
+        SKIP_ZYNTHBOX_DEPENDENCIES_INSTALLATION: 0
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set sourcelink or repolink based on choice
+        id: setup
+        run: |
+          set -e  # Ensures GitHub Action fails if script fails
+          LINK=$(.github/scripts/get_link.sh "${{ inputs.package_name }}")
+          echo "$LINK" >> $GITHUB_OUTPUT
+
+      - name: Set custom workflow title
+        run: |
+          echo "### Building zynthbox plugin: ${{ inputs.package_name }}" >> $GITHUB_STEP_SUMMARY
+
+      - name: Download/generate tar from github release/repo and create orig.tar.gz
+        run: |
+          cd ${{ inputs.package_name }}
+          
+          PACKAGE_NAME=$(dpkg-parsechangelog --show-field Source)
+          PACKAGE_VERSION=$(dpkg-parsechangelog --show-field Version | sed 's/-[^-]*$//')
+
+          # Keep the debian folder backup
+          mv debian debian.bkup
+
+          if [ -n "${{ steps.setup.outputs.repolink }}" ]; then
+            git config --global url.https://${{ secrets.GH_ACCESS_TOKEN }}@github.com/.insteadOf https://github.com/
+
+            git clone --recurse-submodules --depth 1 "${{ steps.setup.outputs.repolink }}" source-tmp
+            rm -rf source-tmp/.git
+            tar -czf ../${PACKAGE_NAME}_${PACKAGE_VERSION}.orig.tar.gz -C source-tmp .
+            tar -xf ../${PACKAGE_NAME}_${PACKAGE_VERSION}.orig.tar.gz -C ./ --strip-components=1
+            rm -rf source-tmp
+          elif [ -n "${{ steps.setup.outputs.sourcelink }}" ]; then
+            wget -O ../${PACKAGE_NAME}_${PACKAGE_VERSION}.orig.tar.gz ${{ steps.setup.outputs.sourcelink }}
+            tar -xvf ../${PACKAGE_NAME}_${PACKAGE_VERSION}.orig.tar.gz -C ./ --strip-components=1
+          else
+            echo "No valid source or repo link found."
+            exit 1
+          fi
+
+          rm -rf debian
+          mv debian.bkup debian
+
+          
+      - name: Build DEB using Debhelper
+        run: |
+          set -x
+          
+          # Ensuring key security
+          mkdir -p ~/.ssh
+          echo "${{ secrets.APTLY_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan repo.zynthbox.io >> ~/.ssh/known_hosts
+
+          # Zynthbox repo
+          curl -L https://repo.zynthbox.io/repo_key.pub | apt-key add -;
+          if [ "$RELEASE" = "bookworm" ]; then
+            echo "deb https://repo.zynthbox.io/testing-bookworm/ bookworm main" | tee "/etc/apt/sources.list.d/zynthbox.list"
+          else
+            echo "UNKNOWN RELEASE $RELEASE"
+          fi
+
+          ### Make the aptly jobs wait on a global lock file so that the aptly jobs are mutually exclusive
+          ### Create a lock file /tmp/publish-aptly-zynthbox.lock and cleanup before completing the job
+          echo "Checking if /tmp/publish-aptly-zynthbox.lock exists"
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'while [ -f /tmp/publish-aptly-zynthbox.lock ]; do echo "/tmp/publish-aptly-zynthbox.lock exists. Waiting for other publish jobs to finish first"; sleep 5; done'
+
+          # Set C/CXX FLAGS to optimize builds for RPI4
+          export CFLAGS="-ftree-vectorize -O2 -pipe -fomit-frame-pointer"
+          export CXXFLAGS="${CFLAGS}"
+          export CFLAGS_UNSAFE=""
+
+          # Create world writable gnupg home
+          export GNUPGHOME=$(mktemp -d /tmp/.gnupgXXXXXX)
+          chmod 777 $GNUPGHOME
+
+          # Create dpkg-buildpackage config to disable signing of source, build and changes files when generating debs
+          echo "unsigned-source" >> /etc/dpkg/buildpackage.conf
+          echo "unsigned-buildinfo" >> /etc/dpkg/buildpackage.conf
+          echo "unsigned-changes" >> /etc/dpkg/buildpackage.conf
+          set +x
+
+          cd ${{ inputs.package_name }}
+
+          # Bump package version 
+          sed -i -e "1 s/)/+${{ github.run_number }})/" debian/changelog
+
+          # Install the build dependencies reading the Build-Depends in the debian/control file
+          apt-get update
+          apt-get -y build-dep .
+
+          dpkg-buildpackage -us -uc -b
+
+      - name: Upload deb to aptly repo
+        run: |
+          set -x
+          echo "Updating repository info"
+          apt update
+
+          mkdir -p ~/.ssh
+          echo "${{ secrets.APTLY_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan repo.zynthbox.io >> ~/.ssh/known_hosts
+
+          ### Make the aptly jobs wait on a global lock file so that the aptly jobs are mutually exclusive
+          ### Create a lock file /tmp/publish-aptly-zynthbox.lock and cleanup before completing the job
+          echo "Checking if /tmp/publish-aptly-zynthbox.lock exists"
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'while [ -f /tmp/publish-aptly-zynthbox.lock ]; do echo "/tmp/publish-aptly-zynthbox.lock exists. Waiting for other publish jobs to finish first"; sleep 5; done'
+          echo "Creating lock file /tmp/publish-aptly-zynthbox.lock"
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'touch /tmp/publish-aptly-zynthbox.lock'
+
+          cd ${{ inputs.package_name }}
+          
+          echo "Uploading debs"
+          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ../*.deb aptly@repo.zynthbox.io:/mnt/pub_zynthbox_io_volume/temp/
+          echo "Adding package(s) to repository"
+
+          if [ "$RELEASE" = "bookworm" ]; then
+            for pkg in $(ls -1 ../*.deb)
+              do
+                echo "Adding ${pkg}"
+                ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly repo add -remove-files '"${APTLY_REPO}-bookworm"' /mnt/pub_zynthbox_io_volume/temp/${pkg}'
+            done
+            echo "Publishing repository"
+            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly publish update bookworm '"${APTLY_REPO}-bookworm"
+            echo "Cleaning up"
+            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'if [[ -f /tmp/working ]];then rm /tmp/working;fi'
+            echo "Generate list of packages"
+            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly repo show -with-packages '"${APTLY_REPO}-bookworm"' > '"~/.aptly/public/${APTLY_REPO}-bookworm/${APTLY_REPO}-bookworm.list"
+          else
+            echo "CANNOT PUBLISH DEBS. UNKNOWN RELEASE $RELEASE"
+          fi
+
+          ### Delete lock file /tmp/publish-aptly-zynthbox.lock for other aptly jobs to continue
+          echo "Removing lock file"
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'if [[ -f /tmp/publish-aptly-zynthbox.lock ]]; then rm /tmp/publish-aptly-zynthbox.lock; fi'
+          set +x
