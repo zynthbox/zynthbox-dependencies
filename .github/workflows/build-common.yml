@@ -36,7 +36,7 @@ jobs:
         id: setup
         run: |
           set -e  # Ensures GitHub Action fails if script fails
-          LINK=$(.github/scripts/get_link.sh "${{ inputs.package_name }}")
+          LINK=$(.github/scripts/get_info.sh "${{ inputs.package_name }}")
           echo "$LINK" >> $GITHUB_OUTPUT
 
       - name: Set custom workflow title
@@ -72,7 +72,13 @@ jobs:
           rm -rf debian
           mv debian.bkup debian
 
-          
+      - name: Run custom script before build if provided
+        if: ${{ steps.setup.outputs.before_script != '' }}
+        run: |
+          echo "Running custom script: ${{ steps.setup.outputs.before_script }}"
+          chmod +x "${{ steps.setup.outputs.before_script }}"
+          "${{ steps.setup.outputs.before_script }}"
+
       - name: Build DEB using Debhelper
         run: |
           set -x

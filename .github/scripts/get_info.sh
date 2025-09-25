@@ -368,6 +368,7 @@ case "$PACKAGE_NAME" in
 
     xmodits-cli)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/xmodits-cli-0.11.5.tar.gz" >> $GITHUB_OUTPUT
+        echo "before_script=scripts/setup-rust.sh" >> $GITHUB_OUTPUT
         ;;
 
     libjucy)
