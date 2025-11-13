@@ -50,6 +50,7 @@ on:
           - helm
           - infamous-plugins
           - invada-studio-plugins-lv2
+          - jack-example-tools
           - knewstuff
           - libjucy
           - libspecbleach
