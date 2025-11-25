@@ -16,4 +16,7 @@ Standards-Version: 4.1.3
 Package: jack-example-tools
 Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}, jackd
+Recommends: ${shlibs:Recommends}
+Breaks: jackd2 (<< 1.9.22~dfsg-1~), jackd1 (<< 1:0.126.0-3~)
+Replaces: jackd2 (<< 1.9.22~dfsg-1~), jackd1 (<< 1:0.126.0-3~)
 Description: Build jack-example-tools from Repository
