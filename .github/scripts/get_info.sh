@@ -403,6 +403,10 @@ case "$PACKAGE_NAME" in
         echo "repolink=https://github.com/zynthbox/zynthian-sys" >> $GITHUB_OUTPUT
         ;;
 
+    jack2)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/jack2.tar.gz" >> $GITHUB_OUTPUT
+        ;;
+
     jack-example-tools)
         echo "repolink=https://github.com/zynthbox/jack-example-tools.git" >> $GITHUB_OUTPUT
         ;;
