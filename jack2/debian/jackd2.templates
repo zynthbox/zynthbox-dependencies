@@ -7,7 +7,7 @@
 # Even minor modifications require translation updates and such
 # changes should be coordinated with translators and reviewers.
 
-Template: jackd/tweak_rt_limits
+Template: jackd2/tweak_rt_limits
 Type: boolean
 Default: false
 _Description: Enable realtime process priority?
