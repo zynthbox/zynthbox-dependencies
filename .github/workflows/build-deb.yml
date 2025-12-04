@@ -120,7 +120,6 @@ on:
           - zynthbox-qml
           - zynthbox-soundfonts
           - zynthbox-theme
-          - zynthbox-theme-alt
           - zynthbox-update-script
           - zynthbox-virtualkeyboard-theme
           - zynthian-data

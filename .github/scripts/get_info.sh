@@ -391,10 +391,6 @@ case "$PACKAGE_NAME" in
         echo "repolink=https://github.com/zynthbox/zynthbox-theme" >> $GITHUB_OUTPUT
         ;;
 
-    zynthbox-theme-alt)
-        echo "repolink=https://github.com/zynthbox/zynthbox-theme-alt" >> $GITHUB_OUTPUT
-        ;;
-
     zynthian-data)
         echo "repolink=https://github.com/zynthbox/zynthian-data" >> $GITHUB_OUTPUT
         ;;
