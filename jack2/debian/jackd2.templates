@@ -1,7 +1,7 @@
 Template: jackd/tweak_rt_limits
 Type: boolean
 Default: false
-_Description: Enable realtime process priority?
+Description: Enable realtime process priority?
  If you want to run jackd with realtime priorities, the user starting jackd
  needs realtime permissions. Accept this option to create the
  file /etc/security/limits.d/audio.conf, granting realtime
