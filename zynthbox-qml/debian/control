@@ -10,6 +10,8 @@ Package: zynthbox-qml
 Architecture: all
 Depends:    ${misc:Depends},
             ${shlibs:Depends},
+            qml-module-zynthbox, 
+            qml-style-zynthbox, 
             ffmpeg,
             gstreamer1.0-libav,
             kwin-x11,
