@@ -1,0 +1,3 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: qml-module-zynthbox
+Source: https://github.com/zynthbox/qml-module-zynthbox.git

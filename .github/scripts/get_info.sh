@@ -407,6 +407,10 @@ case "$PACKAGE_NAME" in
         echo "repolink=https://github.com/zynthbox/jack-example-tools.git" >> $GITHUB_OUTPUT
         ;;
 
+    qml-module-zynthbox)
+        echo "repolink=https://github.com/zynthbox/qml-module-zynthbox.git" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1
