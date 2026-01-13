@@ -85,6 +85,7 @@ on:
           - punk-console
           - qmidiarp
           - qml-module-zynthbox
+          - qml-style-zynthbox
           - raffo
           - regrader
           - remid
