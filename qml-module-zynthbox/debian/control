@@ -10,7 +10,6 @@ Build-Depends:
     libqt5svg5-dev, 
     libkf5plasma-dev, 
     libkf5config-dev
-    
 Standards-Version: 4.1.3
 Homepage: https://github.com/zynthbox/qml-module-zynthbox
 
