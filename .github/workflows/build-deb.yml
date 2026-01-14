@@ -134,3 +134,4 @@ jobs:
       container_image: ${{ github.event.inputs.package_name == 'helm' && 'ghcr.io/probal31/zynthbox-packaging:debian-buster-arm' || 'ghcr.io/probal31/zynthbox-packaging:debian-bookworm-arm' }}
     secrets:
       APTLY_SSH_KEY: ${{ secrets.APTLY_SSH_KEY }}
+      GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
