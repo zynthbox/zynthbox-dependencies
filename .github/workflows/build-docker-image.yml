@@ -13,8 +13,8 @@ jobs:
     strategy:
       matrix:
         include:
-          - base_image: debian:bookworm
-            base_image_tag: debian-bookworm-arm
+          - base_image: debian:trixie
+            base_image_tag: debian-trixie-arm
           - base_image: debian:buster
             base_image_tag: debian-buster-arm
     steps:
