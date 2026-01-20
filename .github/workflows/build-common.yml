@@ -92,9 +92,10 @@ jobs:
           ssh-keyscan repo.zynthbox.io >> ~/.ssh/known_hosts
 
           # Zynthbox repo
-          curl -L https://repo.zynthbox.io/repo_key.pub | apt-key add -;
+          curl -fsSL https://repo.zynthbox.io/repo_key.pub | tee /usr/share/keyrings/zynthbox.gpg > /dev/null
+
           if [ "$RELEASE" = "trixie" ]; then
-            echo "deb https://repo.zynthbox.io/testing-trixie/ trixie main" | tee "/etc/apt/sources.list.d/zynthbox.list"
+            echo "deb [signed-by=/usr/share/keyrings/zynthbox.gpg] https://repo.zynthbox.io/testing-trixie/ trixie main" | tee "/etc/apt/sources.list.d/zynthbox.list"
           else
             echo "UNKNOWN RELEASE $RELEASE"
           fi
