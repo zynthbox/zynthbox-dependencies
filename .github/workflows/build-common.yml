@@ -24,7 +24,7 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
         APTLY_REPO: testing
-        RELEASE: bookworm
+        RELEASE: trixie
         BUILDING_ZYNTHBOX_DEPENDENCY: 1
         SKIP_ZYNTHBOX_DEPENDENCIES_INSTALLATION: 0
     
@@ -93,8 +93,8 @@ jobs:
 
           # Zynthbox repo
           curl -L https://repo.zynthbox.io/repo_key.pub | apt-key add -;
-          if [ "$RELEASE" = "bookworm" ]; then
-            echo "deb https://repo.zynthbox.io/testing-bookworm/ bookworm main" | tee "/etc/apt/sources.list.d/zynthbox.list"
+          if [ "$RELEASE" = "trixie" ]; then
+            echo "deb https://repo.zynthbox.io/testing-trixie/ trixie main" | tee "/etc/apt/sources.list.d/zynthbox.list"
           else
             echo "UNKNOWN RELEASE $RELEASE"
           fi
@@ -154,18 +154,18 @@ jobs:
           scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ../*.deb aptly@repo.zynthbox.io:/mnt/pub_zynthbox_io_volume/temp/
           echo "Adding package(s) to repository"
 
-          if [ "$RELEASE" = "bookworm" ]; then
+          if [ "$RELEASE" = "trixie" ]; then
             for pkg in $(ls -1 ../*.deb)
               do
                 echo "Adding ${pkg}"
-                ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly repo add -remove-files '"${APTLY_REPO}-bookworm"' /mnt/pub_zynthbox_io_volume/temp/${pkg}'
+                ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly repo add -remove-files '"${APTLY_REPO}-trixie"' /mnt/pub_zynthbox_io_volume/temp/${pkg}'
             done
             echo "Publishing repository"
-            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly publish update bookworm '"${APTLY_REPO}-bookworm"
+            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly publish update trixie '"${APTLY_REPO}-trixie"
             echo "Cleaning up"
             ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'if [[ -f /tmp/working ]];then rm /tmp/working;fi'
             echo "Generate list of packages"
-            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly repo show -with-packages '"${APTLY_REPO}-bookworm"' > '"~/.aptly/public/${APTLY_REPO}-bookworm/${APTLY_REPO}-bookworm.list"
+            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly repo show -with-packages '"${APTLY_REPO}-trixie"' > '"~/.aptly/public/${APTLY_REPO}-trixie/${APTLY_REPO}-trixie.list"
           else
             echo "CANNOT PUBLISH DEBS. UNKNOWN RELEASE $RELEASE"
           fi
