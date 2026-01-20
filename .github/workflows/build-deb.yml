@@ -11,121 +11,121 @@ on:
         options:
           # The name should be same as the folder name in the repository
           - abgate
-          - aeolus
-          - aether-reverb
-          - airwin2rack
-          - alo
-          - ams-lv2
-          - artyfx
-          - bchoppr
-          - beatslash-lv2
-          - blop-lv2
-          - bluez-alsa
-          - bolliedelay
-          - bshapr
-          - bslizr
-          - calf-plugins
-          - caps-lv2
-          - cv-lfo-blender-lv2
-          - distrho-plugin-ports-lv2
-          - dpf-plugins
-          - dragonfly-reverb
-          - drmr
-          - drumgizmo
-          - drumkv1-lv2
-          - dxsyx
-          - fabla
-          - faust
-          - fluidplug
-          - fluidsynth
-          - foo-yc20
-          - gammaray
-          - geonkick
-          - guitarix
-          - gula-plugins
-          - gxdenoiser2
-          - gxdistortionplus
-          - gxplugins
-          - gxswitchlesswah
-          - helm
-          - infamous-plugins
-          - invada-studio-plugins-lv2
-          - jack-example-tools
-          - jack2
-          - knewstuff
-          - libjucy
-          - libspecbleach
-          - libzynthbox
-          - lilv
-          - lsp-plugins
-          - lv2-dev
-          - lvtk-v1
-          - mclk
-          - midi-display
-          - miniopl3
-          - mod-arpeggiator
-          - mod-browsepy
-          - mod-cabsim-ir-loader
-          - mod-cv-plugins
-          - mod-distortion
-          - mod-host
-          - mod-mda
-          - mod-pitchshifter
-          - mod-ttymidi
-          - mod-ui
-          - mod-utilities
-          - moony-lv2
-          - njconnect
-          - noise-repellent
-          - ntk
-          - padthv1-lv2
-          - plasma-framework-zynthbox
-          - premake
-          - preset2lv2
-          - punk-console
-          - qmidiarp
-          - qml-module-zynthbox
-          - qml-style-zynthbox
-          - raffo
-          - regrader
-          - remid
-          - rubberband-lv2
-          - setbfree
-          - sfizz
-          - shiro-plugins
-          - sonobus
-          - sooperlooper-lv2
-          - sorcer
-          - sosynth
-          - stereo-mixer
-          - string-machine
-          - sunshine
-          - surge
-          - swh
-          - synthv1-lv2
-          - synthv1-lv2-1.3.2
-          - tap-lv2
-          - touchosc2midi
-          - triceratops
-          - vl1
-          - webconf
-          - wolf-shaper
-          - wolf-spectrum
-          - xmodits-cli
-          - ykchorus
-          - zam-plugins
-          - zlfo
-          - zynaddsubfx
-          - zyncoder
-          - zynthbox-docs
-          - zynthbox-meta
-          - zynthbox-qml
-          - zynthbox-soundfonts
-          - zynthbox-theme
-          - zynthbox-update-script
-          - zynthbox-virtualkeyboard-theme
-          - zynthian-data
-          - zynthian-sys
+          # - aeolus
+          # - aether-reverb
+          # - airwin2rack
+          # - alo
+          # - ams-lv2
+          # - artyfx
+          # - bchoppr
+          # - beatslash-lv2
+          # - blop-lv2
+          # - bluez-alsa
+          # - bolliedelay
+          # - bshapr
+          # - bslizr
+          # - calf-plugins
+          # - caps-lv2
+          # - cv-lfo-blender-lv2
+          # - distrho-plugin-ports-lv2
+          # - dpf-plugins
+          # - dragonfly-reverb
+          # - drmr
+          # - drumgizmo
+          # - drumkv1-lv2
+          # - dxsyx
+          # - fabla
+          # - faust
+          # - fluidplug
+          # - fluidsynth
+          # - foo-yc20
+          # - gammaray
+          # - geonkick
+          # - guitarix
+          # - gula-plugins
+          # - gxdenoiser2
+          # - gxdistortionplus
+          # - gxplugins
+          # - gxswitchlesswah
+          # - helm
+          # - infamous-plugins
+          # - invada-studio-plugins-lv2
+          # - jack-example-tools
+          # - jack2
+          # - knewstuff
+          # - libjucy
+          # - libspecbleach
+          # - libzynthbox
+          # - lilv
+          # - lsp-plugins
+          # - lv2-dev
+          # - lvtk-v1
+          # - mclk
+          # - midi-display
+          # - miniopl3
+          # - mod-arpeggiator
+          # - mod-browsepy
+          # - mod-cabsim-ir-loader
+          # - mod-cv-plugins
+          # - mod-distortion
+          # - mod-host
+          # - mod-mda
+          # - mod-pitchshifter
+          # - mod-ttymidi
+          # - mod-ui
+          # - mod-utilities
+          # - moony-lv2
+          # - njconnect
+          # - noise-repellent
+          # - ntk
+          # - padthv1-lv2
+          # - plasma-framework-zynthbox
+          # - premake
+          # - preset2lv2
+          # - punk-console
+          # - qmidiarp
+          # - qml-module-zynthbox
+          # - qml-style-zynthbox
+          # - raffo
+          # - regrader
+          # - remid
+          # - rubberband-lv2
+          # - setbfree
+          # - sfizz
+          # - shiro-plugins
+          # - sonobus
+          # - sooperlooper-lv2
+          # - sorcer
+          # - sosynth
+          # - stereo-mixer
+          # - string-machine
+          # - sunshine
+          # - surge
+          # - swh
+          # - synthv1-lv2
+          # - synthv1-lv2-1.3.2
+          # - tap-lv2
+          # - touchosc2midi
+          # - triceratops
+          # - vl1
+          # - webconf
+          # - wolf-shaper
+          # - wolf-spectrum
+          # - xmodits-cli
+          # - ykchorus
+          # - zam-plugins
+          # - zlfo
+          # - zynaddsubfx
+          # - zyncoder
+          # - zynthbox-docs
+          # - zynthbox-meta
+          # - zynthbox-qml
+          # - zynthbox-soundfonts
+          # - zynthbox-theme
+          # - zynthbox-update-script
+          # - zynthbox-virtualkeyboard-theme
+          # - zynthian-data
+          # - zynthian-sys
 jobs:
   build:
     uses: ./.github/workflows/build-common.yml
