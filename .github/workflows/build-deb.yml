@@ -13,7 +13,7 @@ on:
           - abgate
           - aeolus
           - aether-reverb
-          # - airwin2rack
+          - airwin2rack
           # - alo
           # - ams-lv2
           # - artyfx
