@@ -14,7 +14,7 @@ on:
           - aeolus
           - aether-reverb
           - airwin2rack
-          # - alo
+          - alo
           # - ams-lv2
           # - artyfx
           # - bchoppr
