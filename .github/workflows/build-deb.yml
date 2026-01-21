@@ -55,7 +55,7 @@ on:
           # - knewstuff
           # - libjucy
           # - libspecbleach
-          # - libzynthbox
+          - libzynthbox
           # - lilv
           # - lsp-plugins
           # - lv2-dev

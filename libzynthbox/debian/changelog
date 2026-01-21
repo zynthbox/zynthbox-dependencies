@@ -1,3 +1,9 @@
+libzynthbox (0.7-1-2) trixie; urgency=medium
+
+  * Rebuild for trixie
+
+ -- Probal Basak <probal31@gmail.com>  Wed 21 Jan 2026 16:00:00 +0530
+
 libzynthbox (0.7-1-1) bookworm; urgency=medium
 
   * Build migrated to github
