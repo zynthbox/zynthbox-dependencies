@@ -121,11 +121,11 @@ on:
           # - zynthbox-meta
           # - zynthbox-qml
           # - zynthbox-soundfonts
-          # - zynthbox-theme
-          # - zynthbox-update-script
+          - zynthbox-theme
+          - zynthbox-update-script
           # - zynthbox-virtualkeyboard-theme
-          # - zynthian-data
-          # - zynthian-sys
+          - zynthian-data
+          - zynthian-sys
 jobs:
   build:
     uses: ./.github/workflows/build-common.yml
