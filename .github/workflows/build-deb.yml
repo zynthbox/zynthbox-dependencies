@@ -123,7 +123,7 @@ on:
           # - zynthbox-soundfonts
           - zynthbox-theme
           - zynthbox-update-script
-          # - zynthbox-virtualkeyboard-theme
+          - zynthbox-virtualkeyboard-theme
           - zynthian-data
           - zynthian-sys
 jobs:
