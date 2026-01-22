@@ -10,6 +10,6 @@ override_dh_auto_build:
 	BASE_OPTS="-O3 -ffast-math -fdata-sections -ffunction-sections" make -C source -j $(shell nproc)
 
 override_dh_auto_install:
-	DESTDIR=$(shell pwd)/debian/${CI_PROJECT_NAME} make -C source install
+	DESTDIR=$(shell pwd)/debian/zynthbox-plugin-alo make -C source install
 
 override_dh_usrlocal:
