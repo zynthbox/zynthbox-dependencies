@@ -84,8 +84,8 @@ on:
           # - preset2lv2
           # - punk-console
           # - qmidiarp
-          # - qml-module-zynthbox
-          # - qml-style-zynthbox
+          - qml-module-zynthbox
+          - qml-style-zynthbox
           # - raffo
           # - regrader
           # - remid
