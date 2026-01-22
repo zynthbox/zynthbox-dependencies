@@ -93,13 +93,13 @@ on:
           # - setbfree
           # - sfizz
           # - shiro-plugins
-          # - sonobus
+          - sonobus
           # - sooperlooper-lv2
           # - sorcer
           # - sosynth
           # - stereo-mixer
           # - string-machine
-          # - sunshine
+          - sunshine
           # - surge
           # - swh
           # - synthv1-lv2
