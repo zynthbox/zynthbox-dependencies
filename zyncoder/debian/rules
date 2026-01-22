@@ -4,7 +4,7 @@
 #export DH_VERBOSE = 1
 
 export CFLAGS += -Wno-implicit-function-declaration
-export CXXFLAGS =+ -Wno-implicit-function-declaration
+export CXXFLAGS += -Wno-implicit-function-declaration
 
 %:
 	dh $@
