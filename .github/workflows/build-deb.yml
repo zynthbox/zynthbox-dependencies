@@ -111,7 +111,7 @@ on:
           - webconf
           # - wolf-shaper
           # - wolf-spectrum
-          # - xmodits-cli
+          - xmodits-cli
           # - ykchorus
           # - zam-plugins
           # - zlfo
