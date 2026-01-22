@@ -108,7 +108,7 @@ on:
           # - touchosc2midi
           # - triceratops
           # - vl1
-          # - webconf
+          - webconf
           # - wolf-shaper
           # - wolf-spectrum
           # - xmodits-cli
@@ -116,7 +116,7 @@ on:
           # - zam-plugins
           # - zlfo
           # - zynaddsubfx
-          # - zyncoder
+          - zyncoder
           # - zynthbox-docs
           # - zynthbox-meta
           # - zynthbox-qml
