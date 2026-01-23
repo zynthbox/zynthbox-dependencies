@@ -53,7 +53,7 @@ on:
           # - jack-example-tools
           # - jack2
           # - knewstuff
-          # - libjucy
+          - libjucy
           # - libspecbleach
           - libzynthbox
           # - lilv
