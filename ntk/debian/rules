@@ -9,6 +9,8 @@
 # dh_auto_clean is the first target that gets executed.
 # So replace waf with newer version here before running any waf commands
 override_dh_auto_configure:
+	rm -rf .waf* ntk/.waf3-*
+	
 	# Download newer waf
 	rm -f ./waf
 	wget https://waf.io/waf-2.1.9 -O waf
