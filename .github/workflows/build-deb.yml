@@ -77,11 +77,11 @@ on:
           # - moony-lv2
           # - njconnect
           # - noise-repellent
-          # - ntk
+          - ntk
           # - padthv1-lv2
           # - plasma-framework-zynthbox
-          # - premake
-          # - preset2lv2
+          - premake
+          - preset2lv2
           # - punk-console
           # - qmidiarp
           - qml-module-zynthbox
