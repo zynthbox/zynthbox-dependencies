@@ -4,17 +4,10 @@
 #export DH_VERBOSE = 1
 
 %:
+	./waf configure
 	dh $@
 
-# dh_auto_clean is the first target that gets executed.
-# So replace waf with newer version here before running any waf commands
 override_dh_auto_configure:
-	rm -rf .waf* .waf3-*
-	
-	# Download newer waf
-	rm -f ./waf
-	wget https://waf.io/waf-2.1.9 -O waf
-	chmod +x ./waf
 	./waf configure
 
 override_dh_auto_build:
@@ -22,16 +15,9 @@ override_dh_auto_build:
 
 override_dh_auto_install:
 	./waf install --destdir=$(shell pwd)/debian/zynthbox-dependency-ntk
-
-override_dh_auto_clean:
-	./waf distclean || ./waf clean
-
+	
 override_dh_clean:
-	dh_clean
-	# remove any leftover waf cache dirs so new waf is always used 
-	rm -rf .waf* .waf3-*
+	./waf clean
 
 override_dh_usrlocal:
 	
-override_dh_strip:
-	dh_strip --no-automatic-dbgsym
