@@ -59,7 +59,7 @@ on:
           # - lilv
           # - lsp-plugins
           # - lv2-dev
-          # - lvtk-v1
+          - lvtk-v1
           # - mclk
           # - midi-display
           # - miniopl3
