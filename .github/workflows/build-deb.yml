@@ -52,11 +52,11 @@ on:
           # - invada-studio-plugins-lv2
           # - jack-example-tools
           # - jack2
-          # - knewstuff
+          - knewstuff
           - libjucy
           # - libspecbleach
           - libzynthbox
-          # - lilv
+          - lilv
           # - lsp-plugins
           # - lv2-dev
           - lvtk-v1
