@@ -68,10 +68,10 @@ on:
           # - mod-cabsim-ir-loader
           # - mod-cv-plugins
           # - mod-distortion
-          # - mod-host
+          - mod-host
           # - mod-mda
           # - mod-pitchshifter
-          # - mod-ttymidi
+          - mod-ttymidi
           # - mod-ui
           # - mod-utilities
           # - moony-lv2
