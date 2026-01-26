@@ -67,18 +67,18 @@ on:
           # - mod-browsepy
           # - mod-cabsim-ir-loader
           # - mod-cv-plugins
-          # - mod-distortion
+          - mod-distortion
           - mod-host
           # - mod-mda
           # - mod-pitchshifter
           - mod-ttymidi
           # - mod-ui
-          # - mod-utilities
+          - mod-utilities
           # - moony-lv2
           # - njconnect
           # - noise-repellent
           - ntk
-          # - padthv1-lv2
+          - padthv1-lv2
           # - plasma-framework-zynthbox
           - premake
           - preset2lv2
@@ -86,7 +86,7 @@ on:
           # - qmidiarp
           - qml-module-zynthbox
           - qml-style-zynthbox
-          # - raffo
+          - raffo
           # - regrader
           # - remid
           # - rubberband-lv2
