@@ -92,17 +92,17 @@ on:
           # - rubberband-lv2
           # - setbfree
           # - sfizz
-          # - shiro-plugins
+          - shiro-plugins
           - sonobus
           # - sooperlooper-lv2
           # - sorcer
           # - sosynth
           # - stereo-mixer
-          # - string-machine
+          - string-machine
           - sunshine
-          # - surge
+          - surge
           # - swh
-          # - synthv1-lv2
+          - synthv1-lv2
           # - synthv1-lv2-1.3.2
           - tap-lv2
           # - touchosc2midi
