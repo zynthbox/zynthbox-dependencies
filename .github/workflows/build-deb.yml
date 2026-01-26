@@ -56,7 +56,7 @@ on:
           - libjucy
           # - libspecbleach
           - libzynthbox
-          - lilv
+          # - lilv
           # - lsp-plugins
           # - lv2-dev
           - lvtk-v1
