@@ -34,18 +34,18 @@ on:
           # - drumgizmo
           # - drumkv1-lv2
           # - dxsyx
-          # - fabla
-          # - faust
-          # - fluidplug
+          - fabla
+          - faust
+          - fluidplug
           # - fluidsynth
-          # - foo-yc20
+          - foo-yc20
           # - gammaray
           # - geonkick
-          # - guitarix
+          - guitarix
           # - gula-plugins
           # - gxdenoiser2
-          # - gxdistortionplus
-          # - gxplugins
+          - gxdistortionplus
+          - gxplugins
           # - gxswitchlesswah
           # - helm
           # - infamous-plugins
