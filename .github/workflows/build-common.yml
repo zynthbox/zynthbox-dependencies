@@ -93,12 +93,7 @@ jobs:
 
           # Zynthbox repo
           curl -fsSL https://repo.zynthbox.io/repo_key.pub | tee /usr/share/keyrings/zynthbox.gpg > /dev/null
-
-          if [ "$RELEASE" = "trixie" ]; then
-            echo "deb [signed-by=/usr/share/keyrings/zynthbox.gpg] https://repo.zynthbox.io/testing-trixie/ trixie main" | tee "/etc/apt/sources.list.d/zynthbox.list"
-          else
-            echo "UNKNOWN RELEASE $RELEASE"
-          fi
+          echo "deb [signed-by=/usr/share/keyrings/zynthbox.gpg] https://repo.zynthbox.io/testing-trixie/ trixie main" | tee "/etc/apt/sources.list.d/zynthbox.list"
 
           ### Make the aptly jobs wait on a global lock file so that the aptly jobs are mutually exclusive
           ### Create a lock file /tmp/publish-aptly-zynthbox.lock and cleanup before completing the job
