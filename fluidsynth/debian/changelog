@@ -1,3 +1,9 @@
+zynthbox-plugin-fluidsynth (2.4.3-1-4) trixie; urgency=medium
+
+  * Rebuild for trixie
+
+ -- Probal Basak <probal31@gmail.com>  Wed, 28 Jan 2026 15:00:00 +0530
+
 zynthbox-plugin-fluidsynth (2.4.3-1-3) bookworm; urgency=medium
 
   * Repack
