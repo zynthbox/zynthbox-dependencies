@@ -91,13 +91,13 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan repo.zynthbox.io >> ~/.ssh/known_hosts
 
-          # Zynthbox repo
-          curl -fsSL https://repo.zynthbox.io/repo_key.pub | tee /usr/share/keyrings/zynthbox.gpg > /dev/null
-
           if [ "$RELEASE" = "trixie" ]; then
             if [ "${{ inputs.container_image }}" = "ghcr.io/probal31/zynthbox-packaging:debian-trixie-arm" ]; then
+              # Zynthbox repo
+              curl -fsSL https://repo.zynthbox.io/repo_key.pub | tee /usr/share/keyrings/zynthbox.gpg > /dev/null
               echo "deb [signed-by=/usr/share/keyrings/zynthbox.gpg] https://repo.zynthbox.io/testing-trixie/ trixie main" | tee "/etc/apt/sources.list.d/zynthbox.list"
             elif [ "${{ inputs.container_image }}" = "ghcr.io/probal31/zynthbox-packaging:debian-buster-arm" ]; then
+              curl -L https://repo.zynthbox.io/repo_key.pub | apt-key add -;
               echo "deb https://repo.zynthbox.io/testing-trixie/ trixie main" | tee "/etc/apt/sources.list.d/zynthbox.list"
             else
               echo "Could not add zynthbox repo for container image: ${{ inputs.container_image }}"
