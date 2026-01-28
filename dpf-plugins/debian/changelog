@@ -1,3 +1,10 @@
+zynthbox-plugin-dpf-plugins (1.7-1-3) trixie; urgency=medium
+
+  * Rebuild for trixie
+
+ -- Probal Basak <probal31@gmail.com>  Wed, 28 Jan 2026 12:00:00 +0530
+
+
 zynthbox-plugin-dpf-plugins (1.7-1-2) bookworm; urgency=medium
 
   * Build
