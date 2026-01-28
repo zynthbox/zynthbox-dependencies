@@ -90,8 +90,8 @@ on:
           # - regrader
           # - remid
           # - rubberband-lv2
-          # - setbfree
-          # - sfizz
+          - setbfree
+          - sfizz
           - shiro-plugins
           - sonobus
           # - sooperlooper-lv2
@@ -115,7 +115,7 @@ on:
           - ykchorus
           - zam-plugins
           # - zlfo
-          # - zynaddsubfx
+          - zynaddsubfx
           - zyncoder
           - zynthbox-docs
           - zynthbox-meta
