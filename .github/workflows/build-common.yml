@@ -98,7 +98,7 @@ jobs:
             if [ "${{ inputs.container_image }}" = "ghcr.io/probal31/zynthbox-packaging:debian-trixie-arm" ]; then
               echo "deb [signed-by=/usr/share/keyrings/zynthbox.gpg] https://repo.zynthbox.io/testing-trixie/ trixie main" | tee "/etc/apt/sources.list.d/zynthbox.list"
             elif [ "${{ inputs.container_image }}" = "ghcr.io/probal31/zynthbox-packaging:debian-buster-arm" ]; then
-              echo "deb https://repo.zynthbox.io/testing-bookworm/ bookworm main" | tee "/etc/apt/sources.list.d/zynthbox.list"
+              echo "deb https://repo.zynthbox.io/testing-trixie/ trixie main" | tee "/etc/apt/sources.list.d/zynthbox.list"
             else
               echo "Could not add zynthbox repo for container image: ${{ inputs.container_image }}"
             fi
