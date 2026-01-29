@@ -1,0 +1,91 @@
+Source: lv2-c++-tools
+Section: sound
+Priority: optional
+Maintainer: Debian Multimedia Maintainers <pkg-multimedia-maintainers@lists.alioth.debian.org>
+Uploaders:
+ Jaromír Mikeš <mira.mikes@seznam.cz>
+Build-Depends:
+ debhelper (>= 9),
+ doxygen,
+ libatk1.0-dev,
+ libboost-dev,
+ libboost-system-dev,
+ libcairo2-dev,
+ libcairomm-1.0-dev,
+ libfontconfig1-dev,
+ libfreetype6-dev,
+ libglib2.0-0,
+ libgtkmm-2.4-dev
+Standards-Version: 4.1.0
+Vcs-Git: https://anonscm.debian.org/git/pkg-multimedia/lv2-tools.git
+Vcs-Browser: https://anonscm.debian.org/cgit/pkg-multimedia/lv2-tools.git
+Homepage: http://ll-plugins.nongnu.org/hacking.html
+
+Package: lv2-c++-tools
+Section: libdevel
+Architecture: any
+Depends:
+ libpaq0,
+ ${misc:Depends},
+ ${shlibs:Depends}
+Suggests:
+ lv2-c++-tools-doc
+Description: library and tools for LV2 plugins
+ These are some tools and libraries that may come in handy
+ when writing LV2 plugins in C++.
+ .
+ The following static libraries are provided:
+  * liblv2-plugin is a C++ library that you can use to write LV2
+    plugins by inheriting from a plugin base class and overriding
+    a small number of functions.
+  * liblv2-gui is a C++ library that you can use to write LV2
+    plugin GUIs.
+ .
+ This package also contains the binaries lv2peg and lv2soname:
+  * lv2peg is a program that generates C header files from
+    Turtle files containing LV2 plugin data.
+  * lv2soname is a program that generate the RDF triples needed
+    to tell hosts that the library with that soname must never be
+    unloaded even after your plugin GUI library has been unloaded.
+ .
+ This package provides runtime objects and development files.
+
+Package: libpaq0
+Section: libs
+Architecture: any
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: library for parsing and querying RDF data
+ These are some tools and libraries that may come in handy
+ when writing LV2 plugins in C++.
+ .
+ This package provides libpaq, which is a LIBrary for Parsing And
+ Querying RDF data in Turtle format.
+
+Package: libpaq-dev
+Section: libdevel
+Architecture: any
+Depends:
+ libgtkmm-2.4-dev,
+ libpaq0 (= ${binary:Version}),
+ ${misc:Depends}
+Suggests:
+ lv2-c++-tools-doc
+Description: library for parsing and querying RDF data (header files)
+ some tools and libraries that may come in handy
+ when writing LV2 plugins in C++.
+ .
+ This package contains all necessary files
+ for development with lv2-c++-tools.
+
+Package: lv2-c++-tools-doc
+Section: doc
+Architecture: all
+Depends:
+ ${misc:Depends}
+Description: lv2-c++-tools documentation
+ Complete HTML documentation for lv2-c++-tools
+ .
+ These documents describes some C++ classes
+ that may be of use if you want to write LV2 plugins in C++.

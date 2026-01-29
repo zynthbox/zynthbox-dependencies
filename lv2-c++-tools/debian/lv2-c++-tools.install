@@ -1,0 +1,6 @@
+headers/* usr/include/lv2-c++-tools/
+libraries/lv2gui/*.hpp usr/include/lv2-c++-tools/
+libraries/lv2plugin/*.hpp usr/include/lv2-c++-tools/
+usr/bin
+usr/lib/liblv2-*.a
+usr/lib/pkgconfig/lv2-*.pc

@@ -1,0 +1,9 @@
+Document: lv2-c++-tools-doc
+Title: lv2-c++-tools documentation
+Author: Lars Luthman <lars.luthman@gmail.com>
+Abstract: These documents describes some C++ classes that may be of use if you want to write LV2 plugins in C++.
+Section: Sound
+
+Format: HTML
+Index: /usr/share/doc/lv2-c++-tools-doc/html/index.html
+Files: /usr/share/doc/lv2-c++-tools-doc/html/*

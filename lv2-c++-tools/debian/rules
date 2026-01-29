@@ -1,0 +1,20 @@
+#!/usr/bin/make -f
+
+LDFLAGS += -lboost_system
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+bindnow
+
+%:
+	dh $@ 
+
+override_dh_auto_configure:
+	./configure --prefix=/usr
+
+override_dh_auto_build:
+	dh_auto_build
+	doxygen
+
+override_dh_auto_clean:
+	$(MAKE) clean
+	rm -f Makefile.deps
+	dh_clean

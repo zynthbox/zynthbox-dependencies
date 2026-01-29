@@ -415,6 +415,10 @@ case "$PACKAGE_NAME" in
         echo "repolink=https://github.com/zynthbox/qml-style-zynthbox.git" >> $GITHUB_OUTPUT
         ;;
 
+    lv2-c++-tools)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/lv2-c++-tools_1.0.5.tar.bz2" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1
