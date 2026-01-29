@@ -1,0 +1,12 @@
+diff --git a/sources/ui/Color.h b/sources/ui/Color.h
+index 5c27804..d72f511 100644
+--- a/sources/ui/Color.h
++++ b/sources/ui/Color.h
+@@ -1,5 +1,7 @@
+ #pragma once
+ 
++#include <cstdint>
++
+ struct ColorRGBA8 {
+     uint8_t r, g, b, a;
+ };
