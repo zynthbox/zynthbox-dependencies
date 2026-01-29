@@ -1,4 +1,4 @@
-# SymbolsHelper-Confirmed: 5.78.0 alpha armel mips64el mipsel riscv64
+# SymbolsHelper-Confirmed: 5.115.0 amd64
 libKF5NewStuffCore.so.5 libkf5newstuffcore5 #MINVER#
 * Build-Depends-Package: libkf5newstuff-dev
  _ZN7KNSCore10ItemsModel10jobStartedEP4KJobRK7QString@Base 5.54.0
@@ -262,39 +262,26 @@ libKF5NewStuffCore.so.5 libkf5newstuffcore5 #MINVER#
  _ZN7KNSCore6Engine16commentsForEntryERKNS_13EntryInternalE@Base 5.69.0
  _ZN7KNSCore6Engine16providersChangedEv@Base 5.90.0
  _ZN7KNSCore6Engine16signalEntryEventERKNS_13EntryInternalENS1_10EntryEventE@Base 5.77.0
- _ZN7KNSCore6Engine16slotEntryChangedERKNS_13EntryInternalE@Base 5.54.0
  _ZN7KNSCore6Engine16staticMetaObjectE@Base 5.54.0
  _ZN7KNSCore6Engine16userCanBecomeFanERKNS_13EntryInternalE@Base 5.54.0
  _ZN7KNSCore6Engine17checkForInstalledEv@Base 5.54.0
- _ZN7KNSCore6Engine17slotEntriesLoadedERKNS_8Provider13SearchRequestE5QListINS_13EntryInternalEE@Base 5.54.0
- _ZN7KNSCore6Engine17slotPreviewLoadedERKNS_13EntryInternalENS1_11PreviewTypeE@Base 5.54.0
  _ZN7KNSCore6Engine18busyMessageChangedEv@Base 5.74.0
  _ZN7KNSCore6Engine18categoriesMetadataEv@Base 5.54.0
- _ZN7KNSCore6Engine18downloadLinkLoadedERKNS_13EntryInternalE@Base 5.54.0
- _ZN7KNSCore6Engine18providerJobStartedEP4KJob@Base 5.54.0
  _ZN7KNSCore6Engine18signalEntryChangedERKNS_13EntryInternalE@Base 5.54.0
- _ZN7KNSCore6Engine19providerInitializedEPNS_8ProviderE@Base 5.54.0
  _ZN7KNSCore6Engine19setCategoriesFilterERK11QStringList@Base 5.54.0
  _ZN7KNSCore6Engine19signalEntriesLoadedERK5QListINS_13EntryInternalEE@Base 5.54.0
  _ZN7KNSCore6Engine19signalPreviewFailedEv@Base 5.54.0
- _ZN7KNSCore6Engine19slotProvidersFailedEv@Base 5.54.0
  _ZN7KNSCore6Engine20addDownloadTagFilterERK7QString@Base 5.54.0
- _ZN7KNSCore6Engine20atticaProviderLoadedERKN6Attica8ProviderE@Base 5.54.0
  _ZN7KNSCore6Engine20availableConfigFilesEv@Base 5.83.0
  _ZN7KNSCore6Engine20setDownloadTagFilterERK11QStringList@Base 5.54.0
  _ZN7KNSCore6Engine20uploadEnabledChangedEv@Base 5.90.0
  _ZN7KNSCore6Engine21configSearchLocationsEb@Base 5.61.0
  _ZN7KNSCore6Engine21signalProvidersLoadedEv@Base 5.54.0
  _ZN7KNSCore6Engine22revalidateCacheEntriesEv@Base 5.74.0
- _ZN7KNSCore6Engine22slotEntryDetailsLoadedERKNS_13EntryInternalE@Base 5.54.0
- _ZN7KNSCore6Engine22slotInstallationFailedERK7QString@Base 5.54.0
- _ZN7KNSCore6Engine22slotProviderFileLoadedERK12QDomDocument@Base 5.54.0
- _ZN7KNSCore6Engine22slotSearchTimerExpiredEv@Base 5.54.0
  _ZN7KNSCore6Engine23signalEntryUploadFailedEv@Base 5.54.0
  _ZN7KNSCore6Engine24signalDownloadDialogDoneE5QListINS_13EntryInternalEE@Base 5.54.0
  _ZN7KNSCore6Engine24signalEntryDetailsLoadedERKNS_13EntryInternalE@Base 5.54.0
  _ZN7KNSCore6Engine24signalEntryPreviewLoadedERKNS_13EntryInternalENS1_11PreviewTypeE@Base 5.54.0
- _ZN7KNSCore6Engine24slotInstallationFinishedEv@Base 5.54.0
  _ZN7KNSCore6Engine25setConfigLocationFallbackEb@Base 5.61.0
  _ZN7KNSCore6Engine25signalEntryUploadFinishedEv@Base 5.54.0
  _ZN7KNSCore6Engine25signalSearchPresetsLoadedERK5QListINS_8Provider12SearchPresetEE@Base 5.83.0
@@ -387,7 +374,6 @@ libKF5NewStuffCore.so.5 libkf5newstuffcore5 #MINVER#
  _ZN7KNSCore9XmlLoaderC1EP7QObject@Base 5.54.0
  _ZN7KNSCore9XmlLoaderC2EP7QObject@Base 5.54.0
  _ZN7KNSCorelsE6QDebugRKNS_8Provider13SearchRequestE@Base 5.54.0
- (optional=templinst)_ZNK12KConfigGroup9readEntryIbEET_PKcRKS1_@Base 5.54.0
  _ZNK7KNSCore10ItemsModel10metaObjectEv@Base 5.54.0
  _ZNK7KNSCore10ItemsModel16hasPreviewImagesEv@Base 5.54.0
  _ZNK7KNSCore10ItemsModel3rowERKNS_13EntryInternalE@Base 5.69.0
@@ -510,8 +496,6 @@ libKF5NewStuffCore.so.5 libkf5newstuffcore5 #MINVER#
  _ZNK7KNSCore8Security11signalErrorERK7QString@Base 5.54.0
  _ZNK7KNSCore8Security17signalInformationERK7QString@Base 5.54.0
  _ZNK7KNSCore9XmlLoader10metaObjectEv@Base 5.54.0
- _ZTIN11Syndication4Atom4LinkE@Base 5.90.0
- _ZTIN11Syndication4Atom6PersonE@Base 5.90.0
  _ZTIN7KNSCore10ItemsModelE@Base 5.54.0
  _ZTIN7KNSCore12AtticaHelperE@Base 5.54.0
  _ZTIN7KNSCore12EntryWrapperE@Base 5.69.0
@@ -534,7 +518,6 @@ libKF5NewStuffCore.so.5 libkf5newstuffcore5 #MINVER#
  (optional=templinst|arch=!armel !riscv64)_ZTISt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE@Base 5.69.0
  (optional=templinst|arch=!alpha !amd64 !arm64 !hurd-i386 !i386 !mips64el !mipsel !powerpc !ppc64 !ppc64el !riscv64 !s390x !x32)_ZTISt19_Sp_make_shared_tag@Base 5.69.0
  (optional=templinst|arch=armel riscv64)_ZTISt23_Sp_counted_ptr_inplaceIN7KNSCore6AuthorESaIvELN9__gnu_cxx12_Lock_policyE1EE@Base 5.69.0
- (optional=templinst|arch=!armel !riscv64)_ZTISt23_Sp_counted_ptr_inplaceIN7KNSCore6AuthorESaIvELN9__gnu_cxx12_Lock_policyE2EE@Base 5.69.0
  _ZTSN11Syndication4Atom4LinkE@Base 5.90.0
  _ZTSN11Syndication4Atom6PersonE@Base 5.90.0
  _ZTSN7KNSCore10ItemsModelE@Base 5.54.0
@@ -560,8 +543,6 @@ libKF5NewStuffCore.so.5 libkf5newstuffcore5 #MINVER#
  (optional=templinst)_ZTSSt19_Sp_make_shared_tag@Base 5.69.0
  (optional=templinst|arch=armel riscv64)_ZTSSt23_Sp_counted_ptr_inplaceIN7KNSCore6AuthorESaIvELN9__gnu_cxx12_Lock_policyE1EE@Base 5.69.0
  (optional=templinst|arch=!armel !riscv64)_ZTSSt23_Sp_counted_ptr_inplaceIN7KNSCore6AuthorESaIvELN9__gnu_cxx12_Lock_policyE2EE@Base 5.69.0
- _ZTVN11Syndication4Atom4LinkE@Base 5.90.0
- _ZTVN11Syndication4Atom6PersonE@Base 5.90.0
  _ZTVN7KNSCore10ItemsModelE@Base 5.54.0
  _ZTVN7KNSCore12AtticaHelperE@Base 5.54.0
  _ZTVN7KNSCore12EntryWrapperE@Base 5.69.0
@@ -578,5 +559,4 @@ libKF5NewStuffCore.so.5 libkf5newstuffcore5 #MINVER#
  _ZTVN7KNSCore8SecurityE@Base 5.54.0
  _ZTVN7KNSCore9XmlLoaderE@Base 5.54.0
  (optional=templinst|arch=armel riscv64)_ZTVSt23_Sp_counted_ptr_inplaceIN7KNSCore6AuthorESaIvELN9__gnu_cxx12_Lock_policyE1EE@Base 5.69.0
- (optional=templinst|arch=!armel !riscv64)_ZTVSt23_Sp_counted_ptr_inplaceIN7KNSCore6AuthorESaIvELN9__gnu_cxx12_Lock_policyE2EE@Base 5.69.0
  _ZZNSt19_Sp_make_shared_tag5_S_tiEvE5__tag@Base 5.69.0
