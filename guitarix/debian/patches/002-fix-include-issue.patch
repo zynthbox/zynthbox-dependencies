@@ -1,0 +1,12 @@
+diff --git a/src/LV2/DSP/gx_bypass.cc b/src/LV2/DSP/gx_bypass.cc
+index 9cf0d03..9cdbea7 100644
+--- a/src/LV2/DSP/gx_bypass.cc
++++ b/src/LV2/DSP/gx_bypass.cc
+@@ -17,6 +17,7 @@
+  * --------------------------------------------------------------------------
+  */
+ 
++ #include <cstdint>
+ 
+ class GxBypass {
+ private:
