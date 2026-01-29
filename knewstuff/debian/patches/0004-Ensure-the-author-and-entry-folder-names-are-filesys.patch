@@ -1,0 +1,108 @@
+From f032fc91f9c936af564b38b7c4ca3f8681e81e89 Mon Sep 17 00:00:00 2001
+From: Dan Leinir Turthra Jensen <admin@leinir.dk>
+Date: Fri, 4 Apr 2025 15:33:21 +0100
+Subject: [PATCH 4/4] Ensure the author and entry folder names are filesystem
+ safe
+
+It might seem odd to not just remove the /, however that thing has a
+fairly strong semantic meaning in many places (such as music), and so
+instead replacing it with a division slash, which is rendered very
+similarly in many typefaces, seems like a reasonable compromise.
+---
+ src/core/installation.cpp | 37 ++++++++++++++++++++++---------------
+ 1 file changed, 22 insertions(+), 15 deletions(-)
+
+diff --git a/src/core/installation.cpp b/src/core/installation.cpp
+index b12ebc94..ddf49aec 100644
+--- a/src/core/installation.cpp
++++ b/src/core/installation.cpp
+@@ -450,6 +450,8 @@ QString Installation::targetInstallationPath() const
+ }
+ 
+ // TODO Move this to pimpl when adapting to KF6
++// If either of the string elements contains a slash, those slashes are replaced
++// with a division slash (which is similarly styled, but file system safe)
+ QString completeInstalldir(const KNSCore::EntryInternal &entry,
+                            const QString &installdir,
+                            const Installation::AuthorSubdirOptions &authorSubdirOptions,
+@@ -459,7 +461,10 @@ QString completeInstalldir(const KNSCore::EntryInternal &entry,
+     if (fullInstallDir.endsWith(QStringLiteral("/")) == false) {
+         fullInstallDir.append(QStringLiteral("/"));
+     }
+-    const QString authorId{entry.author().id().isEmpty() ? QStringLiteral("unknown") : entry.author().id()};
++    const QString authorId{entry.author().id().isEmpty() ? QStringLiteral("unknown")
++                                                         : entry.author().id().replace(QString::fromUtf8("/"), QString::fromUtf8("∕"))};
++    const QString authorName{entry.author().name().replace(QString::fromUtf8("/"), QString::fromUtf8("∕"))};
++    const QString authorEmail{entry.author().email().replace(QString::fromUtf8("/"), QString::fromUtf8("∕"))};
+     switch (authorSubdirOptions) {
+     case Installation::NoAuthorSubdir:
+         // No need to fetch author information here
+@@ -468,38 +473,40 @@ QString completeInstalldir(const KNSCore::EntryInternal &entry,
+         fullInstallDir.append(QString::fromUtf8("%1/").arg(authorId));
+         break;
+     case Installation::NameAuthorSubdir:
+-        if (entry.author().name().isEmpty()) {
++        if (authorName.isEmpty()) {
+             fullInstallDir.append(QString::fromUtf8("%1/").arg(authorId));
+         } else {
+-            fullInstallDir.append(QString::fromUtf8("%1/").arg(entry.author().name()));
++            fullInstallDir.append(QString::fromUtf8("%1/").arg(authorName));
+         }
+         break;
+     case Installation::NameIdAuthorSubdir:
+-        if (entry.author().name().isEmpty()) {
++        if (authorName.isEmpty()) {
+             fullInstallDir.append(QString::fromUtf8("unknown.%1/").arg(authorId));
+         } else {
+-            fullInstallDir.append(QString::fromUtf8("%1.%2/").arg(entry.author().name()).arg(authorId));
++            fullInstallDir.append(QString::fromUtf8("%1.%2/").arg(authorName).arg(authorId));
+         }
+         break;
+     case Installation::EmailAuthorSubdir:
+-        if (entry.author().email().isEmpty()) {
++        if (authorEmail.isEmpty()) {
+             fullInstallDir.append(QString::fromUtf8("%1/").arg(authorId));
+         } else {
+-            fullInstallDir.append(QString::fromUtf8("%1/").arg(entry.author().email()));
++            fullInstallDir.append(QString::fromUtf8("%1/").arg(authorEmail));
+         }
+         break;
+     case Installation::NameAndEmailAuthorSubdir:
+-        if (entry.author().name().isEmpty() && entry.author().email().isEmpty()) {
++        if (authorName.isEmpty() && authorEmail.isEmpty()) {
+             fullInstallDir.append(QString::fromUtf8("unknown (%1)/").arg(authorId));
+-        } else if (entry.author().name().isEmpty()) {
+-            fullInstallDir.append(QString::fromUtf8("unknown (%1)/").arg(entry.author().email()));
+-        } else if (entry.author().email().isEmpty()) {
+-            fullInstallDir.append(QString::fromUtf8("%1 (%2)/").arg(entry.author().name()).arg(authorId));
++        } else if (authorName.isEmpty()) {
++            fullInstallDir.append(QString::fromUtf8("unknown (%1)/").arg(authorEmail));
++        } else if (authorEmail.isEmpty()) {
++            fullInstallDir.append(QString::fromUtf8("%1 (%2)/").arg(authorName).arg(authorId));
+         } else {
+-            fullInstallDir.append(QString::fromUtf8("%1 (%2)/").arg(entry.author().name()).arg(entry.author().email()));
++            fullInstallDir.append(QString::fromUtf8("%1 (%2)/").arg(authorName).arg(authorEmail));
+         }
+         break;
+     }
++    const QString entryName{entry.name().replace(QString::fromUtf8("/"), QString::fromUtf8("∕"))};
++    const QString entryId{entry.uniqueId().replace(QString::fromUtf8("/"), QString::fromUtf8("∕"))};
+     switch (entrySubdirOptions) {
+     case Installation::NoEntrySubdir:
+         // No need to do anything, no subdir required for the entry
+@@ -508,10 +515,10 @@ QString completeInstalldir(const KNSCore::EntryInternal &entry,
+         fullInstallDir.append(QString::fromUtf8("%1/").arg(entry.uniqueId()));
+         break;
+     case Installation::NameEntrySubdir:
+-        fullInstallDir.append(QString::fromUtf8("%1/").arg(entry.name()));
++        fullInstallDir.append(QString::fromUtf8("%1/").arg(entryName));
+         break;
+     case Installation::NameAndIdEntrySubdir:
+-        fullInstallDir.append(QString::fromUtf8("%1.%2/").arg(entry.name()).arg(entry.uniqueId()));
++        fullInstallDir.append(QString::fromUtf8("%1.%2/").arg(entryName).arg(entry.uniqueId()));
+         break;
+     }
+     return fullInstallDir;
+-- 
+2.52.0
+

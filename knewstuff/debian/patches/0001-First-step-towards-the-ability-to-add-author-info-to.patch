@@ -1,7 +1,7 @@
-From d14233ae1c9d275e9ae5327ada666a5b1da4c022 Mon Sep 17 00:00:00 2001
+From 261ea50ed0c3ffdeeebe2ee9955720908e98d1e5 Mon Sep 17 00:00:00 2001
 From: Dan Leinir Turthra Jensen <admin@leinir.dk>
 Date: Thu, 27 Mar 2025 15:53:48 +0000
-Subject: [PATCH] First step towards the ability to add author info to the
+Subject: [PATCH 1/4] First step towards the ability to add author info to the
  download location
 
 This does not clean out the directory once the last of that author's
@@ -12,7 +12,7 @@ entries has been uninstalled.
  2 files changed, 88 insertions(+), 5 deletions(-)
 
 diff --git a/src/core/installation.cpp b/src/core/installation.cpp
-index 5a6c3eeb..0910af4c 100644
+index c883a218..94f6b8c4 100644
 --- a/src/core/installation.cpp
 +++ b/src/core/installation.cpp
 @@ -46,6 +46,7 @@ Installation::Installation(QObject *parent)
@@ -164,5 +164,5 @@ index 22e1059d..ed50da3c 100644
  
  #if KNEWSTUFFCORE_ENABLE_DEPRECATED_SINCE(5, 71)
 -- 
-2.48.1
+2.52.0
 

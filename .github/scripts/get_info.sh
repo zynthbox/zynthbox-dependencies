@@ -299,7 +299,7 @@ case "$PACKAGE_NAME" in
         ;;
 
     knewstuff)
-        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/knewstuff-v5.103.0.tar.gz" >> $GITHUB_OUTPUT
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/knewstuff-v5.116.0.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
     dxsyx)

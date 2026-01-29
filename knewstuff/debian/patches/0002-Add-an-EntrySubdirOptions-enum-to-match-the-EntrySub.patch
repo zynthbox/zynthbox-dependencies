@@ -1,7 +1,7 @@
-From 427e99be7e679579807f6025d207a72347d69142 Mon Sep 17 00:00:00 2001
+From e106af11c184edd1265a556967f6082fc42213c7 Mon Sep 17 00:00:00 2001
 From: Dan Leinir Turthra Jensen <admin@leinir.dk>
 Date: Fri, 28 Mar 2025 13:59:18 +0000
-Subject: [PATCH 2/3] Add an EntrySubdirOptions enum, to match the EntrySubdir
+Subject: [PATCH 2/4] Add an EntrySubdirOptions enum, to match the EntrySubdir
  option
 
 This intends to partner up the AuthorSubdir option with a matching
@@ -35,5 +35,5 @@ index ed50da3c..631d42d4 100644
  
  #if KNEWSTUFFCORE_ENABLE_DEPRECATED_SINCE(5, 71)
 -- 
-2.48.1
+2.52.0
 
