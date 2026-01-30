@@ -2,7 +2,7 @@
 
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 export DEB_CFLAGS_MAINT_APPEND  = -Wall -pedantic
-
+export DEB_BUILD_PROFILES = nopython
 %:
 ifeq ($(filter nopython,$(DEB_BUILD_PROFILES)),)
 	dh $@ --with python3 --exclude=.la
