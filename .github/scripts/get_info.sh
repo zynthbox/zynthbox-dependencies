@@ -188,6 +188,8 @@ case "$PACKAGE_NAME" in
 
     foo-yc20)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/foo-yc20-git+6d2d4a2.tar.gz" >> $GITHUB_OUTPUT
+        echo "before_script=.github/scripts/install-faust.sh" >> $GITHUB_OUTPUT
+        echo "param=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/faust-0.9.73.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
     geonkick)
@@ -196,6 +198,8 @@ case "$PACKAGE_NAME" in
 
     guitarix)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/guitarix-0.44.1.tar.xz" >> $GITHUB_OUTPUT
+        echo "before_script=.github/scripts/install-faust.sh" >> $GITHUB_OUTPUT
+        echo "param=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/faust-1316c96.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
     gula-plugins)

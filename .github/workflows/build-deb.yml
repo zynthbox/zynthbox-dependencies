@@ -18,7 +18,6 @@ on:
           - dpf-plugins
           - dragonfly-reverb
           - fabla
-          - faust
           - fluidplug
           - fluidsynth
           - foo-yc20
@@ -83,6 +82,7 @@ on:
           # - drumgizmo
           # - drumkv1-lv2
           # - dxsyx
+          # - faust
           # - gammaray
           # - geonkick
           # - gula-plugins
