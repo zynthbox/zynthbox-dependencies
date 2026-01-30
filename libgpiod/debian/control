@@ -28,9 +28,6 @@ Depends: ${shlibs:Depends},
          ${misc:Depends},
          libgpiod2 (= ${binary:Version})
 Suggests: libgpiod-doc
-Breaks: libgpiod-dev (>= 2.2.1-2)
-Replaces: libgpiod-dev (>= 2.2.1-2)
-Conflicts: libgpiod-dev (>= 2.2.1-2)
 Description: C library for interacting with Linux GPIO device - static libraries and headers
  libgpiod encapsulates the ioctl calls and data structures
  behind a straightforward API. This new character device
@@ -65,9 +62,6 @@ Architecture: linux-any
 Depends: ${shlibs:Depends},
          ${misc:Depends},
 Multi-Arch: same
-Breaks: libgpiod3 (>= 2.2.1-2)
-Replaces: libgpiod3 (>= 2.2.1-2)
-Conflicts: libgpiod3 (>= 2.2.1-2)
 Description: C library for interacting with Linux GPIO device - shared libraries
  libgpiod encapsulates the ioctl calls and data structures
  behind a straightforward API. This new character device
