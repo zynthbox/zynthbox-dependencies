@@ -19,9 +19,7 @@ echo "Extracting source..."
 tar xzf faust.tar.gz
 
 echo "Building Faust..."
-cd faust-*
-mkdir -p build
-cd build
+cd faust
 make
 make install
 
