@@ -79,7 +79,7 @@ jobs:
         run: |
           echo "Running custom script: ${{ steps.setup.outputs.before_script }}"
           chmod +x "${{ steps.setup.outputs.before_script }}"
-          "${{ steps.setup.outputs.before_script }}" "${{ steps.setup.outputs.sourcelink }}"
+          "${{ steps.setup.outputs.before_script }}" "${{ steps.setup.outputs.param }}"
 
       - name: Build DEB using Debhelper
         run: |
