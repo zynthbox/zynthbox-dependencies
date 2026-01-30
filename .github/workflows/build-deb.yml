@@ -26,6 +26,7 @@ on:
           - gxplugins
           - helm
           - knewstuff
+          - libgpiod
           - libjucy
           - libzynthbox
           - lv2-c++-tools

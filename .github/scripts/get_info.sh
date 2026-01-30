@@ -423,6 +423,10 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/lv2-c++-tools_1.0.5.tar.bz2" >> $GITHUB_OUTPUT
         ;;
 
+    libgpiod)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/libgpiod-1.6.tar.gz" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1
