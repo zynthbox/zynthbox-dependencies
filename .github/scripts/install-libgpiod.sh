@@ -2,12 +2,12 @@
 
 tee /etc/apt/preferences.d/libgpiod-dev <<EOF
 Package: libgpiod-dev
-Pin: release l=testing-trixie
-Pin-Priority: 1001
+Pin: release o=Debian
+Pin-Priority: -1
 
 Package: libgpiod3
-Pin: release l=testing-trixie
-Pin-Priority: 1001
+Pin: release o=Debian
+Pin-Priority: -1
 EOF
 
 apt-get update
