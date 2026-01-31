@@ -385,7 +385,7 @@ case "$PACKAGE_NAME" in
 
     zyncoder)
         echo "repolink=https://github.com/zynthbox/zyncoder" >> $GITHUB_OUTPUT
-        echo "before_script=.github/scripts/install-libgpiod.sh" >> $GITHUB_OUTPUT
+        echo "before_script=.github/scripts/add-apt-preference-libgpiod.sh" >> $GITHUB_OUTPUT
         ;;
 
     zynthbox-meta)

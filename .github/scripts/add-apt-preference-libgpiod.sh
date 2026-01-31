@@ -10,7 +10,3 @@ Pin: release o=Debian
 Pin-Priority: -1
 EOF
 
-apt-get update
-
-# Install libgpiod-dev from zynthbox repo instead of debian repo
-apt-get install -y libgpiod-dev
