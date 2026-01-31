@@ -4,6 +4,10 @@ tee /etc/apt/preferences.d/libgpiod-dev <<EOF
 Package: libgpiod-dev
 Pin: release l=testing-trixie
 Pin-Priority: 1001
+
+Package: libgpiod3
+Pin: release l=testing-trixie
+Pin-Priority: 1001
 EOF
 
 apt-get update
