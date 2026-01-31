@@ -2,7 +2,7 @@
 
 tee /etc/apt/preferences.d/libgpiod-dev <<EOF
 Package: libgpiod-dev
-Pin: origin "repo.zynthbox.io"
+Pin: release l=testing-trixie
 Pin-Priority: 1001
 EOF
 
