@@ -74,6 +74,23 @@ jobs:
           rm -rf debian
           mv debian.bkup debian
 
+      - name: Add zynthbox repository
+        run: |
+          if [ "$RELEASE" = "trixie" ]; then
+            if [ "${{ inputs.container_image }}" = "ghcr.io/probal31/zynthbox-packaging:debian-trixie-arm" ]; then
+              # Zynthbox repo
+              curl -fsSL https://repo.zynthbox.io/repo_key.pub | tee /usr/share/keyrings/zynthbox.gpg > /dev/null
+              echo "deb [signed-by=/usr/share/keyrings/zynthbox.gpg] https://repo.zynthbox.io/testing-trixie/ trixie main" | tee "/etc/apt/sources.list.d/zynthbox.list"
+            elif [ "${{ inputs.container_image }}" = "ghcr.io/probal31/zynthbox-packaging:debian-buster-arm" ]; then
+              curl -L https://repo.zynthbox.io/repo_key.pub | apt-key add -;
+              echo "deb https://repo.zynthbox.io/testing-trixie/ trixie main" | tee "/etc/apt/sources.list.d/zynthbox.list"
+            else
+              echo "Could not add zynthbox repo for container image: ${{ inputs.container_image }}"
+            fi
+          else
+            echo "UNKNOWN RELEASE $RELEASE"
+          fi
+
       - name: Run custom script before build if provided
         if: ${{ steps.setup.outputs.before_script != '' }}
         run: |
@@ -90,21 +107,6 @@ jobs:
           echo "${{ secrets.APTLY_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan repo.zynthbox.io >> ~/.ssh/known_hosts
-
-          if [ "$RELEASE" = "trixie" ]; then
-            if [ "${{ inputs.container_image }}" = "ghcr.io/probal31/zynthbox-packaging:debian-trixie-arm" ]; then
-              # Zynthbox repo
-              curl -fsSL https://repo.zynthbox.io/repo_key.pub | tee /usr/share/keyrings/zynthbox.gpg > /dev/null
-              echo "deb [signed-by=/usr/share/keyrings/zynthbox.gpg] https://repo.zynthbox.io/testing-trixie/ trixie main" | tee "/etc/apt/sources.list.d/zynthbox.list"
-            elif [ "${{ inputs.container_image }}" = "ghcr.io/probal31/zynthbox-packaging:debian-buster-arm" ]; then
-              curl -L https://repo.zynthbox.io/repo_key.pub | apt-key add -;
-              echo "deb https://repo.zynthbox.io/testing-trixie/ trixie main" | tee "/etc/apt/sources.list.d/zynthbox.list"
-            else
-              echo "Could not add zynthbox repo for container image: ${{ inputs.container_image }}"
-            fi
-          else
-            echo "UNKNOWN RELEASE $RELEASE"
-          fi
 
           ### Make the aptly jobs wait on a global lock file so that the aptly jobs are mutually exclusive
           ### Create a lock file /tmp/publish-aptly-zynthbox.lock and cleanup before completing the job
