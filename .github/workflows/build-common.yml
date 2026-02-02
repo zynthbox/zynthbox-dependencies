@@ -9,6 +9,10 @@ on:
       package_name:
         required: true
         type: string
+      repo_branch:
+        required: false
+        type: string
+        default: 'main'
     secrets:
       APTLY_SSH_KEY:
         required: true
@@ -58,7 +62,7 @@ jobs:
           if [ -n "${{ steps.setup.outputs.repolink }}" ]; then
             git config --global url.https://${{ secrets.GH_ACCESS_TOKEN }}@github.com/.insteadOf https://github.com/
 
-            git clone --recurse-submodules --depth 1 "${{ steps.setup.outputs.repolink }}" source-tmp
+            git clone --recurse-submodules --depth 1 -b "${{ inputs.repo_branch }}" "${{ steps.setup.outputs.repolink }}" source-tmp
             rm -rf source-tmp/.git
             tar -czf ../${PACKAGE_NAME}_${PACKAGE_VERSION}.orig.tar.gz -C source-tmp .
             tar -xf ../${PACKAGE_NAME}_${PACKAGE_VERSION}.orig.tar.gz -C ./ --strip-components=1

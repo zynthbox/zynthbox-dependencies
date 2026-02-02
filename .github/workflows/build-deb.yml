@@ -128,12 +128,18 @@ on:
           # - wolf-shaper
           # - wolf-spectrum
           # - zlfo
+      repo_branch:
+        description: 'Repository Branch'
+        required: false
+        default: 'main'
+        type: string
 jobs:
   build:
     uses: ./.github/workflows/build-common.yml
     with:
       package_name: ${{ github.event.inputs.package_name }}
       container_image: ${{ github.event.inputs.package_name == 'helm' && 'ghcr.io/probal31/zynthbox-packaging:debian-buster-arm' || 'ghcr.io/probal31/zynthbox-packaging:debian-trixie-arm' }}
+      repo_branch: ${{ github.event.inputs.repo_branch }}
     secrets:
       APTLY_SSH_KEY: ${{ secrets.APTLY_SSH_KEY }}
       GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
