@@ -57,6 +57,7 @@ on:
           - zam-plugins
           - zynaddsubfx
           - zyncoder
+          - zynthbox-bootsplash
           - zynthbox-docs
           - zynthbox-meta
           - zynthbox-qml

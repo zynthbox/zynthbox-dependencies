@@ -428,6 +428,10 @@ case "$PACKAGE_NAME" in
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/libgpiod-1.6.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
+    zynthbox-bootsplash)
+        echo "repolink=https://github.com/zynthbox/zynthbox-bootsplash.git" >> $GITHUB_OUTPUT
+        ;;
+
     *)
         echo "Unknown choice"
         exit 1
