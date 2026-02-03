@@ -25,6 +25,7 @@ on:
           - gxdistortionplus
           - gxplugins
           - helm
+          - jalv
           - knewstuff
           - libgpiod
           - libjucy

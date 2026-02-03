@@ -431,6 +431,10 @@ case "$PACKAGE_NAME" in
     zynthbox-bootsplash)
         echo "repolink=https://github.com/zynthbox/zynthbox-bootsplash.git" >> $GITHUB_OUTPUT
         ;;
+    
+    jalv)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/jalv_1.6.6.tar.bz2" >> $GITHUB_OUTPUT
+        ;;
 
     *)
         echo "Unknown choice"
