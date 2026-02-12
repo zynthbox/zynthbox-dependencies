@@ -25,6 +25,7 @@ on:
           - gxdistortionplus
           - gxplugins
           - helm
+          - jack-example-tools
           - jalv
           - knewstuff
           - libgpiod
@@ -93,7 +94,6 @@ on:
           # - gxswitchlesswah
           # - infamous-plugins
           # - invada-studio-plugins-lv2
-          # - jack-example-tools
           # - jack2
           # - libspecbleach
           # - lilv
