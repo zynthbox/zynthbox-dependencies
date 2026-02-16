@@ -174,7 +174,7 @@ jobs:
                 ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly repo add -remove-files '"${APTLY_REPO}-${RELEASE}"' /mnt/pub_zynthbox_io_volume/temp/${pkg}'
             done
             echo "Publishing repository"
-            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly publish update ${RELEASE} '"${APTLY_REPO}-${RELEASE}"
+            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly publish update "${RELEASE}" '"${APTLY_REPO}-${RELEASE}"
             echo "Cleaning up"
             ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'if [[ -f /tmp/working ]];then rm /tmp/working;fi'
             echo "Generate list of packages"
