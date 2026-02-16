@@ -131,10 +131,13 @@ on:
           # - wolf-spectrum
           # - zlfo
       repo_branch:
-        description: 'Repository Branch'
-        required: false
+        description: 'Provide branch to build for packages built from repository'
+        required: true
         default: 'main'
-        type: string
+        type: choice
+        options:
+          - main
+          - unstable
 jobs:
   build:
     uses: ./.github/workflows/build-common.yml
