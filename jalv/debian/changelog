@@ -1,0 +1,196 @@
+jalv (1.6.6-2) trixie; urgency=medium
+
+  - Rebuild 1.6.6 for trixie
+
+ -- Probal Basak <probal31@gmail.com>  Tue, 03 Feb 2026 13:00:00 +0530
+
+jalv (1.6.6-1) unstable; urgency=medium
+
+  [ Sebastian Ramacher ]
+  * debian/gbp.conf: Fix compression
+
+  [ Dennis Braun ]
+  * New upstream version 1.6.6
+  * Add d/upstream/signing-key.asc
+  * Add opts="pgpmode=auto" to d/watch
+  * Add /d/upstream/metadata
+  * Add me as uploader
+  * Bump dh-compat to 13
+  * Bump S-V to 4.5.1
+  * Set RRR: no
+  * Remove obsolete LDFLAGS from d/rules
+
+ -- Dennis Braun <d_braun@kabelmail.de>  Sun, 17 Jan 2021 22:13:20 +0100
+
+jalv (1.6.4-1) unstable; urgency=medium
+
+  * Team upload
+
+  [ Ondřej Nový ]
+  * Use debhelper-compat instead of debian/compat
+  * d/copyright: Use https protocol in Format field
+  * d/control: Set Vcs-* to salsa.debian.org
+
+  [ Felipe Sateler ]
+  * Change maintainer address to debian-multimedia@lists.debian.org
+
+  [ Dennis Braun ]
+  * New upstream release
+  * d/control:
+    + Bump debhelper-compat version to 12
+    + Bump standards version to 4.5.0
+    + Build with python3 and gtk3 now (Closes: #943141)
+    + Update other B-D
+  * d/copyright: Update and add myself to the d/ section
+  * Drop d/get-svn-source.sh & d/unpack_waf.sh, obsolete
+  * Update patchset
+  * d/rules: Rewrite to make the waf build work
+  * d/watch: Remove opts for now
+
+ -- Dennis Braun <d_braun@kabelmail.de>  Sat, 01 Feb 2020 18:54:05 +0100
+
+jalv (1.6.0~dfsg0-2) unstable; urgency=medium
+
+  * Build qt5 version rather than qt4.
+  * Add patch to fix build with qt5.
+
+ -- Jaromír Mikeš <mira.mikes@seznam.cz>  Sat, 07 Jan 2017 11:36:38 +0100
+
+jalv (1.6.0~dfsg0-1) unstable; urgency=medium
+
+  * Update repacking.
+  * New upstream version 1.6.0~dfsg0
+  * Set dh/compat 10.
+  * Fix copyright file.
+  * Sign tags.
+  * Patches deleted/refreshed.
+  * Avoid useless linking.
+
+ -- Jaromír Mikeš <mira.mikes@seznam.cz>  Fri, 06 Jan 2017 14:19:40 +0100
+
+jalv (1.4.6~dfsg0-2) unstable; urgency=medium
+
+  * Add patch to build without gtkmm. (Closes: #833908)
+  * Bump Standards.
+  * Fix VCS fields.
+  * Fix hardening.
+  * Tune .gitignore file.
+  * Update copyright file.
+
+ -- Jaromír Mikeš <mira.mikes@seznam.cz>  Tue, 23 Aug 2016 19:34:25 +0200
+
+jalv (1.4.6~dfsg0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Compression xz.
+  * Tuned get-orig-source.
+  * Removed old repack scripts.
+  * Tuned build deps.
+
+ -- Jaromír Mikeš <mira.mikes@seznam.cz>  Tue, 19 Aug 2014 15:41:42 +0100
+
+jalv (1.4.4~dfsg0-1) unstable; urgency=low
+
+  * New upstream release.
+  * Set dh/compat 9.
+  * Bump Standards.
+  * Remove --debug from configure to flags to be passed.
+  * Fix passing ldflags.
+  * Added repacking scripts.
+  * Install NEWS file as upstream changelog.
+
+ -- Jaromír Mikeš <mira.mikes@seznam.cz>  Fri, 28 Feb 2014 19:44:02 +0100
+
+jalv (1.4.2~dfsg0-1) unstable; urgency=low
+
+  [ Alessio Treglia ]
+  * New upstream release.
+  * Bump build-dep on lv2-dev >= 1.4.3.
+  * Add build-dep on libgtk-3-dev to enable GTK3+ support.
+  * Enable support for GTKMM-2.0.
+  * Needs lilv >= 0.15.1
+
+  [ Jaromír Mikeš ]
+  * Added myself as uploader
+
+ -- Alessio Treglia <alessio@debian.org>  Wed, 28 Aug 2013 09:26:04 +0100
+
+jalv (1.2.0~dfsg0-2) unstable; urgency=low
+
+  * Upload to unstable.
+  * Fix VCS urls.
+  * Bump Standards.
+
+ -- Alessio Treglia <alessio@debian.org>  Fri, 10 May 2013 17:27:44 +0200
+
+jalv (1.2.0~dfsg0-1) experimental; urgency=low
+
+  * New upstream release:
+    - Tune UI update rate and ring size based on JACK rate and MIDI buffer
+      size to handle the handle the maximum message rate the plugin can
+      send.
+    - Support lv2:sampleRate control ports.
+    - Tolerate loading presets with port values that aren't xsd:decimal
+    - Notify plugins of Jack transport changes by sending events (an
+      atom:Blank with properties from the LV2 time extension)
+    - Refuse to instantiate plugins which require unsupported features
+    - Support LV2 buf-size extension (with all features)
+    - Add Gtk3 UI
+    - Port to MinGW
+    - Fix Jack Session support
+  * debian/control:
+    - Needs lv2 >> 1.2.0
+  * Remove 0001-presets_with_non_decimal_ports.patch, applied upstream.
+  * Add get-orig-source target to strip out waf.
+  * Update debian/copyright.
+
+ -- Alessio Treglia <alessio@debian.org>  Tue, 30 Oct 2012 10:10:42 +0000
+
+jalv (1.0.0~dfsg0-2) unstable; urgency=low
+
+  * Tolerate loading presets with port values that aren't xsd:decimal.
+    Patch taken from upstream trunk.
+
+ -- Alessio Treglia <alessio@debian.org>  Mon, 18 Jun 2012 12:44:03 +0200
+
+jalv (1.0.0~dfsg0-1) unstable; urgency=low
+
+  * New upstream release.
+  * Remove 0001-manpage.patch, adopted upstream.
+  * debian/control:
+    - Replace old LV2 build-deps with lv2-dev.
+    - Tighten build-dep on lilv, add build-dependencies on
+      libserd-dev and libsratom-dev.
+    - Add build-dependency on sord.
+    - Update Homepage.
+  * Add patch to fix jalv.gtk's manpage section mismatch.
+  * Update debian/watch.
+  * Update debian/copyright.
+  * Bump Standards.
+
+ -- Alessio Treglia <alessio@debian.org>  Mon, 21 May 2012 11:12:23 +0200
+
+jalv (0~svn3409+dfsg0-1) unstable; urgency=low
+
+  * Repack upstream tarball to get rid of the waf binary (Closes: #654478).
+  * Adjust the clean target to properly clean the sources.
+
+ -- Alessio Treglia <alessio@debian.org>  Tue, 10 Jan 2012 10:12:50 +0100
+
+jalv (0~svn3409-1) unstable; urgency=low
+
+  * New upstream release:
+    - Build Jalv in top-level build.
+    - Send control output port updates to UIs (commonly used for metering).
+    - Add a real URI map implementation.
+    - Remove unnecessary configure checks for glib and gthread.
+    - Support control changes from UI.
+    - Implement instance-access extension (support IR.lv2 UI).
+
+ -- Alessio Treglia <alessio@debian.org>  Mon, 20 Jun 2011 14:15:39 +0200
+
+jalv (0~svn3395-1) unstable; urgency=low
+
+  * Initial release. (Closes: #630391)
+
+ -- Alessio Treglia <alessio@debian.org>  Tue, 14 Jun 2011 10:10:23 +0200

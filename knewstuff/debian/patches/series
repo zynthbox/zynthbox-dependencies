@@ -1,3 +1,4 @@
-0001-author-subdir-option.patch
+0001-First-step-towards-the-ability-to-add-author-info-to.patch
 0002-Add-an-EntrySubdirOptions-enum-to-match-the-EntrySub.patch
 0003-Add-EntrySubdir-option-handling-and-also-clean-up-on.patch
+0004-Ensure-the-author-and-entry-folder-names-are-filesys.patch

@@ -2,11 +2,11 @@ Source: zynthbox-plugin-foo-yc20
 Section: misc
 Priority: optional
 Maintainer: Anupam Basak <anupam.basak27@gmail.com>
-Build-Depends: debhelper (>= 11), lv2-dev, zynthbox-dependency-faust
+Build-Depends: debhelper (>= 11), lv2-dev
 Standards-Version: 4.1.3
 Homepage: https://github.com/zynthian/foo-yc20.git
 
 Package: zynthbox-plugin-foo-yc20
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, lv2-dev, zynthbox-dependency-faust
+Depends: ${shlibs:Depends}, ${misc:Depends}, lv2-dev
 Description: Build zynthbox-plugin-foo-yc20 deb

@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=debian:bookworm
+ARG BASE_IMAGE=debian:trixie
 FROM ${BASE_IMAGE}
 
 LABEL maintainer="Probal Basak <probal31@users.noreply.github.com>" \
@@ -58,7 +58,7 @@ RUN apt-get update && \
         fluid \
         libfltk1.3-dev \
         libfltk1.3-compat-headers \
-        libncurses5-dev \
+        libncurses-dev \
         liblo-dev \
         dssi-dev \
         libjpeg-dev \
@@ -74,21 +74,20 @@ RUN apt-get update && \
         fontconfig-config \
         libfontconfig1-dev \
         libxft-dev \
-        libexpat-dev \
+        libexpat1-dev \
         libglib2.0-dev \
         libgettextpo-dev \
         libsqlite3-dev \
         libglibmm-2.4-dev \
         libeigen3-dev \
-        libsndfile-dev \
-        libsamplerate-dev \
+        libsndfile1-dev \
+        libsamplerate0-dev \
         libarmadillo-dev \
         libreadline-dev \
-        lv2-c++-tools \
         libxi-dev \
         libgtk2.0-dev \
         libgtkmm-2.4-dev \
-        liblrdf-dev \
+        liblrdf0-dev \
         libboost-system-dev \
         libzita-convolver-dev \
         libzita-resampler-dev \
@@ -97,11 +96,10 @@ RUN apt-get update && \
         libxinerama-dev \
         mesa-common-dev \
         libgl1-mesa-dev \
-        libfreetype6-dev \
+        libfreetype-dev \
         libswscale-dev \
         qtbase5-dev \
         qtdeclarative5-dev \
-        libcanberra-gtk-module \
         libcanberra-gtk3-module \
         libxcb-cursor-dev \
         libgtk-3-dev \
@@ -123,7 +121,6 @@ RUN apt-get update && \
         python3-pyqt5 \
         python3-numpy \
         python3-evdev \
-        2to3 \
         python3-pip \
         meson \
         extra-cmake-modules \
@@ -133,7 +130,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 RUN . /etc/os-release && \
-    if [ "$VERSION_CODENAME" = "bookworm" ]; then \
+    if [ "$VERSION_CODENAME" = "trixie" ]; then \
       apt-get update && apt-get install -y \
         python-is-python3 libfreetype-dev && \
       apt-get clean && \

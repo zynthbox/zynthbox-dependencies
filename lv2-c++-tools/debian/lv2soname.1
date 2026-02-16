@@ -1,0 +1,46 @@
+.\"                                      Hey, EMACS: -*- nroff -*-
+.\" First parameter, NAME, should be all caps
+.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
+.\" other parameters are allowed: see man(7), man(1)
+.TH LV2SONAME 1 "May 12, 2010"
+.\" Please adjust this date whenever revising the manpage.
+.\"
+.\" Some roff macros, for reference:
+.\" .nh        disable hyphenation
+.\" .hy        enable hyphenation
+.\" .ad l      left justify
+.\" .ad b      justify to both left and right margins
+.\" .nf        disable filling
+.\" .fi        enable filling
+.\" .br        insert line break
+.\" .sp <n>    insert n+1 empty lines
+.\" for manpage-specific macros, see man(7)
+.SH NAME
+lv2soname \- script which can be used in your build system to translate a linker option into the soname
+.SH DESCRIPTION
+This manual page documents briefly the
+.B lv2soname
+command.
+This manual page was written for the Debian distribution
+because the original program does not have a manual page.
+.PP
+\fBlv2soname\fP script can be used in your build system to translate a linker option (e.g. \-lgtkmm2.4) into the soname (e.g. libgtkmm-2.4.so.1)
+for the shared library that ld will link to when given that command line option.
+It will generate the RDF triples needed to tell hosts that the library with that soname must never be unloaded even after your plugin GUI library has been unloaded. 
+.PP
+e.g.
+$ lv2soname '<http://my.gui>' '<http://lv2plug.in/ns/lv2core#requiredFeature>' \-lgtkmm-2.4
+.PP
+If the script for some reason can't determine the soname it will instead generate the RDF needed to tell the host to never unload the GUI library at all.
+.PP
+However pretty much the same thing can be done by linking the plugin GUI using the \-z nodelete linker option,
+which will keep the GUI library loaded even after the host runs dlclose(), requiring no extra support from the host.
+So lv2soname is deprecated and will be removed in the next major version release.
+.PP
+For more information please visit http://ll-plugins.nongnu.org
+.br
+.SH AUTHOR
+lv2soname was written by Lars Luthman <lars.luthman@gmail.com>.
+.PP
+This manual page was written by Jaromír Mikeš <mira.mikes@seznam.cz>,
+for the Debian project (but may be used by others).

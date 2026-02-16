@@ -1,0 +1,5 @@
+#usr/lib/liblv2-gui.a usr/lib/
+#usr/lib/liblv2-plugin.a usr/lib/
+#usr/lib/libpaq.a usr/lib/
+#usr/lib/libpaq.so.0 usr/lib/
+usr/lib/libpaq.so.0.0.0 usr/lib/

@@ -1,0 +1,18 @@
+Description: Pass -std=c++11 for qt5 build.
+Author: Jaromír Mikeš <mira.mikes@seznam.cz>
+http://git.drobilla.net/cgit.cgi/jalv.git/commit/?id=c32f3ca76a09c03fe9a022eb46e049e6fd5e2dbb
+Forwarded: David Robillard <d@drobilla.net>
+
+Index: jalv/wscript
+===================================================================
+--- jalv.orig/wscript
++++ jalv/wscript
+@@ -235,7 +235,7 @@
+                   lib          = ['pthread'],
+                   uselib       = libs + ' QT5',
+                   install_path = '${BINDIR}',
+-                  cxxflags     = ['-fPIC'])
++                  cxxflags     = ['-fPIC', '-std=c++11'])
+ 
+     # Man pages
+     bld.install_files('${MANDIR}/man1', bld.path.ant_glob('doc/*.1'))

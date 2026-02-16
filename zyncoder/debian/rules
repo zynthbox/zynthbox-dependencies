@@ -3,6 +3,9 @@
 # output every command that modifies files on the build system.
 #export DH_VERBOSE = 1
 
+export CFLAGS += -Wno-implicit-function-declaration -Wno-int-conversion
+export CXXFLAGS += -Wno-implicit-function-declaration -Wno-int-conversion
+
 %:
 	dh $@
 
@@ -16,3 +19,6 @@
 # This ensures that zyncoder build builds for Z2 devices
 override_dh_auto_configure:
 	ZYNTHIAN_WIRING_LAYOUT="Z2_V4" dh_auto_configure
+
+override_dh_strip:
+	dh_strip --no-automatic-dbgsym

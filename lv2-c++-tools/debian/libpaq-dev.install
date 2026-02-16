@@ -1,0 +1,3 @@
+libraries/paq/*.hpp usr/include/lv2-c++-tools/
+usr/lib/libpaq.so usr/lib/
+usr/lib/pkgconfig/paq.pc usr/lib/pkgconfig/

@@ -11,3 +11,6 @@ override_dh_auto_configure:
 		-DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=off -DBUILD_BENCHMARKS=off
 
 override_dh_usrlocal:
+
+override_dh_strip:
+	dh_strip --no-automatic-dbgsym

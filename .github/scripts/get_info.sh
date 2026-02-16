@@ -188,6 +188,8 @@ case "$PACKAGE_NAME" in
 
     foo-yc20)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/foo-yc20-git+6d2d4a2.tar.gz" >> $GITHUB_OUTPUT
+        echo "before_script=.github/scripts/install-faust.sh" >> $GITHUB_OUTPUT
+        echo "param=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/faust-0.9.73.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
     geonkick)
@@ -196,6 +198,8 @@ case "$PACKAGE_NAME" in
 
     guitarix)
         echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/guitarix-0.44.1.tar.xz" >> $GITHUB_OUTPUT
+        echo "before_script=.github/scripts/install-faust.sh" >> $GITHUB_OUTPUT
+        echo "param=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/faust-1316c96.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
     gula-plugins)
@@ -299,7 +303,7 @@ case "$PACKAGE_NAME" in
         ;;
 
     knewstuff)
-        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/knewstuff-v5.103.0.tar.gz" >> $GITHUB_OUTPUT
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/knewstuff-v5.116.0.tar.gz" >> $GITHUB_OUTPUT
         ;;
 
     dxsyx)
@@ -381,6 +385,7 @@ case "$PACKAGE_NAME" in
 
     zyncoder)
         echo "repolink=https://github.com/zynthbox/zyncoder" >> $GITHUB_OUTPUT
+        echo "before_script=.github/scripts/add-apt-preference-libgpiod.sh" >> $GITHUB_OUTPUT
         ;;
 
     zynthbox-meta)
@@ -413,6 +418,22 @@ case "$PACKAGE_NAME" in
 
     qml-style-zynthbox)
         echo "repolink=https://github.com/zynthbox/qml-style-zynthbox.git" >> $GITHUB_OUTPUT
+        ;;
+
+    lv2-c++-tools)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/lv2-c++-tools_1.0.5.tar.bz2" >> $GITHUB_OUTPUT
+        ;;
+
+    libgpiod)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/libgpiod-1.6.tar.gz" >> $GITHUB_OUTPUT
+        ;;
+
+    zynthbox-bootsplash)
+        echo "repolink=https://github.com/zynthbox/zynthbox-bootsplash.git" >> $GITHUB_OUTPUT
+        ;;
+    
+    jalv)
+        echo "sourcelink=https://github.com/zynthbox/zynthbox-dependencies/releases/download/RC-5/jalv_1.6.6.tar.bz2" >> $GITHUB_OUTPUT
         ;;
 
     *)

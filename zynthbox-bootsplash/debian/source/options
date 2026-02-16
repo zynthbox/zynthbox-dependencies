@@ -1,0 +1,4 @@
+extend-diff-ignore = ".gitlab-ci.yml"
+
+# Ignore all files in `site`
+extend-diff-ignore = "(.*\/)?site\/.*"

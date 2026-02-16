@@ -1,7 +1,7 @@
-From 99033c06aa3d2c14883e9c9d14becc7289ae3436 Mon Sep 17 00:00:00 2001
+From 03513d7e713a93f021f82b4b3fd43b270a78de77 Mon Sep 17 00:00:00 2001
 From: Dan Leinir Turthra Jensen <admin@leinir.dk>
 Date: Fri, 28 Mar 2025 14:01:53 +0000
-Subject: [PATCH 3/3] Add EntrySubdir option handling, and also clean up on
+Subject: [PATCH 3/4] Add EntrySubdir option handling, and also clean up on
  uninstall
 
 If either or both of AuthorSubdir and EntrySubdir is set to something
@@ -12,7 +12,7 @@ and actually exist), so we don't end up cluttering up the system.
  1 file changed, 84 insertions(+), 14 deletions(-)
 
 diff --git a/src/core/installation.cpp b/src/core/installation.cpp
-index 0910af4c..a4c96b23 100644
+index 94f6b8c4..b12ebc94 100644
 --- a/src/core/installation.cpp
 +++ b/src/core/installation.cpp
 @@ -47,6 +47,7 @@ Installation::Installation(QObject *parent)
@@ -178,5 +178,5 @@ index 0910af4c..a4c96b23 100644
  
  Installation::UncompressionOptions Installation::uncompressionSetting() const
 -- 
-2.48.1
+2.52.0
 

@@ -9,6 +9,10 @@ on:
       package_name:
         required: true
         type: string
+      repo_branch:
+        required: false
+        type: string
+        default: 'main'
     secrets:
       APTLY_SSH_KEY:
         required: true
@@ -24,7 +28,7 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
         APTLY_REPO: testing
-        RELEASE: bookworm
+        RELEASE: trixie
         BUILDING_ZYNTHBOX_DEPENDENCY: 1
         SKIP_ZYNTHBOX_DEPENDENCIES_INSTALLATION: 0
     
@@ -58,7 +62,7 @@ jobs:
           if [ -n "${{ steps.setup.outputs.repolink }}" ]; then
             git config --global url.https://${{ secrets.GH_ACCESS_TOKEN }}@github.com/.insteadOf https://github.com/
 
-            git clone --recurse-submodules --depth 1 "${{ steps.setup.outputs.repolink }}" source-tmp
+            git clone --recurse-submodules --depth 1 -b "${{ inputs.repo_branch }}" "${{ steps.setup.outputs.repolink }}" source-tmp
             rm -rf source-tmp/.git
             tar -czf ../${PACKAGE_NAME}_${PACKAGE_VERSION}.orig.tar.gz -C source-tmp .
             tar -xf ../${PACKAGE_NAME}_${PACKAGE_VERSION}.orig.tar.gz -C ./ --strip-components=1
@@ -74,12 +78,29 @@ jobs:
           rm -rf debian
           mv debian.bkup debian
 
+      - name: Add zynthbox repository
+        run: |
+          if [ "$RELEASE" = "trixie" ]; then
+            if [ "${{ inputs.container_image }}" = "ghcr.io/probal31/zynthbox-packaging:debian-trixie-arm" ]; then
+              # Zynthbox repo
+              curl -fsSL https://repo.zynthbox.io/repo_key.pub | tee /usr/share/keyrings/zynthbox.gpg > /dev/null
+              echo "deb [signed-by=/usr/share/keyrings/zynthbox.gpg] https://repo.zynthbox.io/testing-trixie/ trixie main" | tee "/etc/apt/sources.list.d/zynthbox.list"
+            elif [ "${{ inputs.container_image }}" = "ghcr.io/probal31/zynthbox-packaging:debian-buster-arm" ]; then
+              curl -L https://repo.zynthbox.io/repo_key.pub | apt-key add -;
+              echo "deb https://repo.zynthbox.io/testing-trixie/ trixie main" | tee "/etc/apt/sources.list.d/zynthbox.list"
+            else
+              echo "Could not add zynthbox repo for container image: ${{ inputs.container_image }}"
+            fi
+          else
+            echo "UNKNOWN RELEASE $RELEASE"
+          fi
+
       - name: Run custom script before build if provided
         if: ${{ steps.setup.outputs.before_script != '' }}
         run: |
           echo "Running custom script: ${{ steps.setup.outputs.before_script }}"
           chmod +x "${{ steps.setup.outputs.before_script }}"
-          "${{ steps.setup.outputs.before_script }}"
+          "${{ steps.setup.outputs.before_script }}" "${{ steps.setup.outputs.param }}"
 
       - name: Build DEB using Debhelper
         run: |
@@ -90,14 +111,6 @@ jobs:
           echo "${{ secrets.APTLY_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan repo.zynthbox.io >> ~/.ssh/known_hosts
-
-          # Zynthbox repo
-          curl -L https://repo.zynthbox.io/repo_key.pub | apt-key add -;
-          if [ "$RELEASE" = "bookworm" ]; then
-            echo "deb https://repo.zynthbox.io/testing-bookworm/ bookworm main" | tee "/etc/apt/sources.list.d/zynthbox.list"
-          else
-            echo "UNKNOWN RELEASE $RELEASE"
-          fi
 
           ### Make the aptly jobs wait on a global lock file so that the aptly jobs are mutually exclusive
           ### Create a lock file /tmp/publish-aptly-zynthbox.lock and cleanup before completing the job
@@ -154,18 +167,18 @@ jobs:
           scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ../*.deb aptly@repo.zynthbox.io:/mnt/pub_zynthbox_io_volume/temp/
           echo "Adding package(s) to repository"
 
-          if [ "$RELEASE" = "bookworm" ]; then
+          if [ "$RELEASE" = "trixie" ]; then
             for pkg in $(ls -1 ../*.deb)
               do
                 echo "Adding ${pkg}"
-                ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly repo add -remove-files '"${APTLY_REPO}-bookworm"' /mnt/pub_zynthbox_io_volume/temp/${pkg}'
+                ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly repo add -remove-files '"${APTLY_REPO}-trixie"' /mnt/pub_zynthbox_io_volume/temp/${pkg}'
             done
             echo "Publishing repository"
-            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly publish update bookworm '"${APTLY_REPO}-bookworm"
+            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly publish update trixie '"${APTLY_REPO}-trixie"
             echo "Cleaning up"
             ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'if [[ -f /tmp/working ]];then rm /tmp/working;fi'
             echo "Generate list of packages"
-            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly repo show -with-packages '"${APTLY_REPO}-bookworm"' > '"~/.aptly/public/${APTLY_REPO}-bookworm/${APTLY_REPO}-bookworm.list"
+            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly repo show -with-packages '"${APTLY_REPO}-trixie"' > '"~/.aptly/public/${APTLY_REPO}-trixie/${APTLY_REPO}-trixie.list"
           else
             echo "CANNOT PUBLISH DEBS. UNKNOWN RELEASE $RELEASE"
           fi

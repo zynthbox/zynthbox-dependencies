@@ -1,3 +1,9 @@
+zynthbox-plugin-mod-utilities (20230131-1-3) trixie; urgency=medium
+
+  * Rebuild for trixie
+
+ -- Probal Basak <probal31@gmail.com>  Mon, 26 Jan 2026 16:30:00 +0530
+
 zynthbox-plugin-mod-utilities (20230131-1-2) unstable; urgency=medium
 
   * Migrated from opencode to gh

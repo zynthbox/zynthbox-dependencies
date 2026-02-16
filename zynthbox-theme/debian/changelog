@@ -1,3 +1,9 @@
+zynthbox-theme (0.5-1-3) trixie; urgency=medium
+
+  * Rebuild for trixie
+
+ -- Probal Basak <probal31@gmail.com>  Thu, 22 Jan 2026 12:00:00 +0530
+
 zynthbox-theme (0.5-1-2) unstable; urgency=medium
 
   * Migrated from opencode to gh

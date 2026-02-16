@@ -17,3 +17,6 @@ export LIBDIR=$(PREFIX)/lib/aeolus
 
 override_dh_installchangelogs:
 	dh_installchangelogs README
+
+override_dh_strip:
+	dh_strip --no-automatic-dbgsym

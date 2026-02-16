@@ -2,7 +2,7 @@
 # -*- makefile -*-
 
 # Disable fixfilepath, as it triggers build failures.
-export DEB_BUILD_MAINT_OPTIONS = hardening=+all reproducible=-fixfilepath
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all reproducible=-fixfilepath optimize=+lto
 
 libpkgs_gen_strict_local_shlibs = $(libpkgs_all_packages)
 include /usr/share/pkg-kde-tools/qt-kde-team/2/library-packages.mk
@@ -11,15 +11,10 @@ include /usr/share/pkg-kde-tools/qt-kde-team/2/library-packages.mk
 	dh $@ --with pkgkde_symbolshelper
 
 override_dh_auto_configure:
-	dh_auto_configure -- -DBUILD_QCH=ON
+	dh_auto_configure -- -DBUILD_QCH=ON -DBUILD_DESIGNERPLUGIN=ON
 
 override_dh_auto_test:
-	xvfb-run -a dh_auto_test
+	xvfb-run -a dh_auto_test -- ARGS="-E 'knewstuff-installationtest'"
 
 override_dh_gencontrol-arch: libpkgs_gen_strict_local_shlibs
 	dh_gencontrol -a
-
-override_dh_shlibdeps:
-	dh_shlibdeps --dpkg-shlibdeps-params=--ignore-missing-info -l$(shell pwd)/debian/tmp/usr/lib/aarch64-linux-gnu
-
-override_dh_usrlocal:

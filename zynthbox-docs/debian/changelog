@@ -1,3 +1,9 @@
+zynthbox-docs (0.5-1-6) trixie; urgency=medium
+
+  * Rebuild for trixie
+
+ -- Probal Basak <probal31@gmail.com>  Thu, 22 Jan 2026 17:30:00 +0530
+
 zynthbox-docs (0.5-1-5) bookworm; urgency=medium
 
   * Migrate to github actions

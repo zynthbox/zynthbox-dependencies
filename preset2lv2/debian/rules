@@ -15,7 +15,7 @@ override_dh_auto_build:
 	python3 ./setup.py build
 
 override_dh_auto_install:
-	python3 ./setup.py install --root $(shell pwd)/debian/preset2lv2
+	python3 ./setup.py install --root $(shell pwd)/debian/zynthbox-dependency-preset2lv2
 	
 override_dh_auto_clean:
 	python3 ./setup.py clean
