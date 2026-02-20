@@ -13,6 +13,12 @@ on:
         required: false
         type: string
         default: 'main'
+      aptly_repo:
+        required: true
+        type: string
+      release:
+        required: true
+        type: string
     secrets:
       APTLY_SSH_KEY:
         required: true
@@ -27,8 +33,8 @@ jobs:
       image: ${{ inputs.container_image }}
       env:
         DEBIAN_FRONTEND: noninteractive
-        APTLY_REPO: unstable
-        RELEASE: trixie
+        APTLY_REPO: ${{ inputs.aptly_repo }}
+        RELEASE: ${{ inputs.release }}
         BUILDING_ZYNTHBOX_DEPENDENCY: 1
         SKIP_ZYNTHBOX_DEPENDENCIES_INSTALLATION: 0
     
