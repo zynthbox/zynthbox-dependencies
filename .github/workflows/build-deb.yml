@@ -160,6 +160,8 @@ jobs:
       package_name: ${{ github.event.inputs.package_name }}
       container_image: ${{ github.event.inputs.package_name == 'helm' && 'ghcr.io/probal31/zynthbox-packaging:debian-buster-arm' || 'ghcr.io/probal31/zynthbox-packaging:debian-trixie-arm' }}
       repo_branch: ${{ github.event.inputs.repo_branch }}
+      aptly_repo: ${{ github.event.inputs.aptly_repo }}
+      release: ${{ github.event.inputs.release }}
     secrets:
       APTLY_SSH_KEY: ${{ secrets.APTLY_SSH_KEY }}
       GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
