@@ -4,6 +4,21 @@ run-name: Build zynthbox plugins debs - ${{ github.event.inputs.package_name }}
 on:
   workflow_dispatch:
     inputs:
+      aptly_repo:
+        description: 'Aptly repo to upload debs to'
+        required: true
+        default: 'testing'
+        type: choice
+        options:
+          - testing
+          - unstable
+      release:
+        description: 'Release to build for'
+        required: true
+        default: 'trixie'
+        type: choice
+        options:
+          - trixie
       package_name:
         description: 'Package Name'
         required: true
@@ -131,10 +146,13 @@ on:
           # - wolf-spectrum
           # - zlfo
       repo_branch:
-        description: 'Repository Branch'
-        required: false
+        description: 'Provide branch to build for packages built from repository'
+        required: true
         default: 'main'
-        type: string
+        type: choice
+        options:
+          - main
+          - unstable
 jobs:
   build:
     uses: ./.github/workflows/build-common.yml
@@ -142,6 +160,8 @@ jobs:
       package_name: ${{ github.event.inputs.package_name }}
       container_image: ${{ github.event.inputs.package_name == 'helm' && 'ghcr.io/probal31/zynthbox-packaging:debian-buster-arm' || 'ghcr.io/probal31/zynthbox-packaging:debian-trixie-arm' }}
       repo_branch: ${{ github.event.inputs.repo_branch }}
+      aptly_repo: ${{ github.event.inputs.aptly_repo }}
+      release: ${{ github.event.inputs.release }}
     secrets:
       APTLY_SSH_KEY: ${{ secrets.APTLY_SSH_KEY }}
       GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}

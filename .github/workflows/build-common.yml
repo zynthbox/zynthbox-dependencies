@@ -13,6 +13,12 @@ on:
         required: false
         type: string
         default: 'main'
+      aptly_repo:
+        required: true
+        type: string
+      release:
+        required: true
+        type: string
     secrets:
       APTLY_SSH_KEY:
         required: true
@@ -27,8 +33,8 @@ jobs:
       image: ${{ inputs.container_image }}
       env:
         DEBIAN_FRONTEND: noninteractive
-        APTLY_REPO: testing
-        RELEASE: trixie
+        APTLY_REPO: ${{ inputs.aptly_repo }}
+        RELEASE: ${{ inputs.release }}
         BUILDING_ZYNTHBOX_DEPENDENCY: 1
         SKIP_ZYNTHBOX_DEPENDENCIES_INSTALLATION: 0
     
@@ -84,10 +90,10 @@ jobs:
             if [ "${{ inputs.container_image }}" = "ghcr.io/probal31/zynthbox-packaging:debian-trixie-arm" ]; then
               # Zynthbox repo
               curl -fsSL https://repo.zynthbox.io/repo_key.pub | tee /usr/share/keyrings/zynthbox.gpg > /dev/null
-              echo "deb [signed-by=/usr/share/keyrings/zynthbox.gpg] https://repo.zynthbox.io/testing-trixie/ trixie main" | tee "/etc/apt/sources.list.d/zynthbox.list"
+              echo "deb [signed-by=/usr/share/keyrings/zynthbox.gpg] https://repo.zynthbox.io/${APTLY_REPO}-${RELEASE}/ ${RELEASE} main" | tee "/etc/apt/sources.list.d/zynthbox.list"
             elif [ "${{ inputs.container_image }}" = "ghcr.io/probal31/zynthbox-packaging:debian-buster-arm" ]; then
               curl -L https://repo.zynthbox.io/repo_key.pub | apt-key add -;
-              echo "deb https://repo.zynthbox.io/testing-trixie/ trixie main" | tee "/etc/apt/sources.list.d/zynthbox.list"
+              echo "deb https://repo.zynthbox.io/${APTLY_REPO}-${RELEASE}/ ${RELEASE} main" | tee "/etc/apt/sources.list.d/zynthbox.list"
             else
               echo "Could not add zynthbox repo for container image: ${{ inputs.container_image }}"
             fi
@@ -171,14 +177,14 @@ jobs:
             for pkg in $(ls -1 ../*.deb)
               do
                 echo "Adding ${pkg}"
-                ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly repo add -remove-files '"${APTLY_REPO}-trixie"' /mnt/pub_zynthbox_io_volume/temp/${pkg}'
+                ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly repo add -remove-files '"${APTLY_REPO}-${RELEASE}"' /mnt/pub_zynthbox_io_volume/temp/${pkg}'
             done
             echo "Publishing repository"
-            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly publish update trixie '"${APTLY_REPO}-trixie"
+            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly publish update '"${RELEASE} ${APTLY_REPO}-${RELEASE}"
             echo "Cleaning up"
             ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'if [[ -f /tmp/working ]];then rm /tmp/working;fi'
             echo "Generate list of packages"
-            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly repo show -with-packages '"${APTLY_REPO}-trixie"' > '"~/.aptly/public/${APTLY_REPO}-trixie/${APTLY_REPO}-trixie.list"
+            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aptly@repo.zynthbox.io 'aptly repo show -with-packages '"${APTLY_REPO}-${RELEASE}"' > '"~/.aptly/public/${APTLY_REPO}-${RELEASE}/${APTLY_REPO}-${RELEASE}.list"
           else
             echo "CANNOT PUBLISH DEBS. UNKNOWN RELEASE $RELEASE"
           fi

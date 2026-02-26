@@ -1,3 +1,9 @@
+zynthian-sys (0.5-2-1) trixie; urgency=medium
+
+  * Build sys to install pipewire instead of jack
+
+ -- Probal Basak <probal31@gmail.com>  Thu, 22 Jan 2026 12:00:00 +0530
+
 zynthian-sys (0.5-1-3) trixie; urgency=medium
 
   * Rebuild for trixie
