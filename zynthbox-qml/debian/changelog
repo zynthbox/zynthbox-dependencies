@@ -1,6 +1,6 @@
 zynthbox-qml (0.6-2-1) trixie; urgency=medium
 
-  *  Build for unstable
+  *  Use pipewire instead of jack
 
  -- Probal Basak <probal31@gmail.com>  Thu, 22 Jan 2026 17:30:00 +0530
 
