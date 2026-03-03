@@ -3,4 +3,4 @@
 cd /zynthian/zynthian-webconf/metaheader
 npm install --legacy-peer-deps
 npm run build
-systemctl restart zynthian-webconf
+systemctl --user restart zynthian-webconf
